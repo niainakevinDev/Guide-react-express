@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours React (24h)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="logo"><img src="https://cdn.simpleicons.org/react/61DAFB" alt=""> React (24h)</span>
+  <nav>
+    <a href="index.html">Parcours</a>
+    <a href="javascript.html">JS</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn">🌓</button>
+</header>
+
+<div class="container">
+  
+  <h1>Module 2 : React</h1>
+  <div class="progress-bar"><div class="progress-fill" id="progress-react"></div></div>
+  <p class="progress-text" id="progress-react-text">0 / 8 chapitres complétés</p>
+
+  <p>React n'est pas difficile, il est juste *différent*. Ici, tu vas apprendre à penser en composants.</p>
+
+  <div class="checklist">
+    
+    <div class="check-item">
+      <input type="checkbox" id="react-1" onchange="toggleCheck('react-1')">
+      <label for="react-1">
+        <strong>Ch. 1 : JSX & Composants (3h)</strong><br>
+        Création d'un projet avec Vite. Comprendre le JSX, les props, et découper une maquette en composants. <br>
+        <em>🎯 Objectif : Savoir créer et réutiliser un composant.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="react-2" onchange="toggleCheck('react-2')">
+      <label for="react-2">
+        <strong>Ch. 2 : Le State (3h)</strong><br>
+        Le hook `useState`. Les événements (`onClick`, `onChange`). Le concept de "re-render". <br>
+        <em>🎯 Objectif : Rendre un composant dynamique.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="react-3" onchange="toggleCheck('react-3')">
+      <label for="react-3">
+        <strong>Ch. 3 : Les Effets (3h)</strong><br>
+        Le hook `useEffect`. Le cycle de vie d'un composant, le tableau de dépendances, et les requêtes API au montage. <br>
+        <em>🎯 Objectif : Charger des données depuis un serveur.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="react-4" onchange="toggleCheck('react-4')">
+      <label for="react-4">
+        <strong>Ch. 4 : Formulaires (3h)</strong><br>
+        Inputs contrôlés, validation côté client, gestion de la soumission. <br>
+        <em>🎯 Objectif : Créer un formulaire de login robuste.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="react-5" onchange="toggleCheck('react-5')">
+      <label for="react-5">
+        <strong>Ch. 5 : Listes & Conditions (3h)</strong><br>
+        Afficher des listes avec `.map()` et la prop `key`. Les affichages conditionnels (`&&`, ternaires). <br>
+        <em>🎯 Objectif : Afficher des données dynamiques proprement.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="react-6" onchange="toggleCheck('react-6')">
+      <label for="react-6">
+        <strong>Ch. 6 : Contexte & Global State (3h)</strong><br>
+        `useContext`. Éviter le "Prop Drilling". Comprendre quand utiliser un état global (Thème, Auth). <br>
+        <em>🎯 Objectif : Partager des données dans toute l'app.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="react-7" onchange="toggleCheck('react-7')">
+      <label for="react-7">
+        <strong>Ch. 7 : Routing (3h)</strong><br>
+        React Router v6. Pages multiples (`/`, `/dashboard`, `/login`), routes protégées. <br>
+        <em>🎯 Objectif : Naviguer sans recharger la page.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="react-8" onchange="toggleCheck('react-8')">
+      <label for="react-8">
+        <strong>Ch. 8 : PROJET FINAL REACT (3h)</strong><br>
+        Créer un Tableau de bord (Dashboard) avec authentification fictive, récupération de données depuis une API publique, et navigation. <br>
+        <em>🎯 Objectif : Prouver que tu sais construire une Single Page Application.</em>
+      </label>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 40px;">
+    <a href="express.html" class="btn express">Une fois terminé, passe au Module Express →</a>
+  </div>
+
+</div>
+
+<footer>Cours React 24h — <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
