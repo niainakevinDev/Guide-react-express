@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours JavaScript (24h)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="logo"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt=""> JavaScript (24h)</span>
+  <nav>
+    <a href="index.html">Parcours</a>
+    <a href="javascript.html">JS</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn">🌓</button>
+</header>
+
+<div class="container">
+  
+  <h1>Module 1 : JavaScript Moderne</h1>
+  <div class="progress-bar"><div class="progress-fill" id="progress-js"></div></div>
+  <p class="progress-text" id="progress-js-text">0 / 8 chapitres complétés</p>
+
+  <p>Bienvenue dans les 24 heures les plus importantes de ta carrière. Sans JS solide, React et Express ne sont que de la magie noire.</p>
+
+  <div class="checklist">
+    
+    <!-- CHAPITRE 1 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-1" onchange="toggleCheck('js-1')">
+      <div class="check-content">
+        <label for="js-1">
+          <strong>Ch. 1 : Les Fondations (3h)</strong><br>
+          Variables (`let`, `const`), types de données, conditions, boucles. <br>
+          <em>🎯 Objectif : Savoir écrire un algorithme simple.</em>
+        </label>
+        
+        <details class="lesson">
+          <summary>📖 Lire le cours et faire l'exercice</summary>
+          <h4>1. Variables : let et const</h4>
+          <p>Oublie <code>var</code>. On utilise <code>const</code> par défaut (valeur qui ne change pas) et <code>let</code> pour les variables qui doivent être modifiées.</p>
+          <pre><code>const nom = "Kevin"; // Ne peut pas changer
+let age = 25;        // Peut changer
+age = 26;</code></pre>
+
+          <h4>2. Les Types de Données</h4>
+          <ul>
+            <li><strong>String</strong> (Texte) : <code>"Bonjour"</code></li>
+            <li><strong>Number</strong> (Nombre) : <code>42</code>, <code>3.14</code></li>
+            <li><strong>Boolean</strong> (Vrai/Faux) : <code>true</code>, <code>false</code></li>
+            <li><strong>Null</strong> (Vide intentionnel) : <code>null</code></li>
+            <li><strong>Undefined</strong> (Pas encore défini) : <code>undefined</code></li>
+          </ul>
+
+          <h4>3. Les Conditions (if / else)</h4>
+          <pre><code>const temperature = 25;
+if (temperature > 30) {
+  console.log("Il fait très chaud !");
+} else if (temperature > 20) {
+  console.log("Il fait bon.");
+} else {
+  console.log("Il fait froid.");
+}</code></pre>
+
+          <h4>4. Les Boucles (for)</h4>
+          <pre><code>for (let i = 1; i &lt;= 5; i++) {
+  console.log("Numéro : " + i);
+}</code></pre>
+
+          <div class="warn">
+            <strong>🛠️ Exercice Pratique (30 min)</strong>
+            Ouvre la console de ton navigateur (F12).<br>
+            <strong>Défi :</strong> Crée une variable <code>panier</code>. Si le panier contient plus de 100€, affiche "Livraison gratuite". S'il contient entre 50€ et 100€, affiche "Livraison à 5€". Sinon, affiche "Livraison à 10€".
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 2 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-2" onchange="toggleCheck('js-2')">
+      <div class="check-content">
+        <label for="js-2">
+          <strong>Ch. 2 : ES6+ et Modernité (3h)</strong><br>
+          Fonctions fléchées, template literals, destructuration, spread operator. <br>
+          <em>🎯 Objectif : Écrire du JS propre et lisible.</em>
+        </label>
+        <details class="lesson">
+          <summary>📖 Lire le cours et faire l'exercice</summary>
+          <h4>1. Fonctions Fléchées (Arrow Functions)</h4>
+          <p>C'est la syntaxe standard en React. Plus court et évite les erreurs avec <code>this</code>.</p>
+          <pre><code>// Avant
+function additionner(a, b) { return a + b; }
+// Après (Moderne)
+const additionner = (a, b) => a + b;</code></pre>
+
+          <h4>2. Template Literals (Backticks)</h4>
+          <p>Fini les concaténations. Utilise les backticks <code>`</code>.</p>
+          <pre><code>const nom = "Alice";
+const message = `Je m'appelle ${nom}.`;</code></pre>
+
+          <h4>3. Destructuration</h4>
+          <p>Extraire des données d'un objet. Indispensable pour les <em>props</em> de React.</p>
+          <pre><code>const utilisateur = { nom: "Bob", age: 30 };
+const { nom, age } = utilisateur;
+console.log(nom); // "Bob"</code></pre>
+
+          <h4>4. Spread Operator (...)</h4>
+          <p>Copier ou fusionner des objets/tableaux. Tu l'utiliseras tous les jours avec React.</p>
+          <pre><code>const arr1 = [1, 2];
+const arr2 = [3, 4];
+const fusion = [...arr1, ...arr2]; // [1, 2, 3, 4]</code></pre>
+
+          <div class="warn">
+            <strong>🛠️ Exercice Pratique (30 min)</strong>
+            <strong>Défi :</strong> Crée un objet <code>voiture</code> avec <code>marque</code>, <code>modele</code>, <code>annee</code>. Utilise la destructuration pour extraire la marque et le modèle. Affiche : <em>"Ma voiture est une [marque] [modele]."</em>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 3 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-3" onchange="toggleCheck('js-3')">
+      <div class="check-content">
+        <label for="js-3">
+          <strong>Ch. 3 : Tableaux & Objets (3h)</strong><br>
+          Les méthodes `map`, `filter`, `reduce`. Manipulation de JSON. <br>
+          <em>🎯 Objectif : Manipuler des listes de données complexes.</em>
+        </label>
+        <details class="lesson">
+          <summary>📖 Lire le cours et faire l'exercice</summary>
+          <h4>1. .map() : Transformer une liste</h4>
+          <pre><code>const nombres = [1, 2, 3, 4];
+const doubles = nombres.map(n => n * 2);
+// Résultat : [2, 4, 6, 8]</code></pre>
+
+          <h4>2. .filter() : Trier une liste</h4>
+          <pre><code>const nombres = [1, 2, 3, 4, 5, 6];
+const pairs = nombres.filter(n => n % 2 === 0);
+// Résultat : [2, 4, 6]</code></pre>
+
+          <h4>3. .reduce() : Calculer une valeur globale</h4>
+          <pre><code>const panier = [{ prix: 10 }, { prix: 20 }];
+const total = panier.reduce((acc, item) => acc + item.prix, 0);
+// Résultat : 30</code></pre>
+
+          <div class="warn">
+            <strong>🛠️ Exercice Pratique (45 min)</strong>
+            <strong>Défi :</strong> Tu as le tableau suivant : <code>const users = [{nom: "A", age: 15}, {nom: "B", age: 25}, {nom: "C", age: 35}];</code><br>
+            1. Utilise <code>filter</code> pour garder les majeurs.<br>
+            2. Utilise <code>map</code> pour ne garder que les noms.<br>
+            3. Affiche le résultat.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 4 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-4" onchange="toggleCheck('js-4')">
+      <div class="check-content">
+        <label for="js-4">
+          <strong>Ch. 4 : Le DOM (3h)</strong><br>
+          Sélectionner des éléments, modifier le HTML/CSS, écouter des événements. <br>
+          <em>🎯 Objectif : Rendre une page HTML interactive.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 5 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-5" onchange="toggleCheck('js-5')">
+      <div class="check-content">
+        <label for="js-5">
+          <strong>Ch. 5 : Asynchrone (3h)</strong><br>
+          L'Event Loop, les Promesses, `async/await`, la gestion des erreurs (`try/catch`). <br>
+          <em>🎯 Objectif : Comprendre pourquoi JS ne "bloque" pas.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 6 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-6" onchange="toggleCheck('js-6')">
+      <div class="check-content">
+        <label for="js-6">
+          <strong>Ch. 6 : Fetch & API (3h)</strong><br>
+          Requêtes GET, POST, PUT, DELETE. Envoyer des headers, gérer le format JSON. <br>
+          <em>🎯 Objectif : Communiquer avec un serveur (préparation au backend).</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 7 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-7" onchange="toggleCheck('js-7')">
+      <div class="check-content">
+        <label for="js-7">
+          <strong>Ch. 7 : POO & Classes (3h)</strong><br>
+          Classes, constructeurs, méthodes, `this`. Comprendre la programmation orientée objet. <br>
+          <em>🎯 Objectif : Structurer son code pour de gros projets.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 8 -->
+    <div class="check-item">
+      <input type="checkbox" id="js-8" onchange="toggleCheck('js-8')">
+      <div class="check-content">
+        <label for="js-8">
+          <strong>Ch. 8 : PROJET FINAL JS (3h)</strong><br>
+          Créer une application de suivi de dépenses (Budget Tracker) en HTML/CSS/JS pur avec `localStorage`. <br>
+          <em>🎯 Objectif : Prouver que tu maîtrises les bases sans framework.</em>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 40px;">
+    <a href="react.html" class="btn">Une fois terminé, passe au Module React →</a>
+  </div>
+
+</div>
+
+<footer>Cours JS 24h — <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+  </html>
