@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours Express (24h)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="logo"><img src="https://cdn.simpleicons.org/express/ffffff" alt=""> Express (24h)</span>
+  <nav>
+    <a href="index.html">Parcours</a>
+    <a href="javascript.html">JS</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn">🌓</button>
+</header>
+
+<div class="container">
+  
+  <h1>Module 3 : Express & Node.js</h1>
+  <div class="progress-bar"><div class="progress-fill" id="progress-express"></div></div>
+  <p class="progress-text" id="progress-express-text">0 / 8 chapitres complétés</p>
+
+  <p>Le serveur. Ici, tu vas créer la partie invisible de l'application : celle qui stocke les données et sécurise l'accès.</p>
+
+  <div class="checklist">
+    
+    <div class="check-item">
+      <input type="checkbox" id="express-1" onchange="toggleCheck('express-1')">
+      <label for="express-1">
+        <strong>Ch. 1 : Node & Serveur HTTP (3h)</strong><br>
+        Qu'est-ce que Node.js ? Créer un serveur basique avec le module `http`. Installation d'Express et première route. <br>
+        <em>🎯 Objectif : Comprendre le modèle requête/réponse.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="express-2" onchange="toggleCheck('express-2')">
+      <label for="express-2">
+        <strong>Ch. 2 : Routing & Middlewares (3h)</strong><br>
+        Les verbes HTTP (GET, POST, PUT, DELETE). Qu'est-ce qu'un middleware ? Créer son propre logger. <br>
+        <em>🎯 Objectif : Structurer des routes complexes.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="express-3" onchange="toggleCheck('express-3')">
+      <label for="express-3">
+        <strong>Ch. 3 : Bases de données (3h)</strong><br>
+        Connexion à MongoDB (avec Mongoose). Créer des modèles, faire des requêtes CRUD (Create, Read, Update, Delete). <br>
+        <em>🎯 Objectif : Sauvegarder des données de façon permanente.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="express-4" onchange="toggleCheck('express-4')">
+      <label for="express-4">
+        <strong>Ch. 4 : Validation & Erreurs (3h)</strong><br>
+        Valider les données reçues (Zod). Gérer les erreurs globales (middleware d'erreur) et les codes HTTP (400, 404, 500). <br>
+        <em>🎯 Objectif : Ne jamais crasher le serveur.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="express-5" onchange="toggleCheck('express-5')">
+      <label for="express-5">
+        <strong>Ch. 5 : Authentification (3h)</strong><br>
+        Hasher les mots de passe (bcrypt). Créer et vérifier des tokens JWT. Protéger des routes. <br>
+        <em>🎯 Objectif : Sécuriser l'accès aux données.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="express-6" onchange="toggleCheck('express-6')">
+      <label for="express-6">
+        <strong>Ch. 6 : Architecture Pro (3h)</strong><br>
+        Séparer les contrôleurs, les services et les routes. Configurer CORS, Helmet et Rate Limiter. <br>
+        <em>🎯 Objectif : Coder comme en entreprise.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="express-7" onchange="toggleCheck('express-7')">
+      <label for="express-7">
+        <strong>Ch. 7 : Uploads & Fichiers (3h)</strong><br>
+        Gérer l'upload d'images avec Multer. Servir des fichiers statiques (images, PDF). <br>
+        <em>🎯 Objectif : Gérer les médias côté serveur.</em>
+      </label>
+    </div>
+
+    <div class="check-item">
+      <input type="checkbox" id="express-8" onchange="toggleCheck('express-8')">
+      <label for="express-8">
+        <strong>Ch. 8 : PROJET FINAL EXPRESS (3h)</strong><br>
+        Créer une API REST complète pour un Blog (Articles + Utilisateurs). Inclure l'authentification JWT, le CRUD complet, et la validation des données. <br>
+        <em>🎯 Objectif : Prouver que tu sais construire un backend sécurisé.</em>
+      </label>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 40px;">
+    <a href="index.html" class="btn">Retour au Parcours</a>
+  </div>
+
+</div>
+
+<footer>Cours Express 24h — <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
