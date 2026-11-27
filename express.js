@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours Express (24h)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="logo"><img src="https://cdn.simpleicons.org/express/ffffff" alt=""> Express (24h)</span>
+  <nav>
+    <a href="index.html">Parcours</a>
+    <a href="javascript.html">JS</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn">🌓</button>
+</header>
+
+<div class="container">
+  
+  <h1>Module 3 : Express & Node.js</h1>
+  <div class="progress-bar"><div class="progress-fill" id="progress-express"></div></div>
+  <p class="progress-text" id="progress-express-text">0 / 8 chapitres complétés</p>
+
+  <p>Le serveur. Ici, tu vas créer la partie invisible de l'application : celle qui stocke les données et sécurise l'accès.</p>
+
+  <div class="checklist">
+    
+    <!-- CHAPITRE 1 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-1" onchange="toggleCheck('express-1')">
+      <div class="check-content">
+        <label for="express-1">
+          <strong>Ch. 1 : Node & Serveur HTTP (3h)</strong><br>
+          Qu'est-ce que Node.js ? Créer un serveur basique. Installation d'Express et première route. <br>
+          <em>🎯 Objectif : Comprendre le modèle requête/réponse.</em>
+        </label>
+        <details class="lesson">
+          <summary>📖 Lire le cours et faire l'exercice</summary>
+          <h4>1. Initialiser un projet</h4>
+          <pre><code>mkdir mon-api && cd mon-api
+npm init -y
+npm install express</code></pre>
+
+          <h4>2. Le serveur de base</h4>
+          <p>Crée un fichier <code>server.js</code> :</p>
+          <pre><code>const express = require('express');
+const app = express();
+
+app.get('/', (req, res) =&gt; {
+  res.send('Hello depuis Express !');
+});
+
+app.listen(3000, () =&gt; {
+  console.log('Serveur sur http://localhost:3000');
+});</code></pre>
+
+          <div class="warn">
+            <strong>🛠️ Exercice Pratique (1h)</strong>
+            <strong>Défi :</strong> Lance ce serveur avec <code>node server.js</code>. Ouvre ton navigateur sur <code>http://localhost:3000</code>. Ajoute une nouvelle route <code>/api/status</code> qui renvoie un objet JSON <code>{ "status": "ok" }</code>.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 2 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-2" onchange="toggleCheck('express-2')">
+      <div class="check-content">
+        <label for="express-2">
+          <strong>Ch. 2 : Routing & Middlewares (3h)</strong><br>
+          Les verbes HTTP. Qu'est-ce qu'un middleware ? Créer son propre logger. <br>
+          <em>🎯 Objectif : Structurer des routes complexes.</em>
+        </label>
+        <details class="lesson">
+          <summary>📖 Lire le cours et faire l'exercice</summary>
+          <h4>Le concept de Middleware</h4>
+          <p>Un middleware est une fonction qui s'exécute entre la requête et la réponse. C'est le cœur d'Express.</p>
+          <pre><code>// Middleware de log
+app.use((req, res, next) =&gt; {
+  console.log(`[${req.method}] ${req.url}`);
+  next(); // Passe à la suite
+});</code></pre>
+
+          <div class="warn">
+            <strong>🛠️ Exercice Pratique (1h)</strong>
+            <strong>Défi :</strong> Ajoute un middleware qui vérifie si l'URL contient <code>/admin</code>. Si oui, renvoie une erreur 403 (Accès refusé). Sinon, laisse passer avec <code>next()</code>.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 3 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-3" onchange="toggleCheck('express-3')">
+      <div class="check-content">
+        <label for="express-3">
+          <strong>Ch. 3 : Bases de données (3h)</strong><br>
+          Connexion à MongoDB. Créer des modèles, faire des requêtes CRUD. <br>
+          <em>🎯 Objectif : Sauvegarder des données de façon permanente.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 4 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-4" onchange="toggleCheck('express-4')">
+      <div class="check-content">
+        <label for="express-4">
+          <strong>Ch. 4 : Validation & Erreurs (3h)</strong><br>
+          Valider les données (Zod). Gérer les erreurs globales et les codes HTTP (400, 404, 500). <br>
+          <em>🎯 Objectif : Ne jamais crasher le serveur.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 5 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-5" onchange="toggleCheck('express-5')">
+      <div class="check-content">
+        <label for="express-5">
+          <strong>Ch. 5 : Authentification (3h)</strong><br>
+          Hasher les mots de passe (bcrypt). Créer et vérifier des tokens JWT. Protéger des routes. <br>
+          <em>🎯 Objectif : Sécuriser l'accès aux données.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 6 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-6" onchange="toggleCheck('express-6')">
+      <div class="check-content">
+        <label for="express-6">
+          <strong>Ch. 6 : Architecture Pro (3h)</strong><br>
+          Séparer les contrôleurs, les services et les routes. Configurer CORS, Helmet et Rate Limiter. <br>
+          <em>🎯 Objectif : Coder comme en entreprise.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 7 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-7" onchange="toggleCheck('express-7')">
+      <div class="check-content">
+        <label for="express-7">
+          <strong>Ch. 7 : Uploads & Fichiers (3h)</strong><br>
+          Gérer l'upload d'images avec Multer. Servir des fichiers statiques. <br>
+          <em>🎯 Objectif : Gérer les médias côté serveur.</em>
+        </label>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 8 -->
+    <div class="check-item">
+      <input type="checkbox" id="express-8" onchange="toggleCheck('express-8')">
+      <div class="check-content">
+        <label for="express-8">
+          <strong>Ch. 8 : PROJET FINAL EXPRESS (3h)</strong><br>
+          Créer une API REST complète pour un Blog. Inclure JWT, CRUD complet, et validation. <br>
+          <em>🎯 Objectif : Prouver que tu sais construire un backend sécurisé.</em>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 40px;">
+    <a href="index.html" class="btn">Retour au Parcours</a>
+  </div>
+
+</div>
+
+<footer>Cours Express 24h — <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
