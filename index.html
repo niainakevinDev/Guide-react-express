@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide Développeur — React & Express</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="logo">📘 Guide Dev</span>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn" title="Thème">🌓</button>
+</header>
+
+<div class="hero">
+  <h1>Devenir développeur <span style="color:var(--accent)">React</span> & <span style="color:var(--accent-2)">Express</span></h1>
+  <p>Installation, bonnes pratiques de seniors, avantages, limites et projets prêts à l'emploi — le tout en un seul endroit.</p>
+</div>
+
+<div class="container">
+
+  <div class="cards">
+
+    <div class="card">
+      <h2>⚛️ React<span class="badge">Frontend</span></h2>
+      <p>La bibliothèque UI de Meta. Apprends les hooks, la structure de projet, les bonnes pratiques de composition, la gestion d'état et les pièges à éviter.</p>
+      <ul>
+        <li>Installation Vite / Next.js</li>
+        <li>Hooks essentiels + custom hooks</li>
+        <li>Structure de dossiers senior</li>
+        <li>Performance, mémoïsation, anti-patterns</li>
+        <li>Avantages & limites honnêtes</li>
+      </ul>
+      <a href="react.html" class="btn">Ouvrir le guide →</a>
+    </div>
+
+    <div class="card">
+      <h2>🟢 Express<span class="badge express">Backend</span></h2>
+      <p>Le framework Node.js minimaliste. Routes, middlewares, sécurité, validation, architecture en couches, gestion d'erreurs et déploiement.</p>
+      <ul>
+        <li>Installation & structure</li>
+        <li>Routing, middlewares, erreurs</li>
+        <li>Bonnes pratiques sécurité (helmet, CORS)</li>
+        <li>Architecture controllers/services</li>
+        <li>Avantages & limites honnêtes</li>
+      </ul>
+      <a href="express.html" class="btn">Ouvrir le guide →</a>
+    </div>
+
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h2>💡 Projets React prêts à l'emploi</h2>
+      <p>Code complet de projets : Todo, météo, formulaire multi-étapes, fetch API, routing…</p>
+      <a href="examples/react-examples.html" class="btn">Voir les exemples →</a>
+    </div>
+    <div class="card">
+      <h2>💡 Projets Express prêts à l'emploi</h2>
+      <p>API REST complète, auth JWT, upload de fichiers, CRUD, structure production…</p>
+      <a href="examples/express-examples.html" class="btn">Voir les exemples →</a>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>💡 Comment utiliser ce guide</strong>
+    Chaque page est autonome. Lis la section "Bonnes pratiques senior" en priorité si tu connais déjà les bases — c'est ce qui fait la différence entre un junior et quelqu'un qu'on embauche.
+  </div>
+
+</div>
+
+<footer>
+  Fait avec Termux & GitHub Pages — <span id="year"></span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
