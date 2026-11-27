@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Express — Guide complet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="logo">🟢 Express</span>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn">🌓</button>
+</header>
+
+<div class="container">
+
+<div class="toc">
+  <h3>Sommaire</h3>
+  <ul>
+    <li><a href="#intro">Qu'est-ce qu'Express ?</a></li>
+    <li><a href="#install">Installation</a></li>
+    <li><a href="#routing">Routing</a></li>
+    <li><a href="#middlewares">Middlewares</a></li>
+    <li><a href="#errors">Gestion d'erreurs</a></li>
+    <li><a href="#structure">Architecture</a></li>
+    <li><a href="#security">Sécurité</a></li>
+    <li><a href="#practices">Bonnes pratiques senior</a></li>
+    <li><a href="#proscons">Avantages & limites</a></li>
+  </ul>
+</div>
+
+<!-- ========== INTRO ========== -->
+<section id="intro">
+  <h2>Qu'est-ce qu'Express ?</h2>
+  <p>Express est le framework web <strong>minimaliste</strong> pour Node.js. Il fournit :</p>
+  <ul>
+    <li>Un système de <strong>routing</strong> (URL → handler)</li>
+    <li>Un système de <strong>middlewares</strong> (fonctions en chaîne)</li>
+    <li>Une API simple pour requêtes/réponses HTTP</li>
+  </ul>
+  <p>C'est le framework Node.js le plus utilisé, la base de Nest.js, et l'équivalent backend le plus courant de React côté front.</p>
+  <div class="note">
+    <strong>📌 Express ne fait pas tout</strong>
+    Pas d'ORM, pas d'auth, pas de validation, pas de WebSocket. Il faut ajouter Prisma/Sequelize, JWT, zod, socket.io, etc.
+  </div>
+</section>
+
+<!-- ========== INSTALLATION ========== -->
+<section id="install">
+  <h2>Installation</h2>
+
+  <h3>Créer un projet Express from scratch</h3>
+  <pre><code>mkdir mon-api && cd mon-api
+npm init -y
+npm install express
+
+# Dépendances recommandées en prod
+npm install helmet cors dotenv express-rate-limit zod
+
+# Dev
+npm install -D nodemon</code></pre>
+
+  <h3>Fichier <code>server.js</code> minimal</h3>
+  <pre><code>const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+app.get('/', (req, res) =&gt; {
+  res.json({ message: 'API OK' });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () =&gt; {
+  console.log(`http://localhost:${PORT}`);
+});</code></pre>
+
+  <h3>Scripts recommandés dans <code>package.json</code></h3>
+  <pre><code>{
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  }
+}</code></pre>
+  <p>Le <code>"type": "module"</code> active les <code>import/export</code> ES modernes (au lieu de <code>require</code>).</p>
+
+  <div class="tip">
+    <strong>✅ Express 5 (2024+)</strong>
+    Express 5 gère nativement les <code>async</code> errors (plus besoin de <code>express-async-errors</code>). Vérifie ta version avec <code>npm ls express</code>.
+  </div>
+</section>
+
+<!-- ========== ROUTING ========== -->
+<section id="routing">
+  <h2>Routing</h2>
+
+  <h3>Routes HTTP</h3>
+  <pre><code>import { Router } from 'express';
+const router = Router();
+
+router.get('/users', listUsers);       // GET    /users
+router.get('/users/:id', getUser);     // GET    /users/42
+router.post('/users', createUser);     // POST   /users
+router.put('/users/:id', replaceUser); // PUT    /users/42
+router.patch('/users/:id', updateUser);// PATCH  /users/42
+router.delete('/users/:id', deleteUser);// DELETE /users/42
+
+export default router;</code></pre>
+
+  <h3>Monter le router</h3>
+  <pre><code>import usersRouter from './routes/users.js';
+app.use('/api/users', usersRouter);
+// Résultat : /api/users/42, etc.</code></pre>
+
+  <h3>Paramètres</h3>
+  <pre><code>// URL : /users/42?verbose=true
+router.get('/users/:id', (req, res) =&gt; {
+  const { id } = req.params;         // "42"
+  const { verbose } = req.query;      // "true" (toujours string)
+  res.json({ id, verbose: verbose === 'true' });
+});</code></pre>
+
+  <div class="warn">
+    <strong>⚠️ Toujours valider</strong>
+    <code>req.params</code>, <code>req.query</code> et <code>req.body</code> sont <strong>non fiables</strong>. Valide systématiquement (zod, joi, express-validator) avant d'utiliser.
+  </div>
+</section>
+
+<!-- ========== MIDDLEWARES ========== -->
+<section id="middlewares">
+  <h2>Middlewares</h2>
+  <p>Un middleware est une fonction <code>(req, res, next) =&gt; {}</code> exécutée dans l'ordre de déclaration. C'est <strong>le</strong> concept central d'Express.</p>
+
+  <h3>Ordre critique</h3>
+  <pre><code>// ✅ Ordre correct
+app.use(helmet());                          // 1. sécurité
+app.use(cors());                            // 2. CORS
+app.use(express.json({ limit: '1mb' }));    // 3. parse body
+app.use(requestLogger);                     // 4. log
+app.use('/api', routes);                    // 5. routes
+app.use(notFound);                          // 6. 404
+app.use(errorHandler);                      // 7. erreurs (TOUJOURS en dernier)</code></pre>
+
+  <h3>Middleware custom</h3>
+  <pre><code>function requestLogger(req, res, next) {
+  const start = Date.now();
+  res.on('finish', () =&gt; {
+    console.log(`${req.method} ${req.originalUrl} ${res.statusCode} ${Date.now() - start}ms`);
+  });
+  next();
+}</code></pre>
+
+  <h3>Auth par JWT</h3>
+  <pre><code>import jwt from 'jsonwebtoken';
+
+export function requireAuth(req, res, next) {
+  const header = req.headers.authorization;
+  if (!header?.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Token manquant' });
+  }
+  try {
+    const payload = jwt.verify(header.slice(7), process.env.JWT_SECRET);
+    req.user = payload;
+    next();
+  } catch {
+    res.status(401).json({ error: 'Token invalide' });
+  }
+}
+
+// Usage
+router.get('/me', requireAuth, (req, res) =&gt; {
+  res.json(req.user);
+});</code></pre>
+</section>
+
+<!-- ========== ERRORS ========== -->
+<section id="errors">
+  <h2>Gestion d'erreurs</h2>
+  <p>Express reconnaît un middleware d'erreur à ses <strong>4 paramètres</strong> : <code>(err, req, res, next)</code>.</p>
+
+  <h3>Classe d'erreur custom</h3>
+  <pre><code>export class HttpError extends Error {
+  constructor(status, message, details) {
+    super(message);
+    this.status = status;
+    this.details = details;
+  }
+}</code></pre>
+
+  <h3>Handler global</h3>
+  <pre><code>export function errorHandler(err, req, res, next) {
+  const status = err.status || 500;
+  const message = status === 500 ? 'Erreur interne' : err.message;
+
+  // Log complet côté serveur, jamais côté client en prod
+  if (status &gt;= 500) console.error(err);
+
+  res.status(status).json({
+    error: message,
+    ...(err.details &amp;&amp; { details: err.details }),
+  });
+}</code></pre>
+
+  <h3>Utilisation</h3>
+  <pre><code>router.get('/users/:id', async (req, res, next) =&gt; {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) throw new HttpError(404, 'Utilisateur introuvable');
+    res.json(user);
+  } catch (err) {
+    next(err); // délégué au handler global
+  }
+});</code></pre>
+
+  <div class="bad">
+    <strong>❌ Fuites d'info</strong>
+    Ne renvoie <strong>jamais</strong> <code>err.stack</code> ou <code>err.message</code> brut d'une erreur 500 au client. C'est une mine d'or pour un attaquant (chemins, versions, requêtes SQL).
+  </div>
+</section>
+
+<!-- ========== STRUCTURE ========== -->
+<section id="structure">
+  <h2>Architecture en couches</h2>
+  <p>Un projet Express maintenable sépare les responsabilités. Le pattern <strong>routes → controller → service → repository</strong> est le standard professionnel.</p>
+  <pre><code>src/
+├── server.js          → démarre l'app
+├── app.js             → configure Express (testable sans listen)
+├── routes/
+│   └── users.routes.js
+├── controllers/       → req/res, validation, statut HTTP
+│   └── users.controller.js
+├── services/          → logique métier
+│   └── users.service.js
+├── repositories/      → accès données (DB)
+│   └── users.repository.js
+├── middlewares/
+│   ├── auth.js
+│   └── errorHandler.js
+├── validators/
+│   └── users.validator.js
+└── config/
+    └── db.js</code></pre>
+
+  <h3>Exemple concret</h3>
+  <pre><code>// routes/users.routes.js
+import { Router } from 'express';
+import * as ctrl from '../controllers/users.controller.js';
+import { validate } from '../middlewares/validate.js';
+import { createUserSchema } from '../validators/users.validator.js';
+import { requireAuth } from '../middlewares/auth.js';
+
+const router = Router();
+router.get('/', requireAuth, ctrl.list);
+router.post('/', requireAuth, validate(createUserSchema), ctrl.create);
+export default router;</code></pre>
+
+  <pre><code>// controllers/users.controller.js
+import * as service from '../services/users.service.js';
+
+export async function list(req, res, next) {
+  try {
+    const users = await service.getAll();
+    res.json(users);
+  } catch (e) { next(e); }
+}
+
+export async function create(req, res, next) {
+  try {
+    const user = await service.create(req.body);
+    res.status(201).json(user);
+  } catch (e) { next(e); }
+}</code></pre>
+
+  <pre><code>// services/users.service.js
+import * as repo from '../repositories/users.repository.js';
+import { HttpError } from '../middlewares/errorHandler.js';
+
+export async function getAll() {
+  return repo.findAll();
+}
+
+export async function create(data) {
+  const exists = await repo.findByEmail(data.email);
+  if (exists) throw new HttpError(409, 'Email déjà utilisé');
+  return repo.insert(data);
+}</code></pre>
+</section>
+
+<!-- ========== SECURITY ========== -->
+<section id="security">
+  <h2>Sécurité</h2>
+
+  <h3>Checklist minimale (OWASP)</h3>
+  <ul>
+    <li><strong>Helmet</strong> : headers HTTP sécurisés</li>
+    <li><strong>CORS</strong> : configuré explicitement (pas <code>*</code> en prod)</li>
+    <li><strong>Rate limiting</strong> : anti brute-force, anti-DDoS léger</li>
+    <li><strong>Validation</strong> : zod/joi sur tous les inputs</li>
+    <li><strong>Sanitisation SQL</strong> : requêtes paramétrées <strong>uniquement</strong></li>
+    <li><strong>Mots de passe</strong> : bcrypt/argon2, jamais en clair</li>
+    <li><strong>Secrets</strong> : variables d'environnement (<code>.env</code>), jamais dans le code</li>
+    <li><strong>HTTPS</strong> : obligatoire en prod</li>
+    <li><strong>Body limit</strong> : <code>express.json({ limit: '1mb' })</code> contre les gros payloads</li>
+    <li><strong>Dépendances</strong> : <code>npm audit</code> régulier</li>
+  </ul>
+
+  <h3>Exemple de config sécurisée</h3>
+  <pre><code>import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+
+const app = express();
+
+app.use(helmet());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN?.split(',') || 'http://localhost:5173',
+  credentials: true,
+}));
+app.use(express.json({ limit: '1mb' }));
+app.use(rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+}));</code></pre>
+
+  <div class="bad">
+    <strong>❌ Erreurs à ne jamais commettre</strong>
+    <ul>
+      <li><code>app.use(cors())</code> en prod sans restriction</li>
+      <li>Concaténer des requêtes SQL : <code>"SELECT * WHERE id=" + id</code></li>
+      <li>Stocker des tokens dans <code>localStorage</code> côté front (XSS) → préférer cookies <code>HttpOnly</code></li>
+      <li>Committer un <code>.env</code> sur GitHub</li>
+      <li>Retourner <code>password</code> dans les réponses JSON</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== PRACTICES ========== -->
+<section id="practices">
+  <h2>Bonnes pratiques senior</h2>
+
+  <h3>1. Séparer <code>app.js</code> et <code>server.js</code></h3>
+  <p><code>app.js</code> exporte l'app Express (testable avec supertest), <code>server.js</code> fait le <code>listen</code>.</p>
+
+  <h3>2. Validation systématique</h3>
+  <pre><code>import { z } from 'zod';
+
+const createUserSchema = z.object({
+  email: z.string().email(),
+  name: z.string().min(2).max(50),
+  age: z.number().int().positive().optional(),
+});
+
+// middleware/validate.js
+export const validate = (schema) =&gt; (req, res, next) =&gt; {
+  const result = schema.safeParse(req.body);
+  if (!result.success) {
+    return res.status(400).json({ error: result.error.flatten() });
+  }
+  req.body = result.data; // données propres et typées
+  next();
+};</code></pre>
+
+  <h3>3. Variables d'environnement</h3>
+  <pre><code># .env (JAMAIS commité)
+DATABASE_URL=postgres://...
+JWT_SECRET=...
+PORT=3000
+
+# .env.example (COMMITÉ, sans valeurs réelles)
+DATABASE_URL=
+JWT_SECRET=
+PORT=3000</code></pre>
+  <p>Au démarrage, valide que les variables critiques existent (zod sur <code>process.env</code>).</p>
+
+  <h3>4. Logging structuré</h3>
+  <pre><code>import pino from 'pino';
+const logger = pino({ level: process.env.LOG_LEVEL || 'info' });
+logger.info({ userId, route }, 'utilisateur connecté');</code></pre>
+  <p>Jamais <code>console.log</code> en prod. Pino / Winston pour du JSON loggé.</p>
+
+  <h3>5. Codes HTTP corrects</h3>
+  <table>
+    <tr><th>Code</th><th>Usage</th></tr>
+    <tr><td>200</td><td>OK (GET, PUT/PATCH réussis)</td></tr>
+    <tr><td>201</td><td>Créé (POST réussi)</td></tr>
+    <tr><td>204</td><td>Pas de contenu (DELETE réussi)</td></tr>
+    <tr><td>400</td><td>Requête invalide (validation)</td></tr>
+    <tr><td>401</td><td>Non authentifié (pas de token)</td></tr>
+    <tr><td>403</td><td>Authentifié mais pas autorisé</td></tr>
+    <tr><td>404</td><td>Ressource introuvable</td></tr>
+    <tr><td>409</td><td>Conflit (email déjà pris)</td></tr>
+    <tr><td>422</td><td>Entité non traitable (sémantique)</td></tr>
+    <tr><td>429</td><td>Trop de requêtes (rate limit)</td></tr>
+    <tr><td>500</td><td>Erreur serveur</td></tr>
+  </table>
+
+  <h3>6. Pagination</h3>
+  <pre><code>router.get('/users', async (req, res) =&gt; {
+  const page = Math.max(1, parseInt(req.query.page) || 1);
+  const limit = Math.min(100, parseInt(req.query.limit) || 20);
+  const offset = (page - 1) * limit;
+
+  const [items, total] = await Promise.all([
+    repo.find({ limit, offset }),
+    repo.count(),
+  ]);
+
+  res.json({
+    items,
+    pagination: { page, limit, total, pages: Math.ceil(total / limit) },
+  });
+});</code></pre>
+  <p><strong>Ne jamais</strong> renvoyer une liste non paginée en prod.</p>
+
+  <h3>7. Tests avec supertest</h3>
+  <pre><code>import request from 'supertest';
+import app from '../app.js';
+
+test('GET /api/users retourne 200', async () =&gt; {
+  const res = await request(app).get('/api/users');
+  expect(res.status).toBe(200);
+  expect(Array.isArray(res.body.items)).toBe(true);
+});</code></pre>
+
+  <h3>8. Graceful shutdown</h3>
+  <pre><code>const server = app.listen(PORT);
+process.on('SIGTERM', () =&gt; {
+  server.close(() =&gt; {
+    db.disconnect();
+    process.exit(0);
+  });
+});</code></pre>
+
+  <h3>9. Sécurité des dépendances</h3>
+  <pre><code>npm audit
+npm audit fix
+npx npm-check-updates -u   # maj deps</code></pre>
+</section>
+
+<!-- ========== PROS/CONS ========== -->
+<section id="proscons">
+  <h2>Avantages & limites honnêtes</h2>
+
+  <h3>✅ Avantages</h3>
+  <ul>
+    <li><strong>Minimaliste</strong> : apprends vite, comprends tout ce qui se passe</li>
+    <li><strong>Écosystème mature</strong> : tout existe en middleware (helmet, cors, morgan…)</li>
+    <li><strong>Node.js</strong> : même langage front/back, async non-bloquant, très performant en I/O</li>
+    <li><strong>Flexibilité totale</strong> : aucune opinion imposée, tu structures comme tu veux</li>
+    <li><strong>Embauche</strong> : compétence très demandée, base de Nest.js</li>
+    <li><strong>Communauté</strong> : réponses à toutes les questions existent déjà</li>
+  </ul>
+
+  <h3>❌ Limites</h3>
+  <ul>
+    <li><strong>Trop minimaliste</strong> : aucune structure imposée → projets bordéliques si l'équipe n'est pas rigoureuse</li>
+    <li><strong>Pas de TypeScript natif</strong> : Express est historiquement JS, l'intégration TS demande un peu de setup</li>
+    <li><strong>Callbacks / middleware chain</strong> : moins élégant que les décorateurs de Nest.js</li>
+    <li><strong>Performance</strong> : bonne mais battue par Fastify (benchmarks json)</li>
+    <li><strong>Sécurité à la charge du dev</strong> : rien n'est sécurisé par défaut</li>
+    <li><strong>Features répétitives</strong> : auth, validation, upload… à chaque projet, sauf si tu as un boilerplate</li>
+  </ul>
+
+  <div class="note">
+    <strong>🎯 Verdict senior</strong>
+    Express reste excellent pour <strong>des APIs simples à moyennes avec une équipe disciplinée</strong>. Pour un gros projet, <strong>Nest.js</strong> apporte structure et TS natif. Pour la performance pure, <strong>Fastify</strong>. Pour du full-stack TS, <strong>Next.js + Route Handlers</strong> ou <strong>tRPC</strong>.
+  </div>
+</section>
+
+<section>
+  <h2>➡️ Prochaine étape</h2>
+  <p>Passe à la pratique : <a href="examples/express-examples.html">projets Express prêts à l'emploi</a>.</p>
+</section>
+
+</div>
+
+<footer>Guide Express — <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+  </html>
