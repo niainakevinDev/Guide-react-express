@@ -53,10 +53,12 @@ function updateProgress() {
   updateBar('js', 8, 'progress-js', 'progress-js-text');
   updateBar('react', 8, 'progress-react', 'progress-react-text');
   updateBar('express', 8, 'progress-express', 'progress-express-text');
+  updateBar('reseau', 8, 'progress-reseau', 'progress-reseau-text');
+  updateBar('powershell', 8, 'progress-powershell', 'progress-powershell-text');
+  updateBar('linux', 8, 'progress-linux', 'progress-linux-text');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Bouton thème
   const btn = document.querySelector('.theme-btn');
   if (btn) btn.onclick = toggleTheme;
 
