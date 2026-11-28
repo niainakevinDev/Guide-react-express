@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Académie Midas | Maîtrisez le Web</title>
+<title>Académie Midas | Maîtrisez l'Informatique</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,6 +14,9 @@
   </div>
   <nav>
     <a href="index.html" class="active">Parcours</a>
+    <a href="reseau.html">Réseau</a>
+    <a href="linux.html">Linux</a>
+    <a href="powershell.html">PowerShell</a>
     <a href="javascript.html">JavaScript</a>
     <a href="react.html">React</a>
     <a href="express.html">Express</a>
@@ -24,21 +27,60 @@
 </header>
 
 <div class="hero">
-  <h1 style="max-width: 800px; margin: 0 auto 24px;">Devenez un développeur Web complet.</h1>
-  <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text-dim);">Un parcours intensif de plusieurs heures pour maîtriser JavaScript, React et Express. De zéro à la création de vos propres applications.</p>
+  <h1 style="max-width: 800px; margin: 0 auto 24px;">La maîtrise complète de l'Informatique.</h1>
+  <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text-dim);">Des fondations du réseau aux lignes de commande, jusqu'à la création d'applications complexes. Un cursus intensif pour devenir un expert polyvalent.</p>
 </div>
 
 <div class="container">
   
   <div class="cards">
     
+    <!-- Module Réseau -->
+    <div class="card">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+        <h2 style="margin: 0; font-size: 1.3rem;">Fondations Réseau</h2>
+      </div>
+      <p>Modèle OSI, adressage IP, protocoles (DNS, TCP/IP) et sécurité réseau.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
+        <a href="reseau.html" class="btn">Commencer</a>
+      </div>
+    </div>
+
+    <!-- Module Linux -->
+    <div class="card">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <img src="https://cdn.simpleicons.org/linux/ffffff" alt="Linux" style="width: 32px; height: 32px;">
+        <h2 style="margin: 0; font-size: 1.3rem;">Commandes Linux</h2>
+      </div>
+      <p>Maîtrisez le terminal. Navigation, gestion des fichiers, processus et permissions.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
+        <a href="linux.html" class="btn">Commencer</a>
+      </div>
+    </div>
+
+    <!-- Module PowerShell -->
+    <div class="card">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <img src="https://cdn.simpleicons.org/powershell/5391FE" alt="PowerShell" style="width: 32px; height: 32px;">
+        <h2 style="margin: 0; font-size: 1.3rem;">PowerShell</h2>
+      </div>
+      <p>L'automatisation Windows. Commandes de base, pipeline, gestion du système et scripts.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
+        <a href="powershell.html" class="btn">Commencer</a>
+      </div>
+    </div>
+
     <!-- Module JS -->
     <div class="card">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
         <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS" style="width: 32px; height: 32px;">
         <h2 style="margin: 0; font-size: 1.3rem;">JavaScript</h2>
       </div>
-      <p>Le socle de tout développement web. Apprenez la logique, la manipulation du DOM, l'asynchronisme et les appels API.</p>
+      <p>Logique de programmation, manipulation du DOM, asynchronisme et appels API.</p>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
         <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
         <a href="javascript.html" class="btn">Commencer</a>
@@ -51,7 +93,7 @@
         <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" style="width: 32px; height: 32px;">
         <h2 style="margin: 0; font-size: 1.3rem;">React</h2>
       </div>
-      <p>L'interface utilisateur moderne. Maîtrisez les composants, les hooks (useState, useEffect), le routing et la gestion d'état global.</p>
+      <p>L'interface utilisateur moderne. Composants, hooks, routing et gestion d'état global.</p>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
         <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
         <a href="react.html" class="btn">Commencer</a>
@@ -64,7 +106,7 @@
         <img src="https://cdn.simpleicons.org/express/ffffff" alt="Express" style="width: 32px; height: 32px;">
         <h2 style="margin: 0; font-size: 1.3rem;">Express</h2>
       </div>
-      <p>Le backend de vos applications. Construisez des APIs REST, gérez les bases de données, l'authentification JWT et la sécurité.</p>
+      <p>APIs REST, bases de données, authentification JWT et sécurisation du backend.</p>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
         <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
         <a href="express.html" class="btn">Commencer</a>
@@ -74,13 +116,13 @@
   </div>
 
   <div class="senior-advice" style="margin-top: 60px;">
-    <strong>La méthode d'apprentissage</strong>
-    <p>Chaque module est découpé en 8 chapitres. Ne passez pas au chapitre suivant sans avoir terminé l'exercice ou le projet final. La théorie sans pratique ne sert à rien. Votre progression est sauvegardée automatiquement.</p>
+    <strong>La philosophie Midas</strong>
+    <p>Un vrai expert ne code pas seulement. Il comprend comment la machine communique, comment configurer un serveur et comment automatiser des tâches. C'est pourquoi ce cursus couvre à la fois les réseaux, les systèmes d'exploitation (Linux/Windows) et le développement.</p>
   </div>
 
 </div>
 
-<footer>Académie Dev &mdash; <span id="year"></span></footer>
+<footer>Académie Midas &mdash; <span id="year"></span></footer>
 <script src="script.js"></script>
 </body>
 </html>
