@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commandes Linux | Académie Midas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">
+    <img src="https://cdn.simpleicons.org/linux/ffffff" alt="Linux">
+    <span>Académie Midas</span>
+  </div>
+  <nav>
+    <a href="index.html">Parcours</a>
+    <a href="reseau.html">Réseau</a>
+    <a href="linux.html" class="active">Linux</a>
+    <a href="powershell.html">PowerShell</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn" onclick="toggleTheme()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
+</header>
+
+<div class="container">
+  
+  <h1>Commandes Linux</h1>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">Le terminal est l'outil le plus puissant de l'informaticien. Apprenez à naviguer, gérer des fichiers et administrer un système.</p>
+
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill" id="progress-linux"></div></div>
+    <p class="progress-text" id="progress-linux-text">0 / 8 chapitres complétés</p>
+  </div>
+
+  <div class="checklist">
+    
+    <!-- CHAPITRE 1 -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-1" onchange="toggleCheck('linux-1')">
+      <div class="check-content">
+        <label for="linux-1">
+          <strong>Chapitre 1 : Navigation de base</strong>
+          <p>Se déplacer dans l'arborescence et lister les fichiers.</p>
+          <span class="badge">Objectif : Savoir où on se trouve</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Les commandes de localisation</h4>
+            <ul>
+              <li><code>pwd</code> (Print Working Directory) : Affiche le dossier actuel.</li>
+              <li><code>ls</code> : Liste le contenu du dossier. <code>ls -l</code> pour les détails, <code>ls -a</code> pour voir les fichiers cachés.</li>
+              <li><code>cd dossier</code> : Entre dans un dossier. <code>cd ..</code> remonte d'un niveau. <code>cd ~</code> va à la racine de l'utilisateur.</li>
+            </ul>
+
+            <h4>2. Manipulation basique</h4>
+            <pre><code>mkdir mon_dossier  # Créer un dossier
+touch fichier.txt  # Créer un fichier vide
+cat fichier.txt    # Lire le contenu d'un fichier</code></pre>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Ouvrez un terminal. Allez dans votre dossier personnel (<code>cd ~</code>). Créez un dossier nommé <code>test_linux</code>, entrez dedans, et créez un fichier <code>hello.txt</code>. Vérifiez avec <code>ls -l</code>.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 2 -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-2" onchange="toggleCheck('linux-2')">
+      <div class="check-content">
+        <label for="linux-2">
+          <strong>Chapitre 2 : Gestion des fichiers</strong>
+          <p>Copier, déplacer, supprimer et rechercher.</p>
+          <span class="badge">Objectif : Manipuler des données sans interface graphique</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Les commandes de manipulation</h4>
+            <pre><code>cp fichier.txt copie.txt    # Copier
+mv fichier.txt /tmp/       # Déplacer (ou renommer)
+rm fichier.txt             # Supprimer un fichier
+rm -rf mon_dossier         # Supprimer un dossier et son contenu (ATTENTION)
+find . -name "*.txt"       # Chercher un fichier
+grep "texte" fichier.txt   # Chercher du texte dans un fichier</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>La commande <code>rm -rf</code> est l'équivalent de formater un disque. Elle ne demande aucune confirmation et ne met rien à la corbeille. Relisez toujours deux fois avant d'appuyer sur Entrée.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 3 -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-3" onchange="toggleCheck('linux-3')">
+      <div class="check-content">
+        <label for="linux-3">
+          <strong>Chapitre 3 : Permissions et Utilisateurs</strong>
+          <p>Gérer les droits d'accès (chmod, chown, sudo).</p>
+          <span class="badge">Objectif : Sécuriser les fichiers</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Comprendre les permissions</h4>
+            <p>Quand vous tapez <code>ls -l</code>, vous voyez des lettres comme <code>-rwxr-xr-x</code>.</p>
+            <ul>
+              <li><strong>r</strong> (read) : Lecture</li>
+              <li><strong>w</strong> (write) : Écriture</li>
+              <li><strong>x</strong> (execute) : Exécution (pour les scripts)</li>
+            </ul>
+
+            <h4>2. Modifier les droits</h4>
+            <pre><code>chmod +x script.sh      # Rendre un script exécutable
+chmod 755 dossier       # Donner tous les droits au propriétaire
+sudo commande           # Exécuter une commande en tant qu'administrateur (root)</code></pre>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un fichier nommé <code>script.sh</code>. Essayez de l'exécuter avec <code>./script.sh</code> (vous aurez une erreur de permission). Utilisez <code>chmod +x</code> pour corriger le problème.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 4 -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-4" onchange="toggleCheck('linux-4')">
+      <div class="check-content">
+        <label for="linux-4">
+          <strong>Chapitre 4 : Processus Système</strong>
+          <p>Voir, gérer et tuer des processus.</p>
+          <span class="badge">Objectif : Gérer les ressources de la machine</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Surveiller la machine</h4>
+            <pre><code>top            # Moniteur système en temps réel
+htop           # Version plus belle de top (à installer)
+ps aux         # Lister tous les processus
+kill -9 [PID]  # Tuer un processus (utiliser l'ID retourné par ps)
+df -h          # Voir l'espace disque
+free -h        # Voir l'utilisation de la RAM</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 5 -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-5" onchange="toggleCheck('linux-5')">
+      <div class="check-content">
+        <label for="linux-5">
+          <strong>Chapitre 5 : Réseau en ligne de commande</strong>
+          <p>Tester la connectivité et télécharger des fichiers.</p>
+          <span class="badge">Objectif : Diagnostiquer un réseau depuis le terminal</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Commandes réseau</h4>
+            <pre><code>ping google.com       # Tester la connexion
+curl ifconfig.me      # Voir son IP publique
+wget https://site.com/fichier.zip  # Télécharger un fichier
+ssh user@192.168.1.10 # Se connecter à un serveur distant</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>La commande <code>ssh</code> est la porte d'entrée de tous les serveurs Linux du monde. Apprenez à générer une clé SSH (<code>ssh-keygen</code>) pour vous connecter sans taper de mot de passe.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 6 -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-6" onchange="toggleCheck('linux-6')">
+      <div class="check-content">
+        <label for="linux-6">
+          <strong>Chapitre 6 : Gestionnaire de paquets</strong>
+          <p>Installer et mettre à jour des logiciels (apt).</p>
+          <span class="badge">Objectif : Savoir installer un outil</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>APT (Debian/Ubuntu)</h4>
+            <p>Chaque distribution a son gestionnaire. Sur Ubuntu/Debian, c'est <code>apt</code>.</p>
+            <pre><code>sudo apt update           # Met à jour la liste des paquets
+sudo apt upgrade          # Met à jour les logiciels installés
+sudo apt install htop     # Installe un logiciel
+sudo apt remove htop      # Désinstalle un logiciel</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 7 -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-7" onchange="toggleCheck('linux-7')">
+      <div class="check-content">
+        <label for="linux-7">
+          <strong>Chapitre 7 : Pipes et Redirections</strong>
+          <p>La philosophie Unix : combiner les commandes.</p>
+          <span class="badge">Objectif : Automatiser le traitement de texte</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Redirection (>)</h4>
+            <p>Envoyer la sortie d'une commande dans un fichier.</p>
+            <pre><code>ls -l > liste.txt    # Écrase le fichier
+echo "texte" >> log.txt # Ajoute à la fin du fichier</code></pre>
+
+            <h4>2. Pipe (|)</h4>
+            <p>Le pipe envoie le résultat d'une commande à une autre commande.</p>
+            <pre><code>ps aux | grep "nginx"       # Cherche nginx dans la liste des processus
+cat fichier.txt | wc -l     # Compte le nombre de lignes du fichier</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Le pipe (<code>|</code>) est l'outil le plus puissant de Linux. Il vous permet de créer des scripts complexes en une seule ligne de commande en chaînant des petits outils spécialisés.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 8 : PROJET FINAL -->
+    <div class="check-item">
+      <input type="checkbox" id="linux-8" onchange="toggleCheck('linux-8')">
+      <div class="check-content">
+        <label for="linux-8">
+          <strong>Chapitre 8 : Projet Final Linux</strong>
+          <p>Création d'un script de sauvegarde automatique.</p>
+          <span class="badge">Objectif : Automatiser une tâche système</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Voir les spécifications du projet
+          </summary>
+          <div class="lesson-content">
+            <h4>Le projet : Script de Backup (Bash)</h4>
+            <p>Vous allez écrire un script Bash qui archive un dossier important dans un fichier compressé, avec la date du jour dans le nom.</p>
+            
+            <h4>Cahier des charges :</h4>
+            <ul>
+              <li>Créer un dossier <code>mes_donnees</code> avec quelques fichiers dedans.</li>
+              <li>Écrire un script <code>backup.sh</code>.</li>
+              <li>Le script doit utiliser la commande <code>tar -czvf</code> pour compresser le dossier.</li>
+              <li>Le fichier de sortie doit s'appeler <code>backup_2023-10-25.tar.gz</code> (en récupérant la date avec <code>date +%Y-%m-%d</code>).</li>
+              <li>Bonus : Faire en sorte que le script supprime les sauvegardes vieilles de plus de 7 jours.</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Méthodologie</strong>
+              <p>Commencez par tester chaque commande manuellement dans le terminal. Une fois que <code>tar</code> et <code>date</code> fonctionnent, mettez-les bout à bout dans le fichier <code>.sh</code>. N'oubliez pas le <code>chmod +x</code>.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 64px;">
+    <a href="powershell.html" class="btn">Passer au module PowerShell</a>
+  </div>
+
+</div>
+
+<footer>Académie Midas &mdash; <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
