@@ -3,29 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cours JavaScript (24h)</title>
+<title>Cours JavaScript (24h) | Académie Dev</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="topbar">
-  <span class="logo"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt=""> JavaScript (24h)</span>
+  <div class="logo">
+    <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS">
+    <span>Académie Dev</span>
+  </div>
   <nav>
     <a href="index.html">Parcours</a>
-    <a href="javascript.html">JS</a>
+    <a href="javascript.html" style="color:var(--text)">JavaScript</a>
     <a href="react.html">React</a>
     <a href="express.html">Express</a>
   </nav>
-  <button class="theme-btn">🌓</button>
+  <button class="theme-btn" onclick="toggleTheme()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
 </header>
 
 <div class="container">
   
-  <h1>Module 1 : JavaScript Moderne</h1>
-  <div class="progress-bar"><div class="progress-fill" id="progress-js"></div></div>
-  <p class="progress-text" id="progress-js-text">0 / 8 chapitres complétés</p>
+  <h1>JavaScript Moderne</h1>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">Maîtrisez le langage qui fait tourner le web. 8 chapitres pour passer de débutant à développeur autonome.</p>
 
-  <p>Bienvenue dans les 24 heures les plus importantes de ta carrière. Sans JS solide, React et Express ne sont que de la magie noire.</p>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill" id="progress-js"></div></div>
+    <p class="progress-text" id="progress-js-text">0 / 8 chapitres complétés</p>
+  </div>
 
   <div class="checklist">
     
@@ -34,47 +41,32 @@
       <input type="checkbox" id="js-1" onchange="toggleCheck('js-1')">
       <div class="check-content">
         <label for="js-1">
-          <strong>Ch. 1 : Les Fondations (3h)</strong><br>
-          Variables (`let`, `const`), types de données, conditions, boucles. <br>
-          <em>🎯 Objectif : Savoir écrire un algorithme simple.</em>
+          <strong>Chapitre 1 : Les Fondations</strong>
+          <p>Variables, types de données, conditions et boucles.</p>
+          <span class="badge target">Objectif : Écrire un algorithme simple</span>
         </label>
-        
         <details class="lesson">
-          <summary>📖 Lire le cours et faire l'exercice</summary>
-          <h4>1. Variables : let et const</h4>
-          <p>Oublie <code>var</code>. On utilise <code>const</code> par défaut (valeur qui ne change pas) et <code>let</code> pour les variables qui doivent être modifiées.</p>
-          <pre><code>const nom = "Kevin"; // Ne peut pas changer
+          <summary>Ouvrir le cours</summary>
+          <div class="lesson-content">
+            <h4>1. Variables : let et const</h4>
+            <p>Oubliez <code>var</code>. Utilisez <code>const</code> par défaut (valeur qui ne change pas) et <code>let</code> uniquement si la valeur doit être modifiée.</p>
+            <pre><code>const nom = "Kevin"; // Ne change pas
 let age = 25;        // Peut changer
-age = 26;</code></pre>
+age = 26;            // OK</code></pre>
 
-          <h4>2. Les Types de Données</h4>
-          <ul>
-            <li><strong>String</strong> (Texte) : <code>"Bonjour"</code></li>
-            <li><strong>Number</strong> (Nombre) : <code>42</code>, <code>3.14</code></li>
-            <li><strong>Boolean</strong> (Vrai/Faux) : <code>true</code>, <code>false</code></li>
-            <li><strong>Null</strong> (Vide intentionnel) : <code>null</code></li>
-            <li><strong>Undefined</strong> (Pas encore défini) : <code>undefined</code></li>
-          </ul>
+            <h4>2. Conditions et Boucles</h4>
+            <pre><code>const temp = 25;
+if (temp > 30) { console.log("Chaud"); } 
+else { console.log("Tempéré"); }
 
-          <h4>3. Les Conditions (if / else)</h4>
-          <pre><code>const temperature = 25;
-if (temperature > 30) {
-  console.log("Il fait très chaud !");
-} else if (temperature > 20) {
-  console.log("Il fait bon.");
-} else {
-  console.log("Il fait froid.");
+for (let i = 1; i &lt;= 3; i++) {
+  console.log("Tour " + i);
 }</code></pre>
 
-          <h4>4. Les Boucles (for)</h4>
-          <pre><code>for (let i = 1; i &lt;= 5; i++) {
-  console.log("Numéro : " + i);
-}</code></pre>
-
-          <div class="warn">
-            <strong>🛠️ Exercice Pratique (30 min)</strong>
-            Ouvre la console de ton navigateur (F12).<br>
-            <strong>Défi :</strong> Crée une variable <code>panier</code>. Si le panier contient plus de 100€, affiche "Livraison gratuite". S'il contient entre 50€ et 100€, affiche "Livraison à 5€". Sinon, affiche "Livraison à 10€".
+            <div class="exercise-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez une variable <code>panier</code>. Si le panier contient plus de 100€, affichez "Livraison gratuite". Entre 50€ et 100€, affichez "Livraison 5€". Sinon, affichez "Livraison 10€".</p>
+            </div>
           </div>
         </details>
       </div>
@@ -85,39 +77,31 @@ if (temperature > 30) {
       <input type="checkbox" id="js-2" onchange="toggleCheck('js-2')">
       <div class="check-content">
         <label for="js-2">
-          <strong>Ch. 2 : ES6+ et Modernité (3h)</strong><br>
-          Fonctions fléchées, template literals, destructuration, spread operator. <br>
-          <em>🎯 Objectif : Écrire du JS propre et lisible.</em>
+          <strong>Chapitre 2 : ES6+ et Modernité</strong>
+          <p>Fonctions fléchées, template literals, destructuring.</p>
+          <span class="badge target">Objectif : Écrire du code propre</span>
         </label>
         <details class="lesson">
-          <summary>📖 Lire le cours et faire l'exercice</summary>
-          <h4>1. Fonctions Fléchées (Arrow Functions)</h4>
-          <p>C'est la syntaxe standard en React. Plus court et évite les erreurs avec <code>this</code>.</p>
-          <pre><code>// Avant
-function additionner(a, b) { return a + b; }
-// Après (Moderne)
-const additionner = (a, b) => a + b;</code></pre>
+          <summary>Ouvrir le cours</summary>
+          <div class="lesson-content">
+            <h4>1. Fonctions Fléchées</h4>
+            <p>La syntaxe standard en React. Plus courte et évite les erreurs de contexte <code>this</code>.</p>
+            <pre><code>// Ancien
+function add(a, b) { return a + b; }
+// Moderne
+const add = (a, b) => a + b;</code></pre>
 
-          <h4>2. Template Literals (Backticks)</h4>
-          <p>Fini les concaténations. Utilise les backticks <code>`</code>.</p>
-          <pre><code>const nom = "Alice";
-const message = `Je m'appelle ${nom}.`;</code></pre>
+            <h4>2. Destructuration et Spread</h4>
+            <pre><code>const user = { nom: "Alice", age: 25 };
+const { nom } = user; // Extrait "Alice"
 
-          <h4>3. Destructuration</h4>
-          <p>Extraire des données d'un objet. Indispensable pour les <em>props</em> de React.</p>
-          <pre><code>const utilisateur = { nom: "Bob", age: 30 };
-const { nom, age } = utilisateur;
-console.log(nom); // "Bob"</code></pre>
+// Cloner et modifier un objet
+const userModifie = { ...user, age: 26 };</code></pre>
 
-          <h4>4. Spread Operator (...)</h4>
-          <p>Copier ou fusionner des objets/tableaux. Tu l'utiliseras tous les jours avec React.</p>
-          <pre><code>const arr1 = [1, 2];
-const arr2 = [3, 4];
-const fusion = [...arr1, ...arr2]; // [1, 2, 3, 4]</code></pre>
-
-          <div class="warn">
-            <strong>🛠️ Exercice Pratique (30 min)</strong>
-            <strong>Défi :</strong> Crée un objet <code>voiture</code> avec <code>marque</code>, <code>modele</code>, <code>annee</code>. Utilise la destructuration pour extraire la marque et le modèle. Affiche : <em>"Ma voiture est une [marque] [modele]."</em>
+            <div class="exercise-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un objet <code>voiture</code> avec marque et modèle. Utilisez la destructuration pour extraire la marque et affichez : "Ma voiture est une [marque]".</p>
+            </div>
           </div>
         </details>
       </div>
@@ -128,33 +112,30 @@ const fusion = [...arr1, ...arr2]; // [1, 2, 3, 4]</code></pre>
       <input type="checkbox" id="js-3" onchange="toggleCheck('js-3')">
       <div class="check-content">
         <label for="js-3">
-          <strong>Ch. 3 : Tableaux & Objets (3h)</strong><br>
-          Les méthodes `map`, `filter`, `reduce`. Manipulation de JSON. <br>
-          <em>🎯 Objectif : Manipuler des listes de données complexes.</em>
+          <strong>Chapitre 3 : Tableaux & Objets</strong>
+          <p>Les méthodes map, filter et reduce.</p>
+          <span class="badge target">Objectif : Manipuler des listes de données</span>
         </label>
         <details class="lesson">
-          <summary>📖 Lire le cours et faire l'exercice</summary>
-          <h4>1. .map() : Transformer une liste</h4>
-          <pre><code>const nombres = [1, 2, 3, 4];
-const doubles = nombres.map(n => n * 2);
-// Résultat : [2, 4, 6, 8]</code></pre>
+          <summary>Ouvrir le cours</summary>
+          <div class="lesson-content">
+            <h4>Les 3 méthodes essentielles</h4>
+            <p>Indispensables pour afficher des listes en React.</p>
+            <pre><code>const nums = [1, 2, 3, 4];
 
-          <h4>2. .filter() : Trier une liste</h4>
-          <pre><code>const nombres = [1, 2, 3, 4, 5, 6];
-const pairs = nombres.filter(n => n % 2 === 0);
-// Résultat : [2, 4, 6]</code></pre>
+// Map : Transformer
+const doubles = nums.map(n => n * 2); // [2,4,6,8]
 
-          <h4>3. .reduce() : Calculer une valeur globale</h4>
-          <pre><code>const panier = [{ prix: 10 }, { prix: 20 }];
-const total = panier.reduce((acc, item) => acc + item.prix, 0);
-// Résultat : 30</code></pre>
+// Filter : Trier
+const pairs = nums.filter(n => n % 2 === 0); // [2,4]
 
-          <div class="warn">
-            <strong>🛠️ Exercice Pratique (45 min)</strong>
-            <strong>Défi :</strong> Tu as le tableau suivant : <code>const users = [{nom: "A", age: 15}, {nom: "B", age: 25}, {nom: "C", age: 35}];</code><br>
-            1. Utilise <code>filter</code> pour garder les majeurs.<br>
-            2. Utilise <code>map</code> pour ne garder que les noms.<br>
-            3. Affiche le résultat.
+// Reduce : Calculer une somme
+const total = nums.reduce((acc, n) => acc + n, 0); // 10</code></pre>
+
+            <div class="exercise-box">
+              <strong>Exercice Pratique</strong>
+              <p>Soit <code>users = [{nom: "A", age: 15}, {nom: "B", age: 25}]</code>. Gardez uniquement les majeurs avec <code>filter</code>, puis récupérez uniquement leurs noms avec <code>map</code>.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -165,10 +146,33 @@ const total = panier.reduce((acc, item) => acc + item.prix, 0);
       <input type="checkbox" id="js-4" onchange="toggleCheck('js-4')">
       <div class="check-content">
         <label for="js-4">
-          <strong>Ch. 4 : Le DOM (3h)</strong><br>
-          Sélectionner des éléments, modifier le HTML/CSS, écouter des événements. <br>
-          <em>🎯 Objectif : Rendre une page HTML interactive.</em>
+          <strong>Chapitre 4 : Le DOM</strong>
+          <p>Sélectionner des éléments, modifier le HTML, écouter des événements.</p>
+          <span class="badge target">Objectif : Rendre une page interactive</span>
         </label>
+        <details class="lesson">
+          <summary>Ouvrir le cours</summary>
+          <div class="lesson-content">
+            <h4>Manipulation du DOM</h4>
+            <pre><code>// Sélection
+const btn = document.querySelector('#monBouton');
+const titre = document.querySelector('h1');
+
+// Modification
+titre.textContent = "Nouveau titre";
+titre.style.color = "red";
+
+// Écoute d'événement
+btn.addEventListener('click', () => {
+  alert("Cliqué !");
+});</code></pre>
+
+            <div class="exercise-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un fichier HTML avec un bouton et un compteur. À chaque clic, incrémentez le compteur affiché sur la page.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -177,10 +181,31 @@ const total = panier.reduce((acc, item) => acc + item.prix, 0);
       <input type="checkbox" id="js-5" onchange="toggleCheck('js-5')">
       <div class="check-content">
         <label for="js-5">
-          <strong>Ch. 5 : Asynchrone (3h)</strong><br>
-          L'Event Loop, les Promesses, `async/await`, la gestion des erreurs (`try/catch`). <br>
-          <em>🎯 Objectif : Comprendre pourquoi JS ne "bloque" pas.</em>
+          <strong>Chapitre 5 : Asynchrone</strong>
+          <p>Promesses, async/await et try/catch.</p>
+          <span class="badge target">Objectif : Gérer les temps d'attente</span>
         </label>
+        <details class="lesson">
+          <summary>Ouvrir le cours</summary>
+          <div class="lesson-content">
+            <h4>Async / Await</h4>
+            <p>JavaScript est mono-thread. L'asynchrone permet de ne pas bloquer la page pendant une requête.</p>
+            <pre><code>async function charger() {
+  try {
+    const reponse = await fetch('https://api.com/data');
+    const data = await reponse.json();
+    console.log(data);
+  } catch (err) {
+    console.error("Erreur réseau", err);
+  }
+}</code></pre>
+
+            <div class="exercise-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez une fonction <code>attendre(ms)</code> qui retourne une Promesse et affiche "Fini !" après 2 secondes.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -189,10 +214,31 @@ const total = panier.reduce((acc, item) => acc + item.prix, 0);
       <input type="checkbox" id="js-6" onchange="toggleCheck('js-6')">
       <div class="check-content">
         <label for="js-6">
-          <strong>Ch. 6 : Fetch & API (3h)</strong><br>
-          Requêtes GET, POST, PUT, DELETE. Envoyer des headers, gérer le format JSON. <br>
-          <em>🎯 Objectif : Communiquer avec un serveur (préparation au backend).</em>
+          <strong>Chapitre 6 : Fetch & API</strong>
+          <p>Requêtes GET, POST et gestion du JSON.</p>
+          <span class="badge target">Objectif : Dialoguer avec un serveur</span>
         </label>
+        <details class="lesson">
+          <summary>Ouvrir le cours</summary>
+          <div class="lesson-content">
+            <h4>Requêtes HTTP</h4>
+            <pre><code>// GET
+const res = await fetch('/api/users');
+const users = await res.json();
+
+// POST
+await fetch('/api/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email, password })
+});</code></pre>
+
+            <div class="exercise-box">
+              <strong>Exercice Pratique</strong>
+              <p>Utilisez l'API publique <code>https://jsonplaceholder.typicode.com/users</code>. Faites un fetch et affichez la liste des noms dans la console.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -201,34 +247,77 @@ const total = panier.reduce((acc, item) => acc + item.prix, 0);
       <input type="checkbox" id="js-7" onchange="toggleCheck('js-7')">
       <div class="check-content">
         <label for="js-7">
-          <strong>Ch. 7 : POO & Classes (3h)</strong><br>
-          Classes, constructeurs, méthodes, `this`. Comprendre la programmation orientée objet. <br>
-          <em>🎯 Objectif : Structurer son code pour de gros projets.</em>
+          <strong>Chapitre 7 : POO & Classes</strong>
+          <p>Classes, constructeurs, méthodes et this.</p>
+          <span class="badge target">Objectif : Structurer son code</span>
         </label>
+        <details class="lesson">
+          <summary>Ouvrir le cours</summary>
+          <div class="lesson-content">
+            <h4>Programmation Orientée Objet</h4>
+            <pre><code>class Utilisateur {
+  constructor(nom, role) {
+    this.nom = nom;
+    this.role = role;
+  }
+  
+  sePresenter() {
+    console.log(`Je suis ${this.nom}, ${this.role}`);
+  }
+}
+
+const admin = new Utilisateur("Alice", "Admin");
+admin.sePresenter();</code></pre>
+
+            <div class="exercise-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez une classe <code>Voiture</code> avec marque et vitesse. Ajoutez une méthode <code>accelerer()</code> qui augmente la vitesse de 10.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 8 -->
+    <!-- CHAPITRE 8 : PROJET FINAL -->
     <div class="check-item">
       <input type="checkbox" id="js-8" onchange="toggleCheck('js-8')">
       <div class="check-content">
         <label for="js-8">
-          <strong>Ch. 8 : PROJET FINAL JS (3h)</strong><br>
-          Créer une application de suivi de dépenses (Budget Tracker) en HTML/CSS/JS pur avec `localStorage`. <br>
-          <em>🎯 Objectif : Prouver que tu maîtrises les bases sans framework.</em>
+          <strong>Chapitre 8 : Projet Final</strong>
+          <p>Application de suivi de dépenses (Budget Tracker) en HTML/CSS/JS pur.</p>
+          <span class="badge target">Objectif : Maîtriser les bases sans framework</span>
         </label>
+        <details class="lesson">
+          <summary>Voir les spécifications du projet</summary>
+          <div class="lesson-content">
+            <h4>Budget Tracker</h4>
+            <p>Construisez une application web qui permet d'ajouter des dépenses (nom + montant) et de les afficher dans une liste. Le solde total doit se mettre à jour automatiquement.</p>
+            <h4>Fonctionnalités requises :</h4>
+            <ul style="color: var(--text-dim); margin-bottom: 16px; padding-left: 20px;">
+              <li>Formulaire avec un input texte (nom) et un input number (montant).</li>
+              <li>Bouton "Ajouter".</li>
+              <li>Liste des dépenses avec bouton "Supprimer".</li>
+              <li>Compteur du total en haut de page.</li>
+              <li>Bonus : Sauvegarde des données dans le <code>localStorage</code>.</li>
+            </ul>
+            <div class="exercise-box">
+              <strong>Méthodologie</strong>
+              <p>Ne regardez pas la solution avant d'avoir essayé pendant au moins 1 heure. Commencez par le HTML, puis le CSS, puis la logique d'affichage en JS, et enfin la logique d'ajout/suppression.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
   </div>
 
-  <div style="text-align:center; margin-top: 40px;">
-    <a href="react.html" class="btn">Une fois terminé, passe au Module React →</a>
+  <div style="text-align:center; margin-top: 48px;">
+    <a href="react.html" class="btn">Passer au module React</a>
   </div>
 
 </div>
 
-<footer>Cours JS 24h — <span id="year"></span></footer>
+<footer>Académie Dev &mdash; <span id="year"></span></footer>
 <script src="script.js"></script>
 </body>
-  </html>
+</html>
