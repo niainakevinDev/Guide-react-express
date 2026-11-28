@@ -192,3 +192,14 @@ footer { text-align: center; padding: 40px 24px; color: var(--text-dim); font-si
   .topbar nav { display: none; }
   .check-item { padding: 16px; gap: 12px; }
 }
+@media (max-width: 768px) {
+  .topbar nav {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+  }
+  .topbar nav::-webkit-scrollbar { display: none; }
+  .topbar { padding: 0 12px; }
+  .topbar .logo span { display: none; } /* Cache le texte pour gagner de la place */
+}
