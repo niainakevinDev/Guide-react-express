@@ -3,61 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Académie Web — 72h de Formation</title>
+<title>Académie Dev | Maîtrisez le Web</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="topbar">
-  <span class="logo">
-    <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="">
-    Académie Dev
-  </span>
+  <div class="logo">
+    <span style="font-weight: 700; letter-spacing: -0.05em; font-size: 1.2rem; background: linear-gradient(to right, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Académie Dev</span>
+  </div>
   <nav>
-    <a href="index.html">Parcours</a>
-    <a href="javascript.html">JS</a>
+    <a href="index.html" class="active">Parcours</a>
+    <a href="javascript.html">JavaScript</a>
     <a href="react.html">React</a>
     <a href="express.html">Express</a>
   </nav>
-  <button class="theme-btn">🌓</button>
+  <button class="theme-btn" onclick="toggleTheme()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
 </header>
 
 <div class="hero">
-  <h1>L'Académie du Développeur</h1>
-  <p>3 formations intensives de 24 heures. De zéro jusqu'à la création de tes propres projets.</p>
+  <h1 style="max-width: 800px; margin: 0 auto 24px;">Devenez un développeur Web complet.</h1>
+  <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text-dim);">Un parcours intensif de 72 heures pour maîtriser JavaScript, React et Express. De zéro à la création de vos propres applications.</p>
 </div>
 
 <div class="container">
   
   <div class="cards">
+    
+    <!-- Module JS -->
     <div class="card">
-      <img class="card-img" src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&q=80&auto=format&fit=crop" alt="JS">
-      <h2 class="react-title"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt=""> Cours JavaScript</h2>
-      <p><strong>24 Heures.</strong> Le langage. Apprends la logique, le DOM, l'asynchrone et manipule des API. À la fin, tu codes des scripts complexes.</p>
-      <a href="javascript.html" class="btn">Commencer (24h) →</a>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS" style="width: 32px; height: 32px;">
+        <h2 style="margin: 0; font-size: 1.3rem;">JavaScript</h2>
+      </div>
+      <p>Le socle de tout développement web. Apprenez la logique, la manipulation du DOM, l'asynchronisme et les appels API.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
+        <a href="javascript.html" class="btn">Commencer</a>
+      </div>
     </div>
+
+    <!-- Module React -->
     <div class="card">
-      <img class="card-img" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80&auto=format&fit=crop" alt="React">
-      <h2 class="react-title"><img src="https://cdn.simpleicons.org/react/61DAFB" alt=""> Cours React</h2>
-      <p><strong>24 Heures.</strong> L'interface. Hooks, state, props, routing et consommation d'API. À la fin, tu construis des SPA modernes.</p>
-      <a href="react.html" class="btn">Commencer (24h) →</a>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" style="width: 32px; height: 32px;">
+        <h2 style="margin: 0; font-size: 1.3rem;">React</h2>
+      </div>
+      <p>L'interface utilisateur moderne. Maîtrisez les composants, les hooks (useState, useEffect), le routing et la gestion d'état global.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
+        <a href="react.html" class="btn">Commencer</a>
+      </div>
     </div>
+
+    <!-- Module Express -->
     <div class="card">
-      <img class="card-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format&fit=crop" alt="Express">
-      <h2 class="express-title"><img src="https://cdn.simpleicons.org/express/ffffff" alt=""> Cours Express</h2>
-      <p><strong>24 Heures.</strong> Le backend. Serveurs, routes, bases de données, sécurité et JWT. À la fin, tu déploies des APIs robustes.</p>
-      <a href="express.html" class="btn">Commencer (24h) →</a>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <img src="https://cdn.simpleicons.org/express/ffffff" alt="Express" style="width: 32px; height: 32px;">
+        <h2 style="margin: 0; font-size: 1.3rem;">Express</h2>
+      </div>
+      <p>Le backend de vos applications. Construisez des APIs REST, gérez les bases de données, l'authentification JWT et la sécurité.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 500;">24 heures</span>
+        <a href="express.html" class="btn">Commencer</a>
+      </div>
     </div>
+
   </div>
 
-  <div class="note">
-    <strong>💡 Comment utiliser ce site</strong>
-    Coche les chapitres au fur et à mesure. Ta progression est sauvegardée automatiquement dans ton navigateur. Ne passe pas au module suivant sans avoir fait le projet final du précédent.
+  <div class="senior-advice" style="margin-top: 60px;">
+    <strong>La méthode d'apprentissage</strong>
+    <p>Chaque module est découpé en 8 chapitres. Ne passez pas au chapitre suivant sans avoir terminé l'exercice ou le projet final. La théorie sans pratique ne sert à rien. Votre progression est sauvegardée automatiquement.</p>
   </div>
 
 </div>
 
-<footer>Académie Dev — <span id="year"></span></footer>
+<footer>Académie Dev &mdash; <span id="year"></span></footer>
 <script src="script.js"></script>
 </body>
 </html>
