@@ -3,29 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cours React (24h)</title>
+<title>Module React | Académie Dev</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="topbar">
-  <span class="logo"><img src="https://cdn.simpleicons.org/react/61DAFB" alt=""> React (24h)</span>
+  <div class="logo">
+    <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React">
+    <span>Académie Dev</span>
+  </div>
   <nav>
     <a href="index.html">Parcours</a>
-    <a href="javascript.html">JS</a>
-    <a href="react.html">React</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="react.html" class="active">React</a>
     <a href="express.html">Express</a>
   </nav>
-  <button class="theme-btn">🌓</button>
+  <button class="theme-btn" onclick="toggleTheme()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
 </header>
 
 <div class="container">
   
-  <h1>Module 2 : React</h1>
-  <div class="progress-bar"><div class="progress-fill" id="progress-react"></div></div>
-  <p class="progress-text" id="progress-react-text">0 / 8 chapitres complétés</p>
+  <h1>Le Framework React</h1>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">Apprenez à penser en composants. Créez des interfaces utilisateur modernes, réactives et maintenables.</p>
 
-  <p>React n'est pas difficile, il est juste *différent*. Ici, tu vas apprendre à penser en composants et à construire des interfaces modernes.</p>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill" id="progress-react"></div></div>
+    <p class="progress-text" id="progress-react-text">0 / 8 chapitres complétés</p>
+  </div>
 
   <div class="checklist">
     
@@ -34,30 +41,60 @@
       <input type="checkbox" id="react-1" onchange="toggleCheck('react-1')">
       <div class="check-content">
         <label for="react-1">
-          <strong>Ch. 1 : JSX & Composants (3h)</strong><br>
-          Création d'un projet avec Vite. Comprendre le JSX, les props, et découper une maquette. <br>
-          <em>🎯 Objectif : Savoir créer et réutiliser un composant.</em>
+          <strong>Chapitre 1 : JSX et Composants</strong>
+          <p>Création du projet avec Vite, syntaxe JSX, et communication via les Props.</p>
+          <span class="badge">Objectif : Créer un composant réutilisable</span>
         </label>
         <details class="lesson">
-          <summary>📖 Lire le cours et faire l'exercice</summary>
-          <h4>1. Créer un projet</h4>
-          <pre><code>npm create vite@latest mon-app -- --template react
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Initialisation du projet</h4>
+            <p>React n'est pas un framework complet, c'est une librairie. Pour créer un projet moderne, nous utilisons <strong>Vite</strong> (plus rapide que l'ancien Create React App).</p>
+            <pre><code>npm create vite@latest mon-app -- --template react
 cd mon-app
 npm install
 npm run dev</code></pre>
 
-          <h4>2. Les Composants & Props</h4>
-          <p>Un composant est une fonction qui retourne du JSX. Les <code>props</code> sont les paramètres qu'on lui passe.</p>
-          <pre><code>function Bouton({ texte, couleur }) {
+            <h4>2. La syntaxe JSX</h4>
+            <p>JSX n'est pas du HTML, c'est du JavaScript qui ressemble à du HTML. Il y a quelques règles strictes :</p>
+            <ul>
+              <li>On utilise <code>className</code> au lieu de <code>class</code>.</li>
+              <li>Les balises doivent être fermées (<code>&lt;img /&gt;</code>).</li>
+              <li>On ne peut retourner qu'un seul élément parent (utilisez <code>&lt;&gt;...&lt;/&gt;</code> si besoin).</li>
+            </ul>
+            <pre><code>function App() {
+  const nom = "Alice";
+  return (
+    &lt;div className="container"&gt;
+      &lt;h1&gt;Bonjour {nom}&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+            <h4>3. Les Props (Propriétés)</h4>
+            <p>Les props permettent de faire passer des données d'un composant parent vers un composant enfant. C'est le sens unique de l'information.</p>
+            <pre><code>// Composant Enfant
+function Bouton({ texte, couleur }) {
   return &lt;button style={{ color: couleur }}&gt;{texte}&lt;/button&gt;;
 }
 
-// Utilisation
-&lt;Bouton texte="Cliquez-moi" couleur="blue" /&gt;</code></pre>
+// Composant Parent
+function App() {
+  return &lt;Bouton texte="Cliquez-moi" couleur="blue" /&gt;;
+}</code></pre>
 
-          <div class="warn">
-            <strong>🛠️ Exercice Pratique (1h)</strong>
-            <strong>Défi :</strong> Crée un composant <code>Profil</code> qui accepte les props <code>nom</code>, <code>age</code> et <code>avatarUrl</code>. Il doit afficher une carte avec l'image, le nom et l'âge.
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Ne modifiez JAMAIS une prop à l'intérieur du composant enfant. Les props sont en lecture seule. Si le composant doit changer une valeur, elle doit venir de son propre <em>State</em> (chapitre 2).</p>
+            </div>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un composant <code>Profil</code> qui accepte les props <code>nom</code>, <code>age</code> et <code>avatarUrl</code>. Il doit afficher une "carte" avec l'image ronde, le nom en gras et l'âge en dessous. Utilisez-le 3 fois dans App avec des données différentes.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -68,17 +105,24 @@ npm run dev</code></pre>
       <input type="checkbox" id="react-2" onchange="toggleCheck('react-2')">
       <div class="check-content">
         <label for="react-2">
-          <strong>Ch. 2 : Le State (3h)</strong><br>
-          Le hook `useState`. Les événements (`onClick`, `onChange`). Le concept de "re-render". <br>
-          <em>🎯 Objectif : Rendre un composant dynamique.</em>
+          <strong>Chapitre 2 : Le State (État)</strong>
+          <p>Le hook <code>useState</code>, la gestion des événements et le re-rendu.</p>
+          <span class="badge">Objectif : Rendre l'interface dynamique</span>
         </label>
         <details class="lesson">
-          <summary>📖 Lire le cours et faire l'exercice</summary>
-          <h4>Le hook useState</h4>
-          <p>Le state (état) est la mémoire du composant. Quand le state change, React met à jour l'interface automatiquement.</p>
-          <pre><code>import { useState } from 'react';
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Qu'est-ce que le State ?</h4>
+            <p>Le state est la "mémoire" de votre composant. Contrairement aux variables classiques, quand une variable d'état change, React <strong>re-rend</strong> automatiquement le composant pour afficher la nouvelle valeur.</p>
+            
+            <h4>2. Le hook useState</h4>
+            <pre><code>import { useState } from 'react';
 
 function Compteur() {
+  // count est la valeur, setCount est la fonction pour la modifier
   const [count, setCount] = useState(0);
 
   return (
@@ -91,9 +135,18 @@ function Compteur() {
   );
 }</code></pre>
 
-          <div class="warn">
-            <strong>🛠️ Exercice Pratique (1h)</strong>
-            <strong>Défi :</strong> Crée un bouton qui alterne entre un texte "Mode Clair" et "Mode Sombre" à chaque clic, en changeant la couleur de fond de la page.
+            <h4>3. Mise à jour basée sur l'ancienne valeur</h4>
+            <p>Si votre nouvelle valeur dépend de l'ancienne, utilisez toujours la fonction de rappel.</p>
+            <pre><code>// ❌ Risqué si clics très rapides
+setCount(count + 1);
+
+// ✅ Sûr
+setCount(prevCount =&gt; prevCount + 1);</code></pre>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un bouton qui alterne entre un texte "Mode Clair" et "Mode Sombre" à chaque clic. Changez la couleur de fond d'une <code>div</code> en fonction de cet état.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -104,10 +157,56 @@ function Compteur() {
       <input type="checkbox" id="react-3" onchange="toggleCheck('react-3')">
       <div class="check-content">
         <label for="react-3">
-          <strong>Ch. 3 : Les Effets (3h)</strong><br>
-          Le hook `useEffect`. Le cycle de vie, le tableau de dépendances, et les requêtes API. <br>
-          <em>🎯 Objectif : Charger des données depuis un serveur.</em>
+          <strong>Chapitre 3 : Les Effets (useEffect)</strong>
+          <p>Exécuter du code après le rendu, requêtes API et cycle de vie.</p>
+          <span class="badge">Objectif : Charger des données externes</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Le rôle de useEffect</h4>
+            <p>Parfois, on doit faire des choses "en dehors" du rendu de l'interface : appeler une API, manipuler le titre de la page, écouter le redimensionnement de la fenêtre. C'est le rôle de <code>useEffect</code>.</p>
+            
+            <h4>2. Le tableau de dépendances</h4>
+            <p>C'est le deuxième argument de useEffect. Il détermine QUAND l'effet doit s'exécuter.</p>
+            <ul>
+              <li><code>[]</code> (vide) : S'exécute une seule fois, au montage du composant.</li>
+              <li><code>[valeur]</code> : S'exécute au montage ET à chaque fois que <code>valeur</code> change.</li>
+              <li>Absent : S'exécute à chaque rendu (souvent une erreur).</li>
+            </ul>
+
+            <h4>3. Exemple : Fetch de données</h4>
+            <pre><code>import { useState, useEffect } from 'react';
+
+function Utilisateurs() {
+  const [data, setData] = useState([]);
+
+  useEffect(() =&gt; {
+    async function fetchData() {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users');
+      const json = await res.json();
+      setData(json);
+    }
+    fetchData();
+  }, []); // [] = uniquement au démarrage
+
+  return &lt;ul&gt;{data.map(u =&gt; &lt;li key={u.id}&gt;{u.name}&lt;/li&gt;)}&lt;/ul&gt;;
+}</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Nettoyez toujours vos effets ! Si vous créez un timer ou un écouteur d'événement dans un useEffect, retournez une fonction de nettoyage (<code>return () =&gt; clearInterval(...)</code>) pour éviter les fuites de mémoire.</p>
+            </div>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un composant qui récupère une blague aléatoire depuis l'API <code>https://official-joke-api.appspot.com/random_joke</code>. Affichez la blague (setup + punchline) et ajoutez un bouton "Nouvelle blague" qui relance la requête.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -116,10 +215,44 @@ function Compteur() {
       <input type="checkbox" id="react-4" onchange="toggleCheck('react-4')">
       <div class="check-content">
         <label for="react-4">
-          <strong>Ch. 4 : Formulaires (3h)</strong><br>
-          Inputs contrôlés, validation côté client, gestion de la soumission. <br>
-          <em>🎯 Objectif : Créer un formulaire de login robuste.</em>
+          <strong>Chapitre 4 : Formulaires Contrôlés</strong>
+          <p>Inputs, validation, gestion de la soumission.</p>
+          <span class="badge">Objectif : Créer un formulaire robuste</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Inputs Contrôlés vs Non-Contrôlés</h4>
+            <p>En React, on préfère les <strong>inputs contrôlés</strong> : React est la seule source de vérité pour la valeur de l'input.</p>
+            <pre><code>function Formulaire() {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) =&gt; {
+    e.preventDefault(); // Empêche le rechargement de la page
+    console.log("Email envoyé :", email);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input 
+        type="email" 
+        value={email} 
+        onChange={(e) =&gt; setEmail(e.target.value)} 
+      /&gt;
+      &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un formulaire d'inscription avec 3 champs : Nom, Email, Mot de passe. Affichez un message d'erreur en rouge sous chaque champ si l'utilisateur soumet le formulaire avec un champ vide.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -128,10 +261,44 @@ function Compteur() {
       <input type="checkbox" id="react-5" onchange="toggleCheck('react-5')">
       <div class="check-content">
         <label for="react-5">
-          <strong>Ch. 5 : Listes & Conditions (3h)</strong><br>
-          Afficher des listes avec `.map()` et la prop `key`. Les affichages conditionnels. <br>
-          <em>🎯 Objectif : Afficher des données dynamiques proprement.</em>
+          <strong>Chapitre 5 : Listes et Conditions</strong>
+          <p>Affichage dynamique, méthode map, prop key et rendu conditionnel.</p>
+          <span class="badge">Objectif : Afficher des données propres</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Afficher une liste avec .map()</h4>
+            <pre><code>const fruits = ["Pomme", "Banane", "Orange"];
+
+return (
+  &lt;ul&gt;
+    {fruits.map((fruit, index) =&gt; (
+      &lt;li key={index}&gt;{fruit}&lt;/li&gt;
+    ))}
+  &lt;/ul&gt;
+);</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior : La prop KEY</strong>
+              <p>La prop <code>key</code> est obligatoire pour que React sache quel élément a changé. N'utilisez l'index QUE si la liste ne change jamais d'ordre. Sinon, utilisez un ID unique fourni par la base de données (ex: <code>user.id</code>).</p>
+            </div>
+
+            <h4>2. Le rendu conditionnel</h4>
+            <pre><code>// Avec un ternaire
+return isLoggedIn ? &lt;Dashboard /&gt; : &lt;Login /&gt;;
+
+// Avec un ET logique (si la condition est vraie)
+return (
+  &lt;div&gt;
+    {error &amp;&amp; &lt;p className="error"&gt;{error}&lt;/p&gt;}
+  &lt;/div&gt;
+);</code></pre>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -140,10 +307,41 @@ function Compteur() {
       <input type="checkbox" id="react-6" onchange="toggleCheck('react-6')">
       <div class="check-content">
         <label for="react-6">
-          <strong>Ch. 6 : Contexte & Global State (3h)</strong><br>
-          `useContext`. Éviter le "Prop Drilling". Comprendre quand utiliser un état global. <br>
-          <em>🎯 Objectif : Partager des données dans toute l'app.</em>
+          <strong>Chapitre 6 : Contexte et État Global</strong>
+          <p>Éviter le "Prop Drilling" avec useContext.</p>
+          <span class="badge">Objectif : Partager des données globalement</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Le problème du Prop Drilling</h4>
+            <p>Si un composant tout en bas de l'arbre a besoin d'une donnée du composant tout en haut, on est obligé de faire passer la prop par tous les composants intermédiaires. C'est le "Prop Drilling".</p>
+
+            <h4>La solution : createContext</h4>
+            <pre><code>import { createContext, useContext } from 'react';
+
+// 1. Créer le contexte
+const ThemeContext = createContext(null);
+
+// 2. Fournir la valeur (tout en haut)
+function App() {
+  return (
+    &lt;ThemeContext.Provider value="dark"&gt;
+      &lt;Page /&gt;
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+// 3. Consommer la valeur (tout en bas)
+function Bouton() {
+  const theme = useContext(ThemeContext);
+  return &lt;button className={theme}&gt;OK&lt;/button&gt;;
+}</code></pre>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -152,34 +350,87 @@ function Compteur() {
       <input type="checkbox" id="react-7" onchange="toggleCheck('react-7')">
       <div class="check-content">
         <label for="react-7">
-          <strong>Ch. 7 : Routing (3h)</strong><br>
-          React Router v6. Pages multiples (`/`, `/dashboard`, `/login`), routes protégées. <br>
-          <em>🎯 Objectif : Naviguer sans recharger la page.</em>
+          <strong>Chapitre 7 : Routing</strong>
+          <p>Navigation multi-pages avec React Router v6.</p>
+          <span class="badge">Objectif : Créer une Single Page Application</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Installation</h4>
+            <pre><code>npm install react-router-dom</code></pre>
+
+            <h4>Configuration des routes</h4>
+            <pre><code>import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;nav&gt;
+        &lt;Link to="/"&gt;Accueil&lt;/Link&gt;
+        &lt;Link to="/about"&gt;À propos&lt;/Link&gt;
+      &lt;/nav&gt;
+
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+        &lt;Route path="*" element={&lt;h1&gt;404&lt;/h1&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}</code></pre>
+          </div>
+        </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 8 -->
+    <!-- CHAPITRE 8 : PROJET FINAL -->
     <div class="check-item">
       <input type="checkbox" id="react-8" onchange="toggleCheck('react-8')">
       <div class="check-content">
         <label for="react-8">
-          <strong>Ch. 8 : PROJET FINAL REACT (3h)</strong><br>
-          Créer un Tableau de bord (Dashboard) avec authentification fictive, données d'une API publique, et navigation. <br>
-          <em>🎯 Objectif : Prouver que tu sais construire une Single Page Application.</em>
+          <strong>Chapitre 8 : Projet Final React</strong>
+          <p>Création d'un Dashboard complet avec authentification et API.</p>
+          <span class="badge">Objectif : Construire une application réelle</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Voir les spécifications du projet
+          </summary>
+          <div class="lesson-content">
+            <h4>Le projet : Tableau de bord d'étudiants</h4>
+            <p>Vous allez construire une Single Page Application (SPA) complète.</p>
+            
+            <h4>Fonctionnalités :</h4>
+            <ul>
+              <li><strong>Page Login :</strong> Un formulaire basique. Si l'utilisateur tape "admin", il est redirigé vers le dashboard (stockez l'état de connexion dans le localStorage).</li>
+              <li><strong>Page Dashboard (protégée) :</strong> Récupère une liste d'utilisateurs depuis l'API <code>https://jsonplaceholder.typicode.com/users</code>.</li>
+              <li><strong>Affichage :</strong> Une grille de cartes avec le nom, l'email et la ville de chaque utilisateur.</li>
+              <li><strong>Barre de recherche :</strong> Un input qui filtre les utilisateurs par nom en temps réel (utilisez <code>.filter()</code>).</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Méthodologie</strong>
+              <p>Découpez votre application en composants : <code>LoginPage</code>, <code>Dashboard</code>, <code>UserCard</code>, <code>SearchBar</code>. Utilisez React Router pour la navigation et Context pour gérer l'état de connexion.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
   </div>
 
-  <div style="text-align:center; margin-top: 40px;">
-    <a href="express.html" class="btn express">Une fois terminé, passe au Module Express →</a>
+  <div style="text-align:center; margin-top: 64px;">
+    <a href="express.html" class="btn">Passer au module Express</a>
   </div>
 
 </div>
 
-<footer>Cours React 24h — <span id="year"></span></footer>
+<footer>Académie Dev &mdash; <span id="year"></span></footer>
 <script src="script.js"></script>
 </body>
 </html>
