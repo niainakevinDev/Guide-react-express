@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cours JavaScript (24h) | Académie Dev</title>
+<title>JavaScript | Académie Dev</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
   </div>
   <nav>
     <a href="index.html">Parcours</a>
-    <a href="javascript.html" style="color:var(--text)">JavaScript</a>
+    <a href="javascript.html" class="active">JavaScript</a>
     <a href="react.html">React</a>
     <a href="express.html">Express</a>
   </nav>
@@ -27,7 +27,7 @@
 <div class="container">
   
   <h1>JavaScript Moderne</h1>
-  <p style="color: var(--text-dim); margin-bottom: 32px;">Maîtrisez le langage qui fait tourner le web. 8 chapitres pour passer de débutant à développeur autonome.</p>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">Le langage qui fait tourner le web. 8 chapitres pour passer de débutant à développeur autonome.</p>
 
   <div class="progress-container">
     <div class="progress-bar"><div class="progress-fill" id="progress-js"></div></div>
@@ -43,10 +43,13 @@
         <label for="js-1">
           <strong>Chapitre 1 : Les Fondations</strong>
           <p>Variables, types de données, conditions et boucles.</p>
-          <span class="badge target">Objectif : Écrire un algorithme simple</span>
+          <span class="badge">Objectif : Écrire un algorithme simple</span>
         </label>
         <details class="lesson">
-          <summary>Ouvrir le cours</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
           <div class="lesson-content">
             <h4>1. Variables : let et const</h4>
             <p>Oubliez <code>var</code>. Utilisez <code>const</code> par défaut (valeur qui ne change pas) et <code>let</code> uniquement si la valeur doit être modifiée.</p>
@@ -63,7 +66,7 @@ for (let i = 1; i &lt;= 3; i++) {
   console.log("Tour " + i);
 }</code></pre>
 
-            <div class="exercise-box">
+            <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Créez une variable <code>panier</code>. Si le panier contient plus de 100€, affichez "Livraison gratuite". Entre 50€ et 100€, affichez "Livraison 5€". Sinon, affichez "Livraison 10€".</p>
             </div>
@@ -79,10 +82,13 @@ for (let i = 1; i &lt;= 3; i++) {
         <label for="js-2">
           <strong>Chapitre 2 : ES6+ et Modernité</strong>
           <p>Fonctions fléchées, template literals, destructuring.</p>
-          <span class="badge target">Objectif : Écrire du code propre</span>
+          <span class="badge">Objectif : Écrire du code propre</span>
         </label>
         <details class="lesson">
-          <summary>Ouvrir le cours</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
           <div class="lesson-content">
             <h4>1. Fonctions Fléchées</h4>
             <p>La syntaxe standard en React. Plus courte et évite les erreurs de contexte <code>this</code>.</p>
@@ -98,7 +104,12 @@ const { nom } = user; // Extrait "Alice"
 // Cloner et modifier un objet
 const userModifie = { ...user, age: 26 };</code></pre>
 
-            <div class="exercise-box">
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Le Spread Operator (<code>...</code>) est la clé pour respecter l'immutabilité en React. On ne modifie jamais un objet directement, on le clone en changeant une propriété.</p>
+            </div>
+
+            <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Créez un objet <code>voiture</code> avec marque et modèle. Utilisez la destructuration pour extraire la marque et affichez : "Ma voiture est une [marque]".</p>
             </div>
@@ -114,10 +125,13 @@ const userModifie = { ...user, age: 26 };</code></pre>
         <label for="js-3">
           <strong>Chapitre 3 : Tableaux & Objets</strong>
           <p>Les méthodes map, filter et reduce.</p>
-          <span class="badge target">Objectif : Manipuler des listes de données</span>
+          <span class="badge">Objectif : Manipuler des listes de données</span>
         </label>
         <details class="lesson">
-          <summary>Ouvrir le cours</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
           <div class="lesson-content">
             <h4>Les 3 méthodes essentielles</h4>
             <p>Indispensables pour afficher des listes en React.</p>
@@ -132,7 +146,7 @@ const pairs = nums.filter(n => n % 2 === 0); // [2,4]
 // Reduce : Calculer une somme
 const total = nums.reduce((acc, n) => acc + n, 0); // 10</code></pre>
 
-            <div class="exercise-box">
+            <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Soit <code>users = [{nom: "A", age: 15}, {nom: "B", age: 25}]</code>. Gardez uniquement les majeurs avec <code>filter</code>, puis récupérez uniquement leurs noms avec <code>map</code>.</p>
             </div>
@@ -148,10 +162,13 @@ const total = nums.reduce((acc, n) => acc + n, 0); // 10</code></pre>
         <label for="js-4">
           <strong>Chapitre 4 : Le DOM</strong>
           <p>Sélectionner des éléments, modifier le HTML, écouter des événements.</p>
-          <span class="badge target">Objectif : Rendre une page interactive</span>
+          <span class="badge">Objectif : Rendre une page interactive</span>
         </label>
         <details class="lesson">
-          <summary>Ouvrir le cours</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
           <div class="lesson-content">
             <h4>Manipulation du DOM</h4>
             <pre><code>// Sélection
@@ -167,7 +184,7 @@ btn.addEventListener('click', () => {
   alert("Cliqué !");
 });</code></pre>
 
-            <div class="exercise-box">
+            <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Créez un fichier HTML avec un bouton et un compteur. À chaque clic, incrémentez le compteur affiché sur la page.</p>
             </div>
@@ -183,10 +200,13 @@ btn.addEventListener('click', () => {
         <label for="js-5">
           <strong>Chapitre 5 : Asynchrone</strong>
           <p>Promesses, async/await et try/catch.</p>
-          <span class="badge target">Objectif : Gérer les temps d'attente</span>
+          <span class="badge">Objectif : Gérer les temps d'attente</span>
         </label>
         <details class="lesson">
-          <summary>Ouvrir le cours</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
           <div class="lesson-content">
             <h4>Async / Await</h4>
             <p>JavaScript est mono-thread. L'asynchrone permet de ne pas bloquer la page pendant une requête.</p>
@@ -200,7 +220,12 @@ btn.addEventListener('click', () => {
   }
 }</code></pre>
 
-            <div class="exercise-box">
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>N'oubliez jamais le bloc <code>try/catch</code> quand vous utilisez <code>await</code>. Si le serveur est en panne, votre application plantera silencieusement sinon.</p>
+            </div>
+
+            <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Créez une fonction <code>attendre(ms)</code> qui retourne une Promesse et affiche "Fini !" après 2 secondes.</p>
             </div>
@@ -216,10 +241,13 @@ btn.addEventListener('click', () => {
         <label for="js-6">
           <strong>Chapitre 6 : Fetch & API</strong>
           <p>Requêtes GET, POST et gestion du JSON.</p>
-          <span class="badge target">Objectif : Dialoguer avec un serveur</span>
+          <span class="badge">Objectif : Dialoguer avec un serveur</span>
         </label>
         <details class="lesson">
-          <summary>Ouvrir le cours</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
           <div class="lesson-content">
             <h4>Requêtes HTTP</h4>
             <pre><code>// GET
@@ -233,7 +261,7 @@ await fetch('/api/login', {
   body: JSON.stringify({ email, password })
 });</code></pre>
 
-            <div class="exercise-box">
+            <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Utilisez l'API publique <code>https://jsonplaceholder.typicode.com/users</code>. Faites un fetch et affichez la liste des noms dans la console.</p>
             </div>
@@ -249,10 +277,13 @@ await fetch('/api/login', {
         <label for="js-7">
           <strong>Chapitre 7 : POO & Classes</strong>
           <p>Classes, constructeurs, méthodes et this.</p>
-          <span class="badge target">Objectif : Structurer son code</span>
+          <span class="badge">Objectif : Structurer son code</span>
         </label>
         <details class="lesson">
-          <summary>Ouvrir le cours</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
           <div class="lesson-content">
             <h4>Programmation Orientée Objet</h4>
             <pre><code>class Utilisateur {
@@ -269,7 +300,7 @@ await fetch('/api/login', {
 const admin = new Utilisateur("Alice", "Admin");
 admin.sePresenter();</code></pre>
 
-            <div class="exercise-box">
+            <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Créez une classe <code>Voiture</code> avec marque et vitesse. Ajoutez une méthode <code>accelerer()</code> qui augmente la vitesse de 10.</p>
             </div>
@@ -285,22 +316,25 @@ admin.sePresenter();</code></pre>
         <label for="js-8">
           <strong>Chapitre 8 : Projet Final</strong>
           <p>Application de suivi de dépenses (Budget Tracker) en HTML/CSS/JS pur.</p>
-          <span class="badge target">Objectif : Maîtriser les bases sans framework</span>
+          <span class="badge">Objectif : Maîtriser les bases sans framework</span>
         </label>
         <details class="lesson">
-          <summary>Voir les spécifications du projet</summary>
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Voir les spécifications du projet
+          </summary>
           <div class="lesson-content">
             <h4>Budget Tracker</h4>
             <p>Construisez une application web qui permet d'ajouter des dépenses (nom + montant) et de les afficher dans une liste. Le solde total doit se mettre à jour automatiquement.</p>
             <h4>Fonctionnalités requises :</h4>
-            <ul style="color: var(--text-dim); margin-bottom: 16px; padding-left: 20px;">
+            <ul>
               <li>Formulaire avec un input texte (nom) et un input number (montant).</li>
               <li>Bouton "Ajouter".</li>
               <li>Liste des dépenses avec bouton "Supprimer".</li>
               <li>Compteur du total en haut de page.</li>
               <li>Bonus : Sauvegarde des données dans le <code>localStorage</code>.</li>
             </ul>
-            <div class="exercise-box">
+            <div class="senior-advice">
               <strong>Méthodologie</strong>
               <p>Ne regardez pas la solution avant d'avoir essayé pendant au moins 1 heure. Commencez par le HTML, puis le CSS, puis la logique d'affichage en JS, et enfin la logique d'ajout/suppression.</p>
             </div>
@@ -311,7 +345,7 @@ admin.sePresenter();</code></pre>
 
   </div>
 
-  <div style="text-align:center; margin-top: 48px;">
+  <div style="text-align:center; margin-top: 64px;">
     <a href="react.html" class="btn">Passer au module React</a>
   </div>
 
