@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerShell | Académie Midas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">
+    <img src="https://cdn.simpleicons.org/powershell/5391FE" alt="PowerShell">
+    <span>Académie Midas</span>
+  </div>
+  <nav>
+    <a href="index.html">Parcours</a>
+    <a href="reseau.html">Réseau</a>
+    <a href="linux.html">Linux</a>
+    <a href="powershell.html" class="active">PowerShell</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn" onclick="toggleTheme()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
+</header>
+
+<div class="container">
+  
+  <h1>PowerShell (Windows)</h1>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">Bien plus qu'un simple terminal : un langage de script orienté objet pour automatiser Windows.</p>
+
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill" id="progress-powershell"></div></div>
+    <p class="progress-text" id="progress-powershell-text">0 / 8 chapitres complétés</p>
+  </div>
+
+  <div class="checklist">
+    
+    <!-- CHAPITRE 1 -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-1" onchange="toggleCheck('powershell-1')">
+      <div class="check-content">
+        <label for="powershell-1">
+          <strong>Chapitre 1 : L'Aide et la Navigation</strong>
+          <p>Utiliser Get-Help, Get-Command et se déplacer.</p>
+          <span class="badge">Objectif : Trouver la bonne commande tout seul</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. La syntaxe Verbe-Nom</h4>
+            <p>Toutes les commandes PowerShell (appelées <em>Cmdlets</em>) suivent le format <code>Verbe-Nom</code> (ex: <code>Get-Help</code>, <code>Set-Location</code>). C'est très intuitif en anglais.</p>
+
+            <h4>2. Les commandes d'aide</h4>
+            <pre><code>Get-Help Get-Process    # Affiche l'aide sur une commande
+Get-Command *service*   # Cherche toutes les commandes avec "service"
+Get-Alias               # Voir les raccourcis (ex: ls, cd, cat)</code></pre>
+
+            <h4>3. Navigation</h4>
+            <pre><code>Get-Location       # Affiche le dossier actuel (équivalent de pwd)
+Set-Location C:\   # Change de dossier (équivalent de cd)
+Get-ChildItem      # Liste les fichiers (équivalent de ls ou dir)</code></pre>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Ouvrez PowerShell. Tapez <code>Get-Help Get-ChildItem</code>. Essayez ensuite de lister uniquement les fichiers cachés de votre dossier actuel (indice : regardez les paramètres de la commande dans l'aide).</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 2 -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-2" onchange="toggleCheck('powershell-2')">
+      <div class="check-content">
+        <label for="powershell-2">
+          <strong>Chapitre 2 : Gestion des Fichiers</strong>
+          <p>Créer, copier, supprimer des fichiers et dossiers.</p>
+          <span class="badge">Objectif : Automatiser le rangement</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Les commandes de manipulation</h4>
+            <pre><code>New-Item -ItemType Directory -Name "MonDossier"  # Créer un dossier
+New-Item -ItemType File -Name "test.txt"         # Créer un fichier
+Copy-Item test.txt -Destination C:\Temp\         # Copier
+Move-Item test.txt -Destination C:\Temp\         # Déplacer
+Remove-Item test.txt                             # Supprimer</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>PowerShell possède des alias pour les utilisateurs de vieux Windows (cmd.exe). <code>dir</code>, <code>cd</code>, <code>mkdir</code>, <code>del</code> fonctionnent, mais il est recommandé d'utiliser les vrais noms (Get-ChildItem, Set-Location, etc.) dans les scripts pour plus de clarté.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 3 -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-3" onchange="toggleCheck('powershell-3')">
+      <div class="check-content">
+        <label for="powershell-3">
+          <strong>Chapitre 3 : Les Processus et Services</strong>
+          <p>Gérer les programmes et les services Windows.</p>
+          <span class="badge">Objectif : Diagnostiquer un plantage</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Les processus</h4>
+            <p>Un processus est un programme en cours d'exécution (ex: Chrome, Spotify).</p>
+            <pre><code>Get-Process                     # Voir tous les processus
+Get-Process chrome              # Voir les processus Chrome
+Stop-Process -Name "notepad" -Force  # Tuer un processus</code></pre>
+
+            <h4>2. Les services Windows</h4>
+            <p>Les services tournent en arrière-plan (ex: serveur web, mises à jour).</p>
+            <pre><code>Get-Service                      # Voir l'état de tous les services
+Start-Service -Name "wuauserv"   # Démarrer un service
+Stop-Service -Name "wuauserv"    # Arrêter un service</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 4 -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-4" onchange="toggleCheck('powershell-4')">
+      <div class="check-content">
+        <label for="powershell-4">
+          <strong>Chapitre 4 : Le Réseau en PowerShell</strong>
+          <p>Tester la connexion et voir sa configuration.</p>
+          <span class="badge">Objectif : Diagnostiquer un problème réseau</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Commandes réseau</h4>
+            <pre><code>Test-NetConnection google.com -Port 443  # Test de connexion TCP (très puissant)
+Get-NetIPConfiguration                   # Voir son IP, masque et passerelle
+Get-NetTCPConnection                     # Voir les connexions actives
+Resolve-DnsName google.com               # Voir l'IP derrière un nom de domaine</code></pre>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Testez la connexion vers <code>github.com</code> sur le port <code>22</code> (port SSH). Est-ce que la connexion réussit ? Testez maintenant le port <code>80</code> (HTTP).</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 5 -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-5" onchange="toggleCheck('powershell-5')">
+      <div class="check-content">
+        <label for="powershell-5">
+          <strong>Chapitre 5 : Le Pipeline (|)</strong>
+          <p>La force de PowerShell : combiner les commandes.</p>
+          <span class="badge">Objectif : Filtrer et trier des données</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Select-Object (Sélectionner)</h4>
+            <pre><code>Get-Process | Select-Object Name, CPU, Memory</code></pre>
+
+            <h4>2. Where-Object (Filtrer)</h4>
+            <pre><code># Garder uniquement les processus qui utilisent plus de 100 Mo
+Get-Process | Where-Object { $_.WorkingSet -gt 100MB }</code></pre>
+
+            <h4>3. Sort-Object (Trier)</h4>
+            <pre><code># Trier les processus par CPU décroissant
+Get-Process | Sort-Object CPU -Descending</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Le symbole <code>$_</code> représente l'objet actuel dans le pipeline. C'est l'équivalent du "il" ou "l'élément en cours" dans une phrase.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 6 -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-6" onchange="toggleCheck('powershell-6')">
+      <div class="check-content">
+        <label for="powershell-6">
+          <strong>Chapitre 6 : Variables et Scripts</strong>
+          <p>Créer ses premières variables et conditions.</p>
+          <span class="badge">Objectif : Commencer à automatiser</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Variables</h4>
+            <p>Les variables commencent toujours par un <code>$</code>.</p>
+            <pre><code>$nom = "Midas"
+$age = 25
+Write-Host "Bonjour $nom, vous avez $age ans."</code></pre>
+
+            <h4>2. Conditions</h4>
+            <pre><code>if ($age -gt 18) {
+  Write-Host "Majeur"
+} else {
+  Write-Host "Mineur"
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 7 -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-7" onchange="toggleCheck('powershell-7')">
+      <div class="check-content">
+        <label for="powershell-7">
+          <strong>Chapitre 7 : Informations Système</strong>
+          <p>Obtenir des infos sur le matériel et l'OS.</p>
+          <span class="badge">Objectif : Auditer une machine</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Les commandes d'audit</h4>
+            <pre><code>Get-ComputerInfo        # Infos complètes sur l'OS et le matériel
+Get-Volume              # Voir l'espace disque
+Get-EventLog -LogName System -Newest 10  # Voir les 10 derniers logs système</code></pre>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHAPITRE 8 : PROJET FINAL -->
+    <div class="check-item">
+      <input type="checkbox" id="powershell-8" onchange="toggleCheck('powershell-8')">
+      <div class="check-content">
+        <label for="powershell-8">
+          <strong>Chapitre 8 : Projet Final PowerShell</strong>
+          <p>Script de nettoyage automatique.</p>
+          <span class="badge">Objectif : Automatiser Windows</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Voir les spécifications du projet
+          </summary>
+          <div class="lesson-content">
+            <h4>Le projet : Nettoyage des fichiers temporaires</h4>
+            <p>Vous allez créer un script <code>clean.ps1</code> qui nettoie les fichiers inutiles de Windows.</p>
+            
+            <h4>Cahier des charges :</h4>
+            <ul>
+              <li>Le script doit cibler le dossier <code>C:\Windows\Temp</code>.</li>
+              <li>Il doit lister tous les fichiers <code>.tmp</code>.</li>
+              <li>Il doit demander à l'utilisateur : "Voulez-vous supprimer ces fichiers ? (O/N)".</li>
+              <li>Si l'utilisateur tape "O", il supprime les fichiers.</li>
+              <li>Si l'utilisateur tape "N", il annule l'opération.</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Méthodologie</strong>
+              <p>Pour exécuter un script PowerShell, vous devrez peut-être modifier la politique d'exécution : <code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code>. Testez d'abord votre script en affichant juste les fichiers avec <code>Write-Host</code> avant de passer à la suppression.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 64px;">
+    <a href="javascript.html" class="btn">Passer au module JavaScript</a>
+  </div>
+
+</div>
+
+<footer>Académie Midas &mdash; <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
