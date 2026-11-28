@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JavaScript | Académie Midas</title>
+<title>JavaScript Intensif (Bootcamp) | Académie Midas</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="topbar">
   <div class="logo">
-    <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS">
+    <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS" style="width: 24px; height: 24px;">
     <span>Académie Midas</span>
   </div>
-    <nav>
+  <nav>
     <a href="index.html">Parcours</a>
     <a href="reseau.html">Réseau</a>
     <a href="linux.html">Linux</a>
     <a href="powershell.html">PowerShell</a>
-    <a href="javascript.html">JavaScript</a>
+    <a href="javascript.html" class="active">JavaScript</a>
     <a href="react.html">React</a>
     <a href="express.html">Express</a>
   </nav>
@@ -29,8 +29,21 @@
 
 <div class="container">
   
-  <h1>JavaScript Moderne</h1>
-  <p style="color: var(--text-dim); margin-bottom: 32px;">Le langage qui fait tourner le web. 8 chapitres pour passer de débutant à développeur autonome.</p>
+  <h1>JavaScript : Bootcamp Intensif</h1>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">Bienvenue dans l'équivalent de 2 mois de formation intensive. Ce module ne se survole pas : il se lit, se pratique et se digère. Chaque chapitre représente une semaine de travail acharné.</p>
+
+  <div class="senior-advice" style="margin-bottom: 32px; background: rgba(59, 130, 246, 0.1); border-color: var(--accent);">
+    <strong>Plan d'apprentissage (8 Semaines)</strong>
+    <p style="margin-top: 8px; color: var(--text); line-height: 1.8;">
+      Semaine 1 : Chapitre 1 et 2 (Logique et Fonctions)<br>
+      Semaine 2 : Chapitre 3 (Structures de données complexes)<br>
+      Semaine 3 : Chapitre 4 (Le DOM et les Événements)<br>
+      Semaine 4 : Chapitre 5 (Asynchronisme, le boss final)<br>
+      Semaine 5 : Chapitre 6 (Fetch API et Réseau)<br>
+      Semaine 6 : Chapitre 7 (POO et Architecture)<br>
+      Semaine 7 et 8 : Chapitre 8 (Le Projet Final complet)
+    </p>
+  </div>
 
   <div class="progress-container">
     <div class="progress-bar"><div class="progress-fill" id="progress-js"></div></div>
@@ -39,307 +52,427 @@
 
   <div class="checklist">
     
-    <!-- CHAPITRE 1 -->
+    <!-- ================= CHAPITRE 1 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-1" onchange="toggleCheck('js-1')">
       <div class="check-content">
         <label for="js-1">
-          <strong>Chapitre 1 : Les Fondations</strong>
-          <p>Variables, types de données, conditions et boucles.</p>
-          <span class="badge">Objectif : Écrire un algorithme simple</span>
+          <strong>Semaine 1 : Fondations, Contexte et Types</strong>
+          <p>Variables, Types, Hoisting, Coercition et Opérateurs.</p>
+          <span class="badge">Objectif : Comprendre comment la machine lit votre code</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Ouvrir le cours complet
+            Ouvrir le module complet (Théorie, Pièges, Exos)
           </summary>
           <div class="lesson-content">
-            <h4>1. Variables : let et const</h4>
-            <p>Oubliez <code>var</code>. Utilisez <code>const</code> par défaut (valeur qui ne change pas) et <code>let</code> uniquement si la valeur doit être modifiée.</p>
-            <pre><code>const nom = "Kevin"; // Ne change pas
-let age = 25;        // Peut changer
-age = 26;            // OK</code></pre>
+            <h4>1. Le Contexte d'Exécution (Execution Context)</h4>
+            <p>Tout code JS s'exécute dans un contexte. Il y a le contexte global (le fichier) et les contextes de fonction. JS lit d'abord tout le code pour allouer la mémoire (phase de création), puis l'exécute (phase d'exécution). C'est ce qui explique le <strong>Hoisting</strong>.</p>
+            <pre><code>console.log(maVar); // undefined (et non pas une erreur)
+var maVar = "Bonjour";
 
-            <h4>2. Conditions et Boucles</h4>
-            <pre><code>const temp = 25;
-if (temp > 30) { console.log("Chaud"); } 
-else { console.log("Tempéré"); }
+// Mais avec let et const :
+// console.log(maConst); // ReferenceError: Cannot access before initialization
+const maConst = "Salut";</code></pre>
+            <p><em>Règle :</em> Utilisez toujours <code>const</code> ou <code>let</code> pour éviter les bugs silencieux du Hoisting.</p>
 
-for (let i = 1; i &lt;= 3; i++) {
-  console.log("Tour " + i);
-}</code></pre>
+            <h4>2. La Coercition (Conversion de type)</h4>
+            <p>JavaScript essaie de deviner ce que vous voulez faire quand vous mélangez les types. C'est souvent une source de bugs.</p>
+            <pre><code>console.log(1 + "1");     // "11" (String)
+console.log("5" - 2);     // 3 (Number)
+console.log(null + 1);    // 1
+console.log(undefined + 1); // NaN
+console.log("b" + "a" + + "a" + "a"); // "baNaNa" (Un classique)</code></pre>
+            <p><strong>Solution :</strong> Convertissez manuellement avec <code>Number()</code>, <code>String()</code>, <code>Boolean()</code>.</p>
+
+            <h4>3. Truthy et Falsy</h4>
+            <p>Dans une condition <code>if()</code>, tout est évalué comme vrai ou faux. Les seules valeurs "Falsy" (qui valent false) sont : <code>false</code>, <code>0</code>, <code>""</code> (chaîne vide), <code>null</code>, <code>undefined</code>, <code>NaN</code>. Tout le reste (y compris <code>[]</code> et <code>{}</code>) est "Truthy".</p>
 
             <div class="warning-box">
-              <strong>Exercice Pratique</strong>
-              <p>Créez une variable <code>panier</code>. Si le panier contient plus de 100€, affichez "Livraison gratuite". Entre 50€ et 100€, affichez "Livraison 5€". Sinon, affichez "Livraison 10€".</p>
+              <strong>Défi de la Semaine 1 (10 heures de pratique)</strong>
+              <p>1. Créez un programme qui vérifie si une année est bissextile (divisible par 4, sauf si divisible par 100, sauf si divisible par 400).<br>
+              2. FizzBuzz : Affichez les nombres de 1 à 100. Si divisible par 3, affichez "Fizz", par 5 "Buzz", par 3 et 5 "FizzBuzz".<br>
+              3. Reverse String : Inversez une chaîne de caractères sans utiliser <code>.reverse()</code>.</p>
             </div>
           </div>
         </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 2 -->
+    <!-- ================= CHAPITRE 2 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-2" onchange="toggleCheck('js-2')">
       <div class="check-content">
         <label for="js-2">
-          <strong>Chapitre 2 : ES6+ et Modernité</strong>
-          <p>Fonctions fléchées, template literals, destructuring.</p>
-          <span class="badge">Objectif : Écrire du code propre</span>
+          <strong>Semaine 1 : Fonctions, Scope et Closures</strong>
+          <p>Le mot-clé 'this', les fonctions fléchées et la portée des variables.</p>
+          <span class="badge">Objectif : Maîtriser l'arme la plus puissante du JS</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Ouvrir le cours complet
+            Ouvrir le module complet
           </summary>
           <div class="lesson-content">
-            <h4>1. Fonctions Fléchées</h4>
-            <p>La syntaxe standard en React. Plus courte et évite les erreurs de contexte <code>this</code>.</p>
-            <pre><code>// Ancien
-function add(a, b) { return a + b; }
-// Moderne
-const add = (a, b) => a + b;</code></pre>
+            <h4>1. Le Scope (Portée)</h4>
+            <ul>
+              <li><strong>Scope Global</strong> : Accessible partout.</li>
+              <li><strong>Scope de Fonction</strong> : Les variables créées dans une fonction meurent à la fin de la fonction.</li>
+              <li><strong>Scope de Bloc</strong> : <code>let</code> et <code>const</code> sont bloqués par les accolades <code>{}</code> (if, for, while).</li>
+            </ul>
 
-            <h4>2. Destructuration et Spread</h4>
-            <pre><code>const user = { nom: "Alice", age: 25 };
-const { nom } = user; // Extrait "Alice"
+            <h4>2. Le mot-clé `this` (Le cauchemar des débutants)</h4>
+            <p>La valeur de <code>this</code> dépend de COMMENT la fonction est appelée.</p>
+            <pre><code>const utilisateur = {
+  nom: "Alice",
+  direBonjour: function() {
+    console.log("Bonjour " + this.nom);
+  }
+};
+utilisateur.direBonjour(); // "Bonjour Alice" (this = utilisateur)
 
-// Cloner et modifier un objet
-const userModifie = { ...user, age: 26 };</code></pre>
+const fonctionDetachee = utilisateur.direBonjour;
+// fonctionDetachee(); // Erreur : this.nom n'est pas défini (this = window/undefined)</code></pre>
 
-            <div class="senior-advice">
-              <strong>Conseil de Senior</strong>
-              <p>Le Spread Operator (<code>...</code>) est la clé pour respecter l'immutabilité en React. On ne modifie jamais un objet directement, on le clone en changeant une propriété.</p>
-            </div>
+            <h4>3. Les Closures (Fermetures)</h4>
+            <p>Une closure est une fonction qui "se souvient" de son environnement de création, même si celui-ci a disparu de la mémoire.</p>
+            <pre><code>function usineACompteur() {
+  let count = 0; // Variable privée
+  return {
+    incrementer: () => count++,
+    lireValeur: () => count
+  };
+}
+const compteur1 = usineACompteur();
+compteur1.incrementer();
+compteur1.incrementer();
+console.log(compteur1.lireValeur()); // 2</code></pre>
+            <p><em>Pourquoi c'est vital ?</em> C'est le principe même de React (les Hooks gardent la mémoire entre les rendus) et de la programmation asynchrone.</p>
 
             <div class="warning-box">
-              <strong>Exercice Pratique</strong>
-              <p>Créez un objet <code>voiture</code> avec marque et modèle. Utilisez la destructuration pour extraire la marque et affichez : "Ma voiture est une [marque]".</p>
+              <strong>Défi de la Semaine 1 (10 heures de pratique)</strong>
+              <p>1. Créez une fonction <code>creerMultiplicateur(facteur)</code> qui retourne une fonction. Exemple : <code>const doubler = creerMultiplicateur(2); doubler(5) // 10</code>.<br>
+              2. Créez une calculatrice avec des objets et des méthodes (addition, soustraction, etc.) en utilisant <code>this</code>.</p>
             </div>
           </div>
         </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 3 -->
+    <!-- ================= CHAPITRE 3 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-3" onchange="toggleCheck('js-3')">
       <div class="check-content">
         <label for="js-3">
-          <strong>Chapitre 3 : Tableaux & Objets</strong>
-          <p>Les méthodes map, filter et reduce.</p>
-          <span class="badge">Objectif : Manipuler des listes de données</span>
+          <strong>Semaine 2 : Maîtrise des Tableaux et Objets</strong>
+          <p>Méthodes avancées, manipulation de données JSON, immutabilité.</p>
+          <span class="badge">Objectif : Devenir un as du traitement de données</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Ouvrir le cours complet
+            Ouvrir le module complet
           </summary>
           <div class="lesson-content">
-            <h4>Les 3 méthodes essentielles</h4>
-            <p>Indispensables pour afficher des listes en React.</p>
-            <pre><code>const nums = [1, 2, 3, 4];
+            <h4>1. Le trio magique (Map, Filter, Reduce)</h4>
+            <p>Ces méthodes ne modifient jamais le tableau d'origine (Immutabilité), elles retournent un nouveau tableau.</p>
+            <pre><code>const produits = [
+  { nom: "PC", prix: 1000, stock: true },
+  { nom: "Souris", prix: 50, stock: false },
+  { nom: "Ecran", prix: 300, stock: true }
+];
 
-// Map : Transformer
-const doubles = nums.map(n => n * 2); // [2,4,6,8]
+// Filtrer les produits en stock
+const enStock = produits.filter(p => p.stock);
 
-// Filter : Trier
-const pairs = nums.filter(n => n % 2 === 0); // [2,4]
+// Récupérer les noms
+const noms = enStock.map(p => p.nom);
 
-// Reduce : Calculer une somme
-const total = nums.reduce((acc, n) => acc + n, 0); // 10</code></pre>
+// Calculer le prix total
+const total = produits.reduce((acc, p) => acc + p.prix, 0);</code></pre>
+
+            <h4>2. Copie par référence vs Copie par valeur</h4>
+            <p>Les objets et tableaux sont copiés par référence. Si vous faites <code>const a = {x:1}; const b = a;</code>, modifier <code>b</code> modifiera <code>a</code>. C'est l'erreur n°1 des débutants en React.</p>
+            <pre><code>// Solution : Le Spread Operator (...)
+const a = { x: 1 };
+const b = { ...a, y: 2 }; // Copie superficielle (Shallow copy)
+
+// Pour les tableaux
+const arr1 = [1, 2];
+const arr2 = [...arr1, 3];</code></pre>
+
+            <h4>3. Méthodes utiles : sort, find, some, every</h4>
+            <pre><code>const nums = [10, 5, 8, 1];
+nums.sort((a, b) => a - b); // Trie par ordre croissant
+const trouve = nums.find(n => n === 8); // Retourne 8
+const aDesNegatifs = nums.some(n => n < 0); // false
+const tousPositifs = nums.every(n => n > 0); // true</code></pre>
 
             <div class="warning-box">
-              <strong>Exercice Pratique</strong>
-              <p>Soit <code>users = [{nom: "A", age: 15}, {nom: "B", age: 25}]</code>. Gardez uniquement les majeurs avec <code>filter</code>, puis récupérez uniquement leurs noms avec <code>map</code>.</p>
+              <strong>Défi de la Semaine 2 (15 heures de pratique)</strong>
+              <p>Soit une liste d'utilisateurs avec nom, age et pays. <br>
+              1. Trouvez tous les utilisateurs majeurs (18+) vivant en France.<br>
+              2. Triez-les par ordre alphabétique de nom.<br>
+              3. Créez un nouvel objet qui regroupe les utilisateurs par pays (Astuce : utilisez <code>reduce</code> pour créer un objet où les clés sont les pays).</p>
             </div>
           </div>
         </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 4 -->
+    <!-- ================= CHAPITRE 4 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-4" onchange="toggleCheck('js-4')">
       <div class="check-content">
         <label for="js-4">
-          <strong>Chapitre 4 : Le DOM</strong>
-          <p>Sélectionner des éléments, modifier le HTML, écouter des événements.</p>
-          <span class="badge">Objectif : Rendre une page interactive</span>
+          <strong>Semaine 3 : Le DOM et la Gestion des Événements</strong>
+          <p>Manipulation de l'arbre HTML, Délégation d'événements, Bubbling.</p>
+          <span class="badge">Objectif : Créer des interfaces interactives complexes</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Ouvrir le cours complet
+            Ouvrir le module complet
           </summary>
           <div class="lesson-content">
-            <h4>Manipulation du DOM</h4>
-            <pre><code>// Sélection
-const btn = document.querySelector('#monBouton');
-const titre = document.querySelector('h1');
+            <h4>1. Créer et insérer des éléments</h4>
+            <p>On ne modifie pas le HTML dans le fichier, on le crée dynamiquement en JS.</p>
+            <pre><code>const liste = document.querySelector('ul');
 
-// Modification
-titre.textContent = "Nouveau titre";
-titre.style.color = "red";
+const nouvelElement = document.createElement('li');
+nouvelElement.textContent = "Nouvel élément";
+nouvelElement.classList.add("actif");
+nouvelElement.dataset.id = "123"; // Attribut data-id="123"
 
-// Écoute d'événement
-btn.addEventListener('click', () => {
-  alert("Cliqué !");
+liste.appendChild(nouvelElement);</code></pre>
+
+            <h4>2. Event Bubbling (Propagation)</h4>
+            <p>Quand vous cliquez sur un élément, l'événement remonte (bouillonne) vers ses parents jusqu'au document. On peut l'arrêter avec <code>event.stopPropagation()</code>.</p>
+
+            <h4>3. Event Delegation (Délégation d'événements)</h4>
+            <p>Si vous avez une liste de 1000 éléments, mettre un écouteur sur chaque élément est mauvais pour la mémoire. On met UN SEUL écouteur sur le parent, et on vérifie la cible.</p>
+            <pre><code>document.querySelector('#maListe').addEventListener('click', (e) => {
+  // Si on clique sur un <li>
+  if (e.target.tagName === 'LI') {
+    e.target.classList.toggle('barre');
+  }
 });</code></pre>
 
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>N'utilisez jamais <code>innerHTML</code> pour insérer du contenu utilisateur (faille XSS). Utilisez <code>textContent</code> ou <code>createElement</code>. Utilisez <code>innerHTML</code> uniquement pour injecter du HTML généré par votre propre code de confiance.</p>
+            </div>
+
             <div class="warning-box">
-              <strong>Exercice Pratique</strong>
-              <p>Créez un fichier HTML avec un bouton et un compteur. À chaque clic, incrémentez le compteur affiché sur la page.</p>
+              <strong>Défi de la Semaine 3 (15 heures de pratique)</strong>
+              <p>Créez une application "Todo List" sans framework. Un formulaire pour ajouter des tâches, une liste qui s'affiche, un bouton pour barrer une tâche (toggle) et un bouton pour la supprimer. Sauvegardez dans le <code>localStorage</code>.</p>
             </div>
           </div>
         </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 5 -->
+    <!-- ================= CHAPITRE 5 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-5" onchange="toggleCheck('js-5')">
       <div class="check-content">
         <label for="js-5">
-          <strong>Chapitre 5 : Asynchrone</strong>
-          <p>Promesses, async/await et try/catch.</p>
-          <span class="badge">Objectif : Gérer les temps d'attente</span>
+          <strong>Semaine 4 : L'Asynchronisme (Le Boss Final)</strong>
+          <p>Event Loop, Promesses, Async/Await, Micro-tâches.</p>
+          <span class="badge">Objectif : Comprendre les rouages internes de JS</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Ouvrir le cours complet
+            Ouvrir le module complet
           </summary>
           <div class="lesson-content">
-            <h4>Async / Await</h4>
-            <p>JavaScript est mono-thread. L'asynchrone permet de ne pas bloquer la page pendant une requête.</p>
+            <h4>1. L'Event Loop expliqué simplement</h4>
+            <p>JS lit le code ligne par ligne. S'il tombe sur un <code>setTimeout</code> ou un <code>fetch</code>, il ne s'arrête pas. Il délègue ça au navigateur, continue de lire le reste, et quand la tâche de fond est finie, elle est placée dans une file d'attente. L'Event Loop vérifie si la pile (Call Stack) est vide, et si oui, il exécute la file d'attente.</p>
+            <pre><code>console.log("1");
+setTimeout(() => console.log("2"), 0);
+console.log("3");
+// Affiche : 1, 3, 2</code></pre>
+            <p>Même avec 0 milliseconde, le setTimeout est asynchrone. Il passe après tout le code synchrone.</p>
+
+            <h4>2. Les Promesses en profondeur</h4>
+            <p>Une promesse est un objet avec 3 états (Pending, Fulfilled, Rejected). On la crée rarement soi-même, on consomme surtout celles des autres (ex: <code>fetch</code>).</p>
+            <pre><code>const promesse = fetch('https://api.com');
+
+promesse
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+  .finally(() => console.log("Terminé"));</code></pre>
+
+            <h4>3. Async / Await : La propreté</h4>
+            <p>C'est juste du sucre syntaxique par-dessus les promesses. Mais c'est beaucoup plus lisible.</p>
             <pre><code>async function charger() {
   try {
-    const reponse = await fetch('https://api.com/data');
+    const reponse = await fetch('https://api.com');
+    if (!reponse.ok) throw new Error("Erreur réseau");
     const data = await reponse.json();
-    console.log(data);
-  } catch (err) {
-    console.error("Erreur réseau", err);
+    return data;
+  } catch (e) {
+    console.error(e);
   }
 }</code></pre>
 
             <div class="senior-advice">
               <strong>Conseil de Senior</strong>
-              <p>N'oubliez jamais le bloc <code>try/catch</code> quand vous utilisez <code>await</code>. Si le serveur est en panne, votre application plantera silencieusement sinon.</p>
+              <p>Si vous avez plusieurs requêtes indépendantes à faire, ne les faites pas en série avec <code>await</code> (c'est lent). Faites <code>Promise.all([fetch(url1), fetch(url2)])</code> pour les lancer en parallèle.</p>
             </div>
 
             <div class="warning-box">
-              <strong>Exercice Pratique</strong>
-              <p>Créez une fonction <code>attendre(ms)</code> qui retourne une Promesse et affiche "Fini !" après 2 secondes.</p>
+              <strong>Défi de la Semaine 4 (15 heures de pratique)</strong>
+              <p>Créez une fonction <code>attendre(ms)</code> qui utilise une Promesse. Utilisez-la pour créer un compte à rebours (5, 4, 3, 2, 1, Décollage !) qui s'affiche dans la console avec 1 seconde d'intervalle.</p>
             </div>
           </div>
         </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 6 -->
+    <!-- ================= CHAPITRE 6 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-6" onchange="toggleCheck('js-6')">
       <div class="check-content">
         <label for="js-6">
-          <strong>Chapitre 6 : Fetch & API</strong>
-          <p>Requêtes GET, POST et gestion du JSON.</p>
-          <span class="badge">Objectif : Dialoguer avec un serveur</span>
+          <strong>Semaine 5 : Fetch API, HTTP et JSON</strong>
+          <p>Consommer des APIs externes, gérer les erreurs HTTP, POST et headers.</p>
+          <span class="badge">Objectif : Dialoguer avec un backend</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Ouvrir le cours complet
+            Ouvrir le module complet
           </summary>
           <div class="lesson-content">
-            <h4>Requêtes HTTP</h4>
-            <pre><code>// GET
-const res = await fetch('/api/users');
-const users = await res.json();
+            <h4>1. L'API Fetch</h4>
+            <p>Fetch remplace l'ancien XMLHttpRequest. Il retourne une promesse.</p>
+            <pre><code>async function getData() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json(); // Convertit le texte JSON en objet JS
+}</code></pre>
 
-// POST
-await fetch('/api/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email, password })
-});</code></pre>
+            <h4>2. Envoyer des données (POST)</h4>
+            <pre><code>async function postData(nouvelArticle) {
+  const res = await fetch('https://api.com/posts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer VOTRE_TOKEN'
+    },
+    body: JSON.stringify(nouvelArticle)
+  });
+  return res.json();
+}</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>La méthode <code>fetch</code> ne lève PAS d'erreur si le serveur répond 404 ou 500. Elle ne lève une erreur que si la requête réseau échoue (ex: pas d'internet). Vous devez TOUJOURS vérifier <code>res.ok</code> manuellement.</p>
+            </div>
 
             <div class="warning-box">
-              <strong>Exercice Pratique</strong>
-              <p>Utilisez l'API publique <code>https://jsonplaceholder.typicode.com/users</code>. Faites un fetch et affichez la liste des noms dans la console.</p>
+              <strong>Défi de la Semaine 5 (15 heures de pratique)</strong>
+              <p>Connectez-vous à l'API <code>https://api.thecatapi.com</code> (ou une autre API gratuite). Faites un bouton qui, au clic, récupère une image aléatoire et l'affiche dans une balise <code>&lt;img&gt;</code> sur la page.</p>
             </div>
           </div>
         </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 7 -->
+    <!-- ================= CHAPITRE 7 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-7" onchange="toggleCheck('js-7')">
       <div class="check-content">
         <label for="js-7">
-          <strong>Chapitre 7 : POO & Classes</strong>
-          <p>Classes, constructeurs, méthodes et this.</p>
-          <span class="badge">Objectif : Structurer son code</span>
+          <strong>Semaine 6 : POO, Prototypes et ES6+</strong>
+          <p>Classes, héritage, modules (import/export).</p>
+          <span class="badge">Objectif : Architecturer son code</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Ouvrir le cours complet
+            Ouvrir le module complet
           </summary>
           <div class="lesson-content">
-            <h4>Programmation Orientée Objet</h4>
-            <pre><code>class Utilisateur {
-  constructor(nom, role) {
+            <h4>1. Les Classes ES6</h4>
+            <pre><code>class Animal {
+  constructor(nom) {
     this.nom = nom;
-    this.role = role;
   }
-  
-  sePresenter() {
-    console.log(`Je suis ${this.nom}, ${this.role}`);
+  parler() {
+    console.log(`${this.nom} fait un bruit.`);
   }
 }
 
-const admin = new Utilisateur("Alice", "Admin");
-admin.sePresenter();</code></pre>
+class Chien extends Animal {
+  constructor(nom, race) {
+    super(nom); // Appelle le constructeur parent
+    this.race = race;
+  }
+  parler() {
+    console.log(`${this.nom} aboie.`);
+  }
+}</code></pre>
+
+            <h4>2. Les Modules (Import/Export)</h4>
+            <p>Pour découper votre code en plusieurs fichiers (indispensable pour React/Express).</p>
+            <pre><code>// fichier math.js
+export const additionner = (a, b) => a + b;
+export default function multiplier(a, b) { return a * b; }
+
+// fichier main.js
+import multiplier, { additionner } from './math.js';</code></pre>
 
             <div class="warning-box">
-              <strong>Exercice Pratique</strong>
-              <p>Créez une classe <code>Voiture</code> avec marque et vitesse. Ajoutez une méthode <code>accelerer()</code> qui augmente la vitesse de 10.</p>
+              <strong>Défi de la Semaine 6 (10 heures de pratique)</strong>
+              <p>Créez une classe <code>CompteBancaire</code> avec les propriétés <code>titulaire</code> et <code>solde</code>. Ajoutez des méthodes <code>deposer(montant)</code> et <code>retirer(montant)</code> (qui empêche de retirer plus que le solde).</p>
             </div>
           </div>
         </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 8 : PROJET FINAL -->
+    <!-- ================= CHAPITRE 8 ================= -->
     <div class="check-item">
       <input type="checkbox" id="js-8" onchange="toggleCheck('js-8')">
       <div class="check-content">
         <label for="js-8">
-          <strong>Chapitre 8 : Projet Final</strong>
-          <p>Application de suivi de dépenses (Budget Tracker) en HTML/CSS/JS pur.</p>
-          <span class="badge">Objectif : Maîtriser les bases sans framework</span>
+          <strong>Semaine 7 & 8 : PROJET FINAL (Le Boss)</strong>
+          <p>Une SPA complète (Single Page Application) sans React.</p>
+          <span class="badge">Objectif : Valider 2 mois de compétences</span>
         </label>
         <details class="lesson">
           <summary>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            Voir les spécifications du projet
+            Voir les spécifications du projet final
           </summary>
           <div class="lesson-content">
-            <h4>Budget Tracker</h4>
-            <p>Construisez une application web qui permet d'ajouter des dépenses (nom + montant) et de les afficher dans une liste. Le solde total doit se mettre à jour automatiquement.</p>
-            <h4>Fonctionnalités requises :</h4>
+            <h4>Le projet : Application Météo & Actualités</h4>
+            <p>Vous allez construire une application qui consomme des APIs, manipule le DOM, utilise le localStorage et gère des états.</p>
+            
+            <h4>Fonctionnalités :</h4>
             <ul>
-              <li>Formulaire avec un input texte (nom) et un input number (montant).</li>
-              <li>Bouton "Ajouter".</li>
-              <li>Liste des dépenses avec bouton "Supprimer".</li>
-              <li>Compteur du total en haut de page.</li>
-              <li>Bonus : Sauvegarde des données dans le <code>localStorage</code>.</li>
+              <li><strong>Recherche de ville :</strong> Un input permet de chercher une ville.</li>
+              <li><strong>API Météo :</strong> Utilisez l'API gratuite <code>open-meteo.com</code> pour récupérer la température et la condition actuelle.</li>
+              <li><strong>Gestion de l'état UI :</strong> Affichez un "Spinner" (loader) pendant le chargement, et un message d'erreur si la ville n'existe pas.</li>
+              <li><strong>Favoris :</strong> Un bouton "Ajouter aux favoris" qui sauvegarde la ville dans le <code>localStorage</code>.</li>
+              <li><strong>Affichage des favoris :</strong> Au chargement de la page, lisez le localStorage et affichez la liste des villes favorites. Au clic sur une ville favorite, relancez la recherche météo.</li>
             </ul>
+
+            <h4>Architecture attendue (Sans Framework) :</h4>
+            <ul>
+              <li>Un fichier <code>api.js</code> (module) qui gère les appels fetch.</li>
+              <li>Un fichier <code>storage.js</code> (module) pour gérer le localStorage.</li>
+              <li>Un fichier <code>ui.js</code> (module) pour manipuler le DOM.</li>
+              <li>Un fichier <code>main.js</code> qui assemble le tout et gère les événements.</li>
+            </ul>
+
             <div class="senior-advice">
               <strong>Méthodologie</strong>
-              <p>Ne regardez pas la solution avant d'avoir essayé pendant au moins 1 heure. Commencez par le HTML, puis le CSS, puis la logique d'affichage en JS, et enfin la logique d'ajout/suppression.</p>
+              <p>C'est un projet de 2 semaines. Ne cherchez pas à tout faire le premier jour. Commencez par l'appel API avec un <code>console.log</code>. Puis l'affichage simple. Puis le loader. Puis les favoris. Gérez le code asynchrone avec <code>async/await</code> et <code>try/catch</code>.</p>
             </div>
           </div>
         </details>
@@ -354,7 +487,7 @@ admin.sePresenter();</code></pre>
 
 </div>
 
-<footer>Académie Dev &mdash; <span id="year"></span></footer>
+<footer>Académie Midas &mdash; <span id="year"></span></footer>
 <script src="script.js"></script>
 </body>
 </html>
