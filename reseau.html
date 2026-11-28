@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fondations Réseau | Académie Midas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+    <span>Académie Midas</span>
+  </div>
+  <nav>
+    <a href="index.html">Parcours</a>
+    <a href="reseau.html" class="active">Réseau</a>
+    <a href="linux.html">Linux</a>
+    <a href="powershell.html">PowerShell</a>
+    <a href="javascript.html">JavaScript</a>
+    <a href="react.html">React</a>
+    <a href="express.html">Express</a>
+  </nav>
+  <button class="theme-btn" onclick="toggleTheme()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
+</header>
+
+<div class="container">
+  
+  <h1>Fondations des Réseaux</h1>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">L'infrastructure invisible qui relie le monde. Maîtrisez l'adressage, le routage, les protocoles et la sécurité.</p>
+
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill" id="progress-reseau"></div></div>
+    <p class="progress-text" id="progress-reseau-text">0 / 8 chapitres complétés</p>
+  </div>
+
+  <div class="checklist">
+    
+    <!-- ================= CHAPITRE 1 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-1" onchange="toggleCheck('reseau-1')">
+      <div class="check-content">
+        <label for="reseau-1">
+          <strong>Chapitre 1 : Le Modèle OSI et TCP/IP</strong>
+          <p>Comprendre la communication en couches, de la machine à l'utilisateur.</p>
+          <span class="badge">Objectif : Visualiser le voyage d'une donnée</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Pourquoi des couches ?</h4>
+            <p>Pour éviter qu'un ingénieur réseau ait besoin de comprendre comment fonctionne un câble en cuivre pour coder un site web. Chaque couche a un rôle précis et ne se préoccupe pas de ce qui se passe au-dessus ou en dessous.</p>
+
+            <h4>2. Le Modèle OSI (7 couches théoriques)</h4>
+            <ul>
+              <li><strong>1. Physique</strong> : Câbles, WiFi, signaux électriques (bits 0 et 1).</li>
+              <li><strong>2. Liaison de données</strong> : Adresses MAC, commutateurs (Switch). Trames (Frames).</li>
+              <li><strong>3. Réseau</strong> : Adresses IP, routeurs. Paquets (Packets).</li>
+              <li><strong>4. Transport</strong> : Fiabilité, découpage. Protocoles TCP et UDP. Segments.</li>
+              <li><strong>5. Session</strong> : Ouverture et fermeture des communications.</li>
+              <li><strong>6. Présentation</strong> : Formatage, chiffrement (SSL/TLS), compression.</li>
+              <li><strong>7. Application</strong> : Ce que voit l'utilisateur (HTTP, DNS, FTP).</li>
+            </ul>
+
+            <h4>3. Le Modèle TCP/IP (4 couches réelles)</h4>
+            <p>C'est le modèle utilisé par Internet. Il fusionne les couches hautes.</p>
+            <ul>
+              <li><strong>Accès Réseau</strong> (OSI 1 et 2)</li>
+              <li><strong>Internet</strong> (OSI 3)</li>
+              <li><strong>Transport</strong> (OSI 4)</li>
+              <li><strong>Application</strong> (OSI 5, 6 et 7)</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>L'encapsulation est le concept clé : quand vous envoyez un message, il descend les couches OSI en ajoutant des en-têtes (headers) à chaque étape. Arrivé à la couche physique, c'est une longue suite de bits. Le destinataire fait le chemin inverse (décapsulation).</p>
+            </div>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique (Réflexion)</strong>
+              <p>Si votre navigateur affiche "Site inaccessible" mais que vous êtes connecté au WiFi, quelle couche est probablement en cause ?<br>
+              <em>Réponse : La couche 7 (Application) si le serveur est en panne, ou la couche 3 (Réseau) si l'adresse IP est incorrecte.</em></p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ================= CHAPITRE 2 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-2" onchange="toggleCheck('reseau-2')">
+      <div class="check-content">
+        <label for="reseau-2">
+          <strong>Chapitre 2 : Adressage IPv4 et Sous-réseaux</strong>
+          <p>IPv4, masques, calcul CIDR et adresses privées.</p>
+          <span class="badge">Objectif : Calculer et configurer un réseau</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Anatomie d'une IPv4</h4>
+            <p>Une adresse IPv4 est un nombre de 32 bits, divisé en 4 octets (chacun de 0 à 255), séparés par des points. Ex: <code>192.168.1.10</code>.</p>
+            <p>Elle est composée de deux parties : la partie <strong>Réseau</strong> (identique pour toutes les machines du même réseau) et la partie <strong>Hôte</strong> (unique pour chaque machine).</p>
+
+            <h4>2. Le Masque de Sous-réseau</h4>
+            <p>Il indique où s'arrête la partie réseau. Ex: <code>255.255.255.0</code>. En notation CIDR, on l'écrit <code>/24</code> (car 24 bits sur 32 sont réservés au réseau).</p>
+            
+            <table style="width:100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem;">
+              <tr style="background: var(--bg-alt); border-bottom: 1px solid var(--border);">
+                <th style="padding: 8px; text-align: left;">CIDR</th>
+                <th style="padding: 8px; text-align: left;">Masque</th>
+                <th style="padding: 8px; text-align: left;">Nb d'adresses</th>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">/24</td>
+                <td style="padding: 8px;">255.255.255.0</td>
+                <td style="padding: 8px;">256 (254 utilisables)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">/25</td>
+                <td style="padding: 8px;">255.255.255.128</td>
+                <td style="padding: 8px;">128 (126 utilisables)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">/26</td>
+                <td style="padding: 8px;">255.255.255.192</td>
+                <td style="padding: 8px;">64 (62 utilisables)</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px;">/30</td>
+                <td style="padding: 8px;">255.255.255.252</td>
+                <td style="padding: 8px;">4 (2 utilisables)</td>
+              </tr>
+            </table>
+            <p><em>Pourquoi 254 utilisables en /24 ?</em> Car la première adresse (<code>.0</code>) est le réseau et la dernière (<code>.255</code>) est le broadcast.</p>
+
+            <h4>3. Les Adresses Privées (RFC 1918)</h4>
+            <p>Elles ne sont pas routables sur Internet. Votre box vous en attribue une.</p>
+            <ul>
+              <li><code>10.0.0.0</code> à <code>10.255.255.255</code> (Classe A)</li>
+              <li><code>172.16.0.0</code> à <code>172.31.255.255</code> (Classe B)</li>
+              <li><code>192.168.0.0</code> à <code>192.168.255.255</code> (Classe C)</li>
+            </ul>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Vous avez le réseau <code>192.168.10.0/24</code>. Vous devez le découper en 4 sous-réseaux égaux. Quel masque devez-vous utiliser ?<br>
+              <em>Réponse : /26 (car 2^2 = 4, donc on emprunte 2 bits au masque /24). Les réseaux seront : .0, .64, .128, .192.</em></p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ================= CHAPITRE 3 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-3" onchange="toggleCheck('reseau-3')">
+      <div class="check-content">
+        <label for="reseau-3">
+          <strong>Chapitre 3 : DNS & DHCP</strong>
+          <p>L'annuaire d'Internet et le distributeur d'adresses.</p>
+          <span class="badge">Objectif : Comprendre la résolution de noms</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Le DHCP (Dynamic Host Configuration Protocol)</h4>
+            <p>Quand vous vous connectez à un WiFi, votre appareil crie "Quelqu'un peut me donner une adresse IP ?". Le serveur DHCP (votre box) répond avec une IP, un masque, une passerelle et un serveur DNS.</p>
+            <p>Ce processus s'appelle <strong>DORA</strong> : Discover, Offer, Request, Acknowledge.</p>
+
+            <h4>2. Le DNS (Domain Name System)</h4>
+            <p>Le DNS traduit un nom lisible par l'homme (<code>google.com</code>) en adresse IP (<code>142.250.201.46</code>). C'est une immense base de données distribuée à travers le monde.</p>
+            
+            <h4>3. Les types d'enregistrements DNS</h4>
+            <ul>
+              <li><strong>A</strong> : Fait correspondre un nom à une IPv4.</li>
+              <li><strong>AAAA</strong> : Fait correspondre un nom à une IPv6.</li>
+              <li><strong>CNAME</strong> : Un alias (ex: <code>www.monsite.com</code> pointe vers <code>monsite.com</code>).</li>
+              <li><strong>MX</strong> : Indique le serveur de messagerie (email).</li>
+              <li><strong>TXT</strong> : Texte libre (souvent utilisé pour la sécurité anti-spam).</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Si vous n'avez pas Internet mais que vous êtes connecté au WiFi, le problème vient très probablement du DNS. Essayez de configurer manuellement le DNS de Cloudflare (<code>1.1.1.1</code>) ou de Google (<code>8.8.8.8</code>) sur votre appareil.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ================= CHAPITRE 4 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-4" onchange="toggleCheck('reseau-4')">
+      <div class="check-content">
+        <label for="reseau-4">
+          <strong>Chapitre 4 : TCP, UDP et les Ports</strong>
+          <p>Comment les données sont transportées et identifiées.</p>
+          <span class="badge">Objectif : Comprendre le rôle des ports</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. TCP vs UDP</h4>
+            <ul>
+              <li><strong>TCP (Transmission Control Protocol)</strong> : Fiable. Vérifie que les paquets arrivent et les remet dans l'ordre. Utilisé pour le Web, les emails, les fichiers. (Il y a un "Three-way handshake" : SYN, SYN-ACK, ACK).</li>
+              <li><strong>UDP (User Datagram Protocol)</strong> : Rapide, mais sans garantie. Utilisé pour le streaming vidéo, les jeux vidéo (une image perdue n'est pas grave, on veut juste que ça aille vite).</li>
+            </ul>
+
+            <h4>2. Les Ports (0 à 65535)</h4>
+            <p>Une adresse IP identifie la maison. Un port identifie la porte (le service) dans cette maison. Les ports 0 à 1023 sont réservés (Well-known ports).</p>
+            <table style="width:100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem;">
+              <tr style="background: var(--bg-alt); border-bottom: 1px solid var(--border);">
+                <th style="padding: 8px; text-align: left;">Port</th>
+                <th style="padding: 8px; text-align: left;">Protocole</th>
+                <th style="padding: 8px; text-align: left;">Usage</th>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">20 / 21</td>
+                <td style="padding: 8px;">FTP</td>
+                <td style="padding: 8px;">Transfert de fichiers</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">22</td>
+                <td style="padding: 8px;">SSH</td>
+                <td style="padding: 8px;">Terminal à distance sécurisé</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">25</td>
+                <td style="padding: 8px;">SMTP</td>
+                <td style="padding: 8px;">Envoi d'emails</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">53</td>
+                <td style="padding: 8px;">DNS</td>
+                <td style="padding: 8px;">Résolution de noms</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">80</td>
+                <td style="padding: 8px;">HTTP</td>
+                <td style="padding: 8px;">Web non sécurisé</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 8px;">443</td>
+                <td style="padding: 8px;">HTTPS</td>
+                <td style="padding: 8px;">Web sécurisé (TLS)</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px;">3306</td>
+                <td style="padding: 8px;">MySQL</td>
+                <td style="padding: 8px;">Base de données</td>
+              </tr>
+            </table>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Sur votre ordinateur, ouvrez un terminal. Tapez <code>netstat -tulpn</code> (Linux) ou <code>netstat -ano</code> (Windows). Quels ports sont en écoute (LISTEN) sur votre machine ?</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ================= CHAPITRE 5 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-5" onchange="toggleCheck('reseau-5')">
+      <div class="check-content">
+        <label for="reseau-5">
+          <strong>Chapitre 5 : Le Web et HTTP/HTTPS</strong>
+          <p>Comment votre navigateur parle aux serveurs.</p>
+          <span class="badge">Objectif : Analyser une requête web</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Le protocole HTTP</h4>
+            <p>Le client (navigateur) envoie une <strong>Requête</strong>, le serveur renvoie une <strong>Réponse</strong>.</p>
+            <p>Les méthodes HTTP : <code>GET</code> (lire), <code>POST</code> (créer), <code>PUT</code> (remplacer), <code>DELETE</code> (supprimer).</p>
+
+            <h4>2. Les Codes de Statut (Status Codes)</h4>
+            <ul>
+              <li><strong>200 OK</strong> : Tout va bien.</li>
+              <li><strong>301 Moved Permanently</strong> : Redirection.</li>
+              <li><strong>400 Bad Request</strong> : Le client a envoyé n'importe quoi.</li>
+              <li><strong>401 Unauthorized</strong> : Il faut se connecter.</li>
+              <li><strong>403 Forbidden</strong> : Connecté, mais pas le droit d'accéder.</li>
+              <li><strong>404 Not Found</strong> : La page n'existe pas.</li>
+              <li><strong>500 Internal Server Error</strong> : Le serveur a planté.</li>
+            </ul>
+
+            <h4>3. HTTPS et le chiffrement</h4>
+            <p>HTTPS = HTTP + TLS. Avant d'envoyer la requête, le client et le serveur échangent des clés cryptographiques (Handshake TLS) pour chiffrer la communication. Personne entre les deux (FAI, hacker WiFi) ne peut lire le contenu.</p>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Apprenez à utiliser la commande <code>curl -v https://google.com</code>. Elle vous montre exactement la requête HTTP et les headers de réponse envoyés par le serveur. C'est l'outil parfait pour déboguer une API.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ================= CHAPITRE 6 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-6" onchange="toggleCheck('reseau-6')">
+      <div class="check-content">
+        <label for="reseau-6">
+          <strong>Chapitre 6 : Le Routage et NAT</strong>
+          <p>Comment les données voyagent à travers le monde.</p>
+          <span class="badge">Objectif : Comprendre le rôle des routeurs</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Les Routeurs</h4>
+            <p>Un routeur connecte deux réseaux différents. Il possède une "table de routage" et regarde l'IP de destination du paquet pour savoir par où l'envoyer.</p>
+
+            <h4>2. Le NAT (Network Address Translation)</h4>
+            <p>Vous avez 5 appareils chez vous (téléphones, PC, TV) mais une seule adresse IP publique fournie par votre FAI. Comment font-ils pour tous accéder à Internet en même temps ?</p>
+            <p>Votre box fait du NAT : elle remplace l'IP privée (ex: 192.168.1.10) par son IP publique dans les paquets sortants, et fait l'inverse quand les réponses reviennent.</p>
+
+            <h4>3. Le protocole ARP</h4>
+            <p>Sur un réseau local, les machines communiquent via leur adresse MAC (adresse physique de la carte réseau). ARP permet de trouver l'adresse MAC associée à une adresse IP. (Tapez <code>arp -a</code> dans un terminal pour voir la table ARP).</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ================= CHAPITRE 7 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-7" onchange="toggleCheck('reseau-7')">
+      <div class="check-content">
+        <label for="reseau-7">
+          <strong>Chapitre 7 : Sécurité et Attaques Réseau</strong>
+          <p>Firewalls, VPN et comprendre les menaces.</p>
+          <span class="badge">Objectif : Protéger une infrastructure</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Les Pare-feux (Firewalls)</h4>
+            <p>Ils filtrent le trafic entrant et sortant selon des règles. Ils peuvent bloquer une IP spécifique ou un port non autorisé.</p>
+
+            <h4>2. Le VPN (Virtual Private Network)</h4>
+            <p>Il crée un tunnel chiffré entre votre appareil et un serveur distant. Votre FAI voit que vous envoyez des données à ce serveur, mais ne peut pas voir ce qu'il y a dedans (et vous prenez l'IP du serveur distant).</p>
+
+            <h4>3. Les attaques courantes</h4>
+            <ul>
+              <li><strong>DDoS (Distributed Denial of Service)</strong> : Saturation d'un serveur avec des millions de fausses requêtes.</li>
+              <li><strong>Man-in-the-Middle (MitM)</strong> : Un hacker s'interpose entre vous et le routeur (souvent via un faux hotspot WiFi). Le HTTPS prévient cela.</li>
+              <li><strong>Sniffing</strong> : Écoute du trafic réseau. Sur un WiFi public non chiffré (HTTP), n'importe qui peut lire vos mots de passe.</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Ne vous connectez jamais à des sites HTTP (sans le S) sur un WiFi public (gare, aéroport). Utilisez un VPN si vous devez manipuler des données sensibles.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ================= CHAPITRE 8 ================= -->
+    <div class="check-item">
+      <input type="checkbox" id="reseau-8" onchange="toggleCheck('reseau-8')">
+      <div class="check-content">
+        <label for="reseau-8">
+          <strong>Chapitre 8 : Projet Final Réseau</strong>
+          <p>Conception d'une infrastructure d'entreprise complète.</p>
+          <span class="badge">Objectif : Prouver vos compétences en admin réseau</span>
+        </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Voir les spécifications du projet
+          </summary>
+          <div class="lesson-content">
+            <h4>Projet : Simulation de réseau d'entreprise</h4>
+            <p>Utilisez un logiciel gratuit comme <strong>Cisco Packet Tracer</strong> ou <strong>GNS3</strong> pour construire le réseau de la société "Midas Corp".</p>
+            
+            <h4>Cahier des charges :</h4>
+            <ul>
+              <li><strong>Topologie :</strong> 1 Routeur central, 3 Switchs (Administration, IT, WiFi).</li>
+              <li><strong>Sous-réseaux :</strong>
+                <ul>
+                  <li>Administration : 192.168.10.0/24</li>
+                  <li>IT : 192.168.20.0/24</li>
+                  <li>WiFi (Invités) : 192.168.30.0/24</li>
+                </ul>
+              </li>
+              <li><strong>Services :</strong> Mettre en place un serveur DHCP sur le routeur pour distribuer les IP à chaque sous-réseau.</li>
+              <li><strong>Routage :</strong> Configurer le routeur pour que le PC de l'Administration puisse pinguer le PC de l'IT.</li>
+              <li><strong>Sécurité (ACL) :</strong> Créer une règle sur le routeur interdisant au réseau WiFi (Invités) d'accéder au réseau Administration.</li>
+              <li><strong>Serveur Web :</strong> Placer un serveur Web dans le réseau IT et s'assurer qu'il est accessible depuis le réseau Administration via HTTP.</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Méthodologie</strong>
+              <p>Dessinez d'abord votre topologie sur papier. Notez les plages d'IP. Configurez d'abord les IPs de base, testez les pings locaux, puis configurez le routage entre les réseaux. Enfin, appliquez les règles de sécurité.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top: 64px;">
+    <a href="linux.html" class="btn">Passer au module Linux</a>
+  </div>
+
+</div>
+
+<footer>Académie Midas &mdash; <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
