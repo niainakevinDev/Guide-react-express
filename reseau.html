@@ -30,7 +30,7 @@
 <div class="container">
   
   <h1>Fondations des Réseaux</h1>
-  <p style="color: var(--text-dim); margin-bottom: 32px;">L'infrastructure invisible qui relie le monde. Maîtrisez l'adressage, le routage, les protocoles et la sécurité.</p>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">L'infrastructure invisible qui relie le monde. Maîtrisez l'adressage, le routage, les protocoles et la sécurité. Ce module vous prépare à administrer n'importe quel réseau.</p>
 
   <div class="progress-container">
     <div class="progress-bar"><div class="progress-fill" id="progress-reseau"></div></div>
@@ -54,32 +54,45 @@
             Ouvrir le cours complet
           </summary>
           <div class="lesson-content">
-            <h4>1. Pourquoi des couches ?</h4>
-            <p>Pour éviter qu'un ingénieur réseau ait besoin de comprendre comment fonctionne un câble en cuivre pour coder un site web. Chaque couche a un rôle précis et ne se préoccupe pas de ce qui se passe au-dessus ou en dessous.</p>
+            <h4>1. Pourquoi diviser la communication en couches ?</h4>
+            <p>Imaginez que vous construisez une maison. Vous ne demandez pas au fabricant de briques de s'occuper de la plomberie, ni au plombier de faire l'électricité. Chacun a son rôle spécialisé. C'est exactement le principe du modèle en couches (Layer Model) en réseau.</p>
+            <p>Sans ce modèle, un développeur web devrait connaître le voltage exact des câbles en cuivre pour afficher un site. Grâce à lui, chaque expert peut se concentrer sur sa partie.</p>
 
             <h4>2. Le Modèle OSI (7 couches théoriques)</h4>
+            <p>Créé par l'ISO, c'est le modèle de référence pour comprendre la théorie. On le lit de bas en haut.</p>
             <ul>
-              <li><strong>1. Physique</strong> : Câbles, WiFi, signaux électriques (bits 0 et 1).</li>
-              <li><strong>2. Liaison de données</strong> : Adresses MAC, commutateurs (Switch). Trames (Frames).</li>
-              <li><strong>3. Réseau</strong> : Adresses IP, routeurs. Paquets (Packets).</li>
-              <li><strong>4. Transport</strong> : Fiabilité, découpage. Protocoles TCP et UDP. Segments.</li>
-              <li><strong>5. Session</strong> : Ouverture et fermeture des communications.</li>
-              <li><strong>6. Présentation</strong> : Formatage, chiffrement (SSL/TLS), compression.</li>
-              <li><strong>7. Application</strong> : Ce que voit l'utilisateur (HTTP, DNS, FTP).</li>
+              <li><strong>Couche 1 (Physique)</strong> : C'est le monde réel. Les câbles Ethernet, les ondes radio du WiFi, la lumière dans la fibre optique. On y parle en bits (0 et 1).</li>
+              <li><strong>Couche 2 (Liaison de Données)</strong> : Elle s'occupe de la communication locale, sur le même réseau. L'adresse utilisée est l'adresse <strong>MAC</strong> (Media Access Control), gravée physiquement sur la carte réseau. Le matériel principal est le <strong>Switch</strong>. Les données s'appellent des <em>Trames</em>.</li>
+              <li><strong>Couche 3 (Réseau)</strong> : C'est le GPS d'Internet. On y trouve l'adresse <strong>IP</strong>. Le matériel principal est le <strong>Routeur</strong>. Les données s'appellent des <em>Paquets</em>.</li>
+              <li><strong>Couche 4 (Transport)</strong> : Elle découpe le message en morceaux et s'assure qu'ils arrivent à bon port. On y trouve les protocoles <strong>TCP</strong> et <strong>UDP</strong>. Les données s'appellent des <em>Segments</em>.</li>
+              <li><strong>Couche 5 (Session)</strong> : Elle gère l'ouverture, le maintien et la fermeture de la conversation (ex: une session de connexion à un serveur).</li>
+              <li><strong>Couche 6 (Présentation)</strong> : Elle traduit les données pour que l'application puisse les lire (ex: UTF-8 pour les caractères) et les chiffre (SSL/TLS).</li>
+              <li><strong>Couche 7 (Application)</strong> : C'est ce que l'utilisateur voit. HTTP (le web), DNS (les noms de domaine), SMTP (les emails).</li>
             </ul>
 
             <h4>3. Le Modèle TCP/IP (4 couches réelles)</h4>
-            <p>C'est le modèle utilisé par Internet. Il fusionne les couches hautes.</p>
+            <p>En pratique, Internet utilise le modèle TCP/IP (aussi appelé DoD), qui condense les 7 couches OSI en 4. C'est celui qui régit réellement vos paquets.</p>
             <ul>
-              <li><strong>Accès Réseau</strong> (OSI 1 et 2)</li>
+              <li><strong>Accès Réseau</strong> (fusion OSI 1 et 2)</li>
               <li><strong>Internet</strong> (OSI 3)</li>
               <li><strong>Transport</strong> (OSI 4)</li>
-              <li><strong>Application</strong> (OSI 5, 6 et 7)</li>
+              <li><strong>Application</strong> (fusion OSI 5, 6 et 7)</li>
             </ul>
+
+            <h4>4. L'Encapsulation (Le concept le plus important)</h4>
+            <p>Quand vous envoyez un message WhatsApp, voici ce qui se passe :</p>
+            <ol>
+              <li><strong>Couche 7</strong> : Votre message "Salut" est créé.</li>
+              <li><strong>Couche 4</strong> : Il est découpé en segments et on ajoute un en-tête avec le port de destination. (Segment)</li>
+              <li><strong>Couche 3</strong> : On ajoute un en-tête avec l'IP de destination. (Paquet)</li>
+              <li><strong>Couche 2</strong> : On ajoute un en-tête avec l'adresse MAC du routeur. (Trame)</li>
+              <li><strong>Couche 1</strong> : Tout cela est transformé en ondes radio (WiFi) ou signaux électriques.</li>
+            </ol>
+            <p>Le destinataire fait le chemin inverse : il ouvre les enveloppes une par une (Décapsulation).</p>
 
             <div class="senior-advice">
               <strong>Conseil de Senior</strong>
-              <p>L'encapsulation est le concept clé : quand vous envoyez un message, il descend les couches OSI en ajoutant des en-têtes (headers) à chaque étape. Arrivé à la couche physique, c'est une longue suite de bits. Le destinataire fait le chemin inverse (décapsulation).</p>
+              <p>Quand vous dépannez un réseau, posez-vous la question : "À quelle couche se situe le problème ?". Pas de WiFi ? Couche 1. Pas d'IP ? Couche 3. Le site ne charge pas ? Couche 7. Cette méthode divise par 10 votre temps de diagnostic.</p>
             </div>
 
             <div class="warning-box">
@@ -109,10 +122,14 @@
           <div class="lesson-content">
             <h4>1. Anatomie d'une IPv4</h4>
             <p>Une adresse IPv4 est un nombre de 32 bits, divisé en 4 octets (chacun de 0 à 255), séparés par des points. Ex: <code>192.168.1.10</code>.</p>
-            <p>Elle est composée de deux parties : la partie <strong>Réseau</strong> (identique pour toutes les machines du même réseau) et la partie <strong>Hôte</strong> (unique pour chaque machine).</p>
+            <p>Elle est composée de deux parties :</p>
+            <ul>
+              <li><strong>La partie Réseau</strong> : identifie le réseau (ex: votre box).</li>
+              <li><strong>La partie Hôte</strong> : identifie la machine dans ce réseau (ex: votre PC, votre téléphone).</li>
+            </ul>
 
             <h4>2. Le Masque de Sous-réseau</h4>
-            <p>Il indique où s'arrête la partie réseau. Ex: <code>255.255.255.0</code>. En notation CIDR, on l'écrit <code>/24</code> (car 24 bits sur 32 sont réservés au réseau).</p>
+            <p>Il indique où s'arrête la partie réseau et où commence la partie hôte. Ex: <code>255.255.255.0</code>. En notation CIDR, on l'écrit <code>/24</code> (car 24 bits sur 32 sont réservés au réseau).</p>
             
             <table style="width:100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem;">
               <tr style="background: var(--bg-alt); border-bottom: 1px solid var(--border);">
@@ -141,15 +158,20 @@
                 <td style="padding: 8px;">4 (2 utilisables)</td>
               </tr>
             </table>
-            <p><em>Pourquoi 254 utilisables en /24 ?</em> Car la première adresse (<code>.0</code>) est le réseau et la dernière (<code>.255</code>) est le broadcast.</p>
+            <p><em>Pourquoi 254 utilisables en /24 ?</em> Car la première adresse (<code>.0</code>) est le réseau et la dernière (<code>.255</code>) est le broadcast (l'adresse pour crier "Hey tout le monde !").</p>
 
             <h4>3. Les Adresses Privées (RFC 1918)</h4>
-            <p>Elles ne sont pas routables sur Internet. Votre box vous en attribue une.</p>
+            <p>Elles ne sont pas routables sur Internet. Votre box vous en attribue une. Elles sont réservées pour éviter la pénurie d'IPv4.</p>
             <ul>
-              <li><code>10.0.0.0</code> à <code>10.255.255.255</code> (Classe A)</li>
-              <li><code>172.16.0.0</code> à <code>172.31.255.255</code> (Classe B)</li>
-              <li><code>192.168.0.0</code> à <code>192.168.255.255</code> (Classe C)</li>
+              <li><code>10.0.0.0</code> à <code>10.255.255.255</code> (Classe A - Réseaux immenses)</li>
+              <li><code>172.16.0.0</code> à <code>172.31.255.255</code> (Classe B - Réseaux moyens)</li>
+              <li><code>192.168.0.0</code> à <code>192.168.255.255</code> (Classe C - Maison, bureaux)</li>
             </ul>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Retenez le <code>192.168.1.1</code>. C'est l'adresse par défaut de 90% des box Internet (Livebox, Freebox, etc.). C'est là que vous vous connectez pour configurer votre réseau.</p>
+            </div>
 
             <div class="warning-box">
               <strong>Exercice Pratique</strong>
@@ -178,16 +200,23 @@
           <div class="lesson-content">
             <h4>1. Le DHCP (Dynamic Host Configuration Protocol)</h4>
             <p>Quand vous vous connectez à un WiFi, votre appareil crie "Quelqu'un peut me donner une adresse IP ?". Le serveur DHCP (votre box) répond avec une IP, un masque, une passerelle et un serveur DNS.</p>
-            <p>Ce processus s'appelle <strong>DORA</strong> : Discover, Offer, Request, Acknowledge.</p>
+            <p>Ce processus s'appelle <strong>DORA</strong> :</p>
+            <ul>
+              <li><strong>D</strong>iscover : Le client cherche un serveur DHCP.</li>
+              <li><strong>O</strong>ffer : Le serveur propose une IP.</li>
+              <li><strong>R</strong>equest : Le client demande officiellement cette IP.</li>
+              <li><strong>A</strong>cknowledge : Le serveur confirme.</li>
+            </ul>
 
             <h4>2. Le DNS (Domain Name System)</h4>
             <p>Le DNS traduit un nom lisible par l'homme (<code>google.com</code>) en adresse IP (<code>142.250.201.46</code>). C'est une immense base de données distribuée à travers le monde.</p>
+            <p>Quand vous tapez <code>google.com</code>, votre appareil demande d'abord à votre box, qui demande au FAI, qui demande aux serveurs racine (les 13 "dieux" d'Internet), qui redirigent vers le serveur de Google.</p>
             
             <h4>3. Les types d'enregistrements DNS</h4>
             <ul>
-              <li><strong>A</strong> : Fait correspondre un nom à une IPv4.</li>
+              <li><strong>A</strong> : Fait correspondre un nom à une IPv4 (le plus courant).</li>
               <li><strong>AAAA</strong> : Fait correspondre un nom à une IPv6.</li>
-              <li><strong>CNAME</strong> : Un alias (ex: <code>www.monsite.com</code> pointe vers <code>monsite.com</code>).</li>
+              <li><strong>CNAME</strong> : Un alias. Ex: <code>www.monsite.com</code> pointe vers <code>monsite.com</code>.</li>
               <li><strong>MX</strong> : Indique le serveur de messagerie (email).</li>
               <li><strong>TXT</strong> : Texte libre (souvent utilisé pour la sécurité anti-spam).</li>
             </ul>
@@ -217,13 +246,14 @@
           </summary>
           <div class="lesson-content">
             <h4>1. TCP vs UDP</h4>
+            <p>La couche Transport a deux protocoles principaux qui ont des philosophies opposées :</p>
             <ul>
-              <li><strong>TCP (Transmission Control Protocol)</strong> : Fiable. Vérifie que les paquets arrivent et les remet dans l'ordre. Utilisé pour le Web, les emails, les fichiers. (Il y a un "Three-way handshake" : SYN, SYN-ACK, ACK).</li>
-              <li><strong>UDP (User Datagram Protocol)</strong> : Rapide, mais sans garantie. Utilisé pour le streaming vidéo, les jeux vidéo (une image perdue n'est pas grave, on veut juste que ça aille vite).</li>
+              <li><strong>TCP (Transmission Control Protocol)</strong> : C'est le protocole de la fiabilité. Il vérifie que chaque paquet arrive (avec des accusés de réception) et les remet dans l'ordre. Utilisé pour le Web, les emails, les téléchargements.</li>
+              <li><strong>UDP (User Datagram Protocol)</strong> : C'est le protocole de la vitesse. Il envoie les données sans vérifier si elles arrivent. Si une image est perdue lors d'un appel vidéo, ce n'est pas grave, on veut juste que ça ne lag pas. Utilisé pour le streaming, les jeux vidéo, le DNS.</li>
             </ul>
 
             <h4>2. Les Ports (0 à 65535)</h4>
-            <p>Une adresse IP identifie la maison. Un port identifie la porte (le service) dans cette maison. Les ports 0 à 1023 sont réservés (Well-known ports).</p>
+            <p>Une adresse IP identifie la maison. Un port identifie la porte (le service) dans cette maison. C'est ce qui permet à votre PC de gérer en même temps votre navigateur, votre jeu et votre musique sans que les données ne se mélangent.</p>
             <table style="width:100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem;">
               <tr style="background: var(--bg-alt); border-bottom: 1px solid var(--border);">
                 <th style="padding: 8px; text-align: left;">Port</th>
@@ -267,6 +297,11 @@
               </tr>
             </table>
 
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Les ports 0 à 1023 sont réservés au système (il faut être administrateur root pour les ouvrir). Les ports 1024 à 49151 sont pour les applications (votre serveur Express tourne généralement sur le 3000 ou 8080).</p>
+            </div>
+
             <div class="warning-box">
               <strong>Exercice Pratique</strong>
               <p>Sur votre ordinateur, ouvrez un terminal. Tapez <code>netstat -tulpn</code> (Linux) ou <code>netstat -ano</code> (Windows). Quels ports sont en écoute (LISTEN) sur votre machine ?</p>
@@ -292,26 +327,31 @@
           </summary>
           <div class="lesson-content">
             <h4>1. Le protocole HTTP</h4>
-            <p>Le client (navigateur) envoie une <strong>Requête</strong>, le serveur renvoie une <strong>Réponse</strong>.</p>
-            <p>Les méthodes HTTP : <code>GET</code> (lire), <code>POST</code> (créer), <code>PUT</code> (remplacer), <code>DELETE</code> (supprimer).</p>
+            <p>Le client (navigateur) envoie une <strong>Requête</strong>, le serveur renvoie une <strong>Réponse</strong>. C'est un protocole "sans état" : le serveur oublie qui vous êtes entre deux requêtes (d'où l'utilisation de cookies pour se souvenir de vous).</p>
+            <p>Les méthodes HTTP :</p>
+            <ul>
+              <li><code>GET</code> : Lire une ressource (ex: afficher une page).</li>
+              <li><code>POST</code> : Créer une ressource (ex: envoyer un formulaire).</li>
+              <li><code>PUT</code> : Remplacer entièrement une ressource.</li>
+              <li><code>PATCH</code> : Modifier partiellement une ressource.</li>
+              <li><code>DELETE</code> : Supprimer une ressource.</li>
+            </ul>
 
             <h4>2. Les Codes de Statut (Status Codes)</h4>
+            <p>Ils indiquent le résultat de la requête. C'est le premier réflexe à avoir pour déboguer.</p>
             <ul>
-              <li><strong>200 OK</strong> : Tout va bien.</li>
-              <li><strong>301 Moved Permanently</strong> : Redirection.</li>
-              <li><strong>400 Bad Request</strong> : Le client a envoyé n'importe quoi.</li>
-              <li><strong>401 Unauthorized</strong> : Il faut se connecter.</li>
-              <li><strong>403 Forbidden</strong> : Connecté, mais pas le droit d'accéder.</li>
-              <li><strong>404 Not Found</strong> : La page n'existe pas.</li>
-              <li><strong>500 Internal Server Error</strong> : Le serveur a planté.</li>
+              <li><strong>2xx (Succès)</strong> : <code>200 OK</code>, <code>201 Created</code>.</li>
+              <li><strong>3xx (Redirection)</strong> : <code>301 Moved Permanently</code>.</li>
+              <li><strong>4xx (Erreur Client)</strong> : <code>400 Bad Request</code> (données invalides), <code>401 Unauthorized</code> (non connecté), <code>403 Forbidden</code> (connecté mais pas le droit), <code>404 Not Found</code> (n'existe pas).</li>
+              <li><strong>5xx (Erreur Serveur)</strong> : <code>500 Internal Server Error</code> (le code du serveur a planté).</li>
             </ul>
 
             <h4>3. HTTPS et le chiffrement</h4>
-            <p>HTTPS = HTTP + TLS. Avant d'envoyer la requête, le client et le serveur échangent des clés cryptographiques (Handshake TLS) pour chiffrer la communication. Personne entre les deux (FAI, hacker WiFi) ne peut lire le contenu.</p>
+            <p>HTTP envoie les données en clair. Si un pirate intercepte le trafic (sniffing) sur un WiFi public, il peut lire vos mots de passe. HTTPS ajoute une couche de chiffrement (TLS) : même si le pirate intercepte, il ne voit que du charabia.</p>
 
             <div class="senior-advice">
               <strong>Conseil de Senior</strong>
-              <p>Apprenez à utiliser la commande <code>curl -v https://google.com</code>. Elle vous montre exactement la requête HTTP et les headers de réponse envoyés par le serveur. C'est l'outil parfait pour déboguer une API.</p>
+              <p>Apprenez à utiliser la commande <code>curl -I https://google.com</code>. Elle vous montre uniquement les headers de réponse HTTP, ce qui est parfait pour vérifier si un serveur est en ligne ou pour déboguer une API.</p>
             </div>
           </div>
         </details>
@@ -334,14 +374,20 @@
           </summary>
           <div class="lesson-content">
             <h4>1. Les Routeurs</h4>
-            <p>Un routeur connecte deux réseaux différents. Il possède une "table de routage" et regarde l'IP de destination du paquet pour savoir par où l'envoyer.</p>
+            <p>Un routeur est un aiguilleur. Il connecte deux réseaux différents (ex: votre réseau local et Internet). Il possède une "table de routage" et regarde l'IP de destination du paquet pour savoir par quelle interface l'envoyer.</p>
+            <p>Votre box Internet fait ça entre votre réseau local et le réseau de votre FAI (Fournisseur d'Accès).</p>
 
             <h4>2. Le NAT (Network Address Translation)</h4>
-            <p>Vous avez 5 appareils chez vous (téléphones, PC, TV) mais une seule adresse IP publique fournie par votre FAI. Comment font-ils pour tous accéder à Internet en même temps ?</p>
+            <p>C'est la magie qui permet à tous vos appareils (téléphone, PC, TV) d'utiliser Internet en même temps avec une seule adresse IP publique.</p>
             <p>Votre box fait du NAT : elle remplace l'IP privée (ex: 192.168.1.10) par son IP publique dans les paquets sortants, et fait l'inverse quand les réponses reviennent.</p>
 
             <h4>3. Le protocole ARP</h4>
             <p>Sur un réseau local, les machines communiquent via leur adresse MAC (adresse physique de la carte réseau). ARP permet de trouver l'adresse MAC associée à une adresse IP. (Tapez <code>arp -a</code> dans un terminal pour voir la table ARP).</p>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Utilisez la commande <code>traceroute google.com</code> (Linux/Mac) ou <code>tracert google.com</code> (Windows). Vous verrez tous les routeurs (les "sauts") que votre paquet traverse pour atteindre Google.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -363,21 +409,22 @@
           </summary>
           <div class="lesson-content">
             <h4>1. Les Pare-feux (Firewalls)</h4>
-            <p>Ils filtrent le trafic entrant et sortant selon des règles. Ils peuvent bloquer une IP spécifique ou un port non autorisé.</p>
+            <p>Ils filtrent le trafic entrant et sortant selon des règles. Ils peuvent bloquer une IP spécifique ou un port non autorisé. C'est le videur de votre réseau.</p>
 
             <h4>2. Le VPN (Virtual Private Network)</h4>
-            <p>Il crée un tunnel chiffré entre votre appareil et un serveur distant. Votre FAI voit que vous envoyez des données à ce serveur, mais ne peut pas voir ce qu'il y a dedans (et vous prenez l'IP du serveur distant).</p>
+            <p>Il crée un tunnel chiffré entre votre appareil et un serveur distant. Votre FAI voit que vous envoyez des données à ce serveur, mais ne peut pas voir ce qu'il y a dedans. Vous prenez également l'IP du serveur distant, ce qui masque votre localisation réelle.</p>
 
             <h4>3. Les attaques courantes</h4>
             <ul>
-              <li><strong>DDoS (Distributed Denial of Service)</strong> : Saturation d'un serveur avec des millions de fausses requêtes.</li>
-              <li><strong>Man-in-the-Middle (MitM)</strong> : Un hacker s'interpose entre vous et le routeur (souvent via un faux hotspot WiFi). Le HTTPS prévient cela.</li>
-              <li><strong>Sniffing</strong> : Écoute du trafic réseau. Sur un WiFi public non chiffré (HTTP), n'importe qui peut lire vos mots de passe.</li>
+              <li><strong>DDoS (Distributed Denial of Service)</strong> : Saturation d'un serveur avec des millions de fausses requêtes depuis des milliers de machines infectées (Botnet). Le serveur tombe.</li>
+              <li><strong>Man-in-the-Middle (MitM)</strong> : Un hacker s'interpose entre vous et le routeur (souvent via un faux hotspot WiFi). Le HTTPS prévient cela car le hacker ne peut pas déchiffrer.</li>
+              <li><strong>Sniffing</strong> : Écoute du trafic réseau. Sur un WiFi public non chiffré (HTTP), n'importe qui peut lire ce que vous faites.</li>
+              <li><strong>Phishing (Hameçonnage)</strong> : Le pirate vous envoie un faux email pour vous faire cliquer sur un faux site et voler vos identifiants.</li>
             </ul>
 
             <div class="senior-advice">
               <strong>Conseil de Senior</strong>
-              <p>Ne vous connectez jamais à des sites HTTP (sans le S) sur un WiFi public (gare, aéroport). Utilisez un VPN si vous devez manipuler des données sensibles.</p>
+              <p>Ne vous connectez jamais à des sites HTTP (sans le S) sur un WiFi public (gare, aéroport). Utilisez un VPN si vous devez manipuler des données sensibles. Et méfiez-vous des emails urgents, c'est la base du phishing.</p>
             </div>
           </div>
         </details>
