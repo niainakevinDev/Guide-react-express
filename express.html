@@ -3,29 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cours Express (24h)</title>
+<title>Module Express | Académie Dev</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="topbar">
-  <span class="logo"><img src="https://cdn.simpleicons.org/express/ffffff" alt=""> Express (24h)</span>
+  <div class="logo">
+    <img src="https://cdn.simpleicons.org/express/ffffff" alt="Express">
+    <span>Académie Dev</span>
+  </div>
   <nav>
     <a href="index.html">Parcours</a>
-    <a href="javascript.html">JS</a>
+    <a href="javascript.html">JavaScript</a>
     <a href="react.html">React</a>
-    <a href="express.html">Express</a>
+    <a href="express.html" class="active">Express</a>
   </nav>
-  <button class="theme-btn">🌓</button>
+  <button class="theme-btn" onclick="toggleTheme()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  </button>
 </header>
 
 <div class="container">
   
-  <h1>Module 3 : Express & Node.js</h1>
-  <div class="progress-bar"><div class="progress-fill" id="progress-express"></div></div>
-  <p class="progress-text" id="progress-express-text">0 / 8 chapitres complétés</p>
+  <h1>Le Backend avec Express</h1>
+  <p style="color: var(--text-dim); margin-bottom: 32px;">Construisez la partie invisible de l'application : serveurs, bases de données, sécurité et APIs REST.</p>
 
-  <p>Le serveur. Ici, tu vas créer la partie invisible de l'application : celle qui stocke les données et sécurise l'accès.</p>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill" id="progress-express"></div></div>
+    <p class="progress-text" id="progress-express-text">0 / 8 chapitres complétés</p>
+  </div>
 
   <div class="checklist">
     
@@ -34,33 +41,38 @@
       <input type="checkbox" id="express-1" onchange="toggleCheck('express-1')">
       <div class="check-content">
         <label for="express-1">
-          <strong>Ch. 1 : Node & Serveur HTTP (3h)</strong><br>
-          Qu'est-ce que Node.js ? Créer un serveur basique. Installation d'Express et première route. <br>
-          <em>🎯 Objectif : Comprendre le modèle requête/réponse.</em>
+          <strong>Chapitre 1 : Node.js & Serveur HTTP</strong>
+          <p>Création d'un serveur avec Express et premières routes.</p>
+          <span class="badge">Objectif : Comprendre le modèle Requête/Réponse</span>
         </label>
         <details class="lesson">
-          <summary>📖 Lire le cours et faire l'exercice</summary>
-          <h4>1. Initialiser un projet</h4>
-          <pre><code>mkdir mon-api && cd mon-api
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Initialisation</h4>
+            <p>Node.js permet d'exécuter du JavaScript côté serveur. Express est le framework le plus populaire pour créer des APIs avec Node.</p>
+            <pre><code>mkdir mon-api && cd mon-api
 npm init -y
 npm install express</code></pre>
 
-          <h4>2. Le serveur de base</h4>
-          <p>Crée un fichier <code>server.js</code> :</p>
-          <pre><code>const express = require('express');
+            <h4>2. Le serveur de base</h4>
+            <pre><code>const express = require('express');
 const app = express();
 
 app.get('/', (req, res) =&gt; {
-  res.send('Hello depuis Express !');
+  res.send('Hello depuis le serveur !');
 });
 
 app.listen(3000, () =&gt; {
-  console.log('Serveur sur http://localhost:3000');
+  console.log('Serveur démarré sur http://localhost:3000');
 });</code></pre>
 
-          <div class="warn">
-            <strong>🛠️ Exercice Pratique (1h)</strong>
-            <strong>Défi :</strong> Lance ce serveur avec <code>node server.js</code>. Ouvre ton navigateur sur <code>http://localhost:3000</code>. Ajoute une nouvelle route <code>/api/status</code> qui renvoie un objet JSON <code>{ "status": "ok" }</code>.
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Lancez ce serveur. Dans votre navigateur, allez sur <code>http://localhost:3000</code>. Ajoutez ensuite une route <code>/api/status</code> qui retourne un objet JSON <code>{ "status": "ok" }</code>.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -71,23 +83,41 @@ app.listen(3000, () =&gt; {
       <input type="checkbox" id="express-2" onchange="toggleCheck('express-2')">
       <div class="check-content">
         <label for="express-2">
-          <strong>Ch. 2 : Routing & Middlewares (3h)</strong><br>
-          Les verbes HTTP. Qu'est-ce qu'un middleware ? Créer son propre logger. <br>
-          <em>🎯 Objectif : Structurer des routes complexes.</em>
+          <strong>Chapitre 2 : Routing & Middlewares</strong>
+          <p>Verbes HTTP, paramètres d'URL et fonctions middleware.</p>
+          <span class="badge">Objectif : Structurer des routes complexes</span>
         </label>
         <details class="lesson">
-          <summary>📖 Lire le cours et faire l'exercice</summary>
-          <h4>Le concept de Middleware</h4>
-          <p>Un middleware est une fonction qui s'exécute entre la requête et la réponse. C'est le cœur d'Express.</p>
-          <pre><code>// Middleware de log
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Les verbes HTTP</h4>
+            <ul>
+              <li><code>GET</code> : Récupérer des données.</li>
+              <li><code>POST</code> : Créer une ressource.</li>
+              <li><code>PUT / PATCH</code> : Modifier une ressource.</li>
+              <li><code>DELETE</code> : Supprimer une ressource.</li>
+            </ul>
+
+            <h4>2. Les Middlewares</h4>
+            <p>Un middleware est une fonction qui s'exécute <em>entre</em> la requête et la réponse. Il peut modifier la requête, la réponse, ou bloquer l'accès.</p>
+            <pre><code>// Middleware de log
 app.use((req, res, next) =&gt; {
   console.log(`[${req.method}] ${req.url}`);
-  next(); // Passe à la suite
+  next(); // Passe au middleware suivant ou à la route
 });</code></pre>
 
-          <div class="warn">
-            <strong>🛠️ Exercice Pratique (1h)</strong>
-            <strong>Défi :</strong> Ajoute un middleware qui vérifie si l'URL contient <code>/admin</code>. Si oui, renvoie une erreur 403 (Accès refusé). Sinon, laisse passer avec <code>next()</code>.
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>L'ordre des middlewares est crucial. Si vous placez un middleware d'authentification après vos routes, il ne servira à rien car les routes auront déjà répondu.</p>
+            </div>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un middleware qui vérifie si l'URL contient <code>/admin</code>. Si oui, renvoyez une erreur 403 (Accès refusé). Sinon, laissez passer avec <code>next()</code>.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -98,10 +128,36 @@ app.use((req, res, next) =&gt; {
       <input type="checkbox" id="express-3" onchange="toggleCheck('express-3')">
       <div class="check-content">
         <label for="express-3">
-          <strong>Ch. 3 : Bases de données (3h)</strong><br>
-          Connexion à MongoDB. Créer des modèles, faire des requêtes CRUD. <br>
-          <em>🎯 Objectif : Sauvegarder des données de façon permanente.</em>
+          <strong>Chapitre 3 : Bases de données</strong>
+          <p>Connexion à MongoDB et opérations CRUD.</p>
+          <span class="badge">Objectif : Sauvegarder des données</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Qu'est-ce que MongoDB ?</h4>
+            <p>C'est une base de données NoSQL qui stocke les données sous forme de documents JSON (appelés BSON). On utilise généralement la librairie <code>mongoose</code> pour interagir avec.</p>
+            <pre><code>npm install mongoose</code></pre>
+
+            <h4>2. Créer un Modèle</h4>
+            <pre><code>const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  nom: { type: String, required: true },
+  email: { type: String, required: true, unique: true }
+});
+
+const User = mongoose.model('User', userSchema);</code></pre>
+
+            <div class="warning-box">
+              <strong>Exercice Pratique</strong>
+              <p>Créez un modèle <code>Article</code> avec un titre, un contenu et une date. Faites une route POST pour créer un article et une route GET pour lister tous les articles.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -110,10 +166,37 @@ app.use((req, res, next) =&gt; {
       <input type="checkbox" id="express-4" onchange="toggleCheck('express-4')">
       <div class="check-content">
         <label for="express-4">
-          <strong>Ch. 4 : Validation & Erreurs (3h)</strong><br>
-          Valider les données (Zod). Gérer les erreurs globales et les codes HTTP (400, 404, 500). <br>
-          <em>🎯 Objectif : Ne jamais crasher le serveur.</em>
+          <strong>Chapitre 4 : Validation & Erreurs</strong>
+          <p>Valider les données et gérer les erreurs globales.</p>
+          <span class="badge">Objectif : Ne jamais faire crasher le serveur</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Gestion des erreurs globales</h4>
+            <p>Express a un middleware spécial pour les erreurs (avec 4 arguments). Il doit être placé tout à la fin de votre fichier.</p>
+            <pre><code>app.use((err, req, res, next) =&gt; {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Une erreur serveur est survenue' });
+});</code></pre>
+
+            <h4>2. Validation avec Zod</h4>
+            <p>Ne faites jamais confiance aux données envoyées par l'utilisateur.</p>
+            <pre><code>const { z } = require('zod');
+const schema = z.object({
+  email: z.string().email(),
+  age: z.number().min(18)
+});
+
+const result = schema.safeParse(req.body);
+if (!result.success) {
+  return res.status(400).json(result.error);
+}</code></pre>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -122,10 +205,32 @@ app.use((req, res, next) =&gt; {
       <input type="checkbox" id="express-5" onchange="toggleCheck('express-5')">
       <div class="check-content">
         <label for="express-5">
-          <strong>Ch. 5 : Authentification (3h)</strong><br>
-          Hasher les mots de passe (bcrypt). Créer et vérifier des tokens JWT. Protéger des routes. <br>
-          <em>🎯 Objectif : Sécuriser l'accès aux données.</em>
+          <strong>Chapitre 5 : Authentification JWT</strong>
+          <p>Hasher les mots de passe et sécuriser les routes.</p>
+          <span class="badge">Objectif : Protéger les données privées</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Hasher les mots de passe</h4>
+            <p>On ne stocke JAMAIS un mot de passe en clair. On utilise <code>bcrypt</code>.</p>
+            <pre><code>const bcrypt = require('bcrypt');
+const hash = await bcrypt.hash(password, 10);</code></pre>
+
+            <h4>2. Le JSON Web Token (JWT)</h4>
+            <p>Le JWT est un jeton que le serveur donne au client après le login. Le client l'envoie ensuite dans les headers pour prouver son identité.</p>
+            <pre><code>const jwt = require('jsonwebtoken');
+const token = jwt.sign({ userId: user.id }, 'SECRET_KEY', { expiresIn: '1h' });</code></pre>
+
+            <div class="senior-advice">
+              <strong>Conseil de Senior</strong>
+              <p>Ne mettez jamais de données sensibles dans le payload du JWT (il est décodable par n'importe qui). Mettez uniquement l'ID de l'utilisateur.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -134,10 +239,33 @@ app.use((req, res, next) =&gt; {
       <input type="checkbox" id="express-6" onchange="toggleCheck('express-6')">
       <div class="check-content">
         <label for="express-6">
-          <strong>Ch. 6 : Architecture Pro (3h)</strong><br>
-          Séparer les contrôleurs, les services et les routes. Configurer CORS, Helmet et Rate Limiter. <br>
-          <em>🎯 Objectif : Coder comme en entreprise.</em>
+          <strong>Chapitre 6 : Architecture Pro</strong>
+          <p>Séparer les contrôleurs, services et routes.</p>
+          <span class="badge">Objectif : Coder comme en entreprise</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>Le pattern MVC / Controller-Service</h4>
+            <p>Si vous mettez tout dans <code>server.js</code>, votre code deviendra impossible à maintenir.</p>
+            <ul>
+              <li><strong>Routes :</strong> Définissent les URLs et les méthodes HTTP.</li>
+              <li><strong>Controllers :</strong> Gèrent la requête (req) et la réponse (res).</li>
+              <li><strong>Services :</strong> Contiennent la logique métier (ex: calculer une réduction).</li>
+              <li><strong>Repositories :</strong> Gèrent l'accès à la base de données.</li>
+            </ul>
+
+            <h4>Exemple de Controller</h4>
+            <pre><code>// controllers/userController.js
+exports.getUsers = async (req, res) =&gt; {
+  const users = await User.find();
+  res.json(users);
+};</code></pre>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -146,34 +274,81 @@ app.use((req, res, next) =&gt; {
       <input type="checkbox" id="express-7" onchange="toggleCheck('express-7')">
       <div class="check-content">
         <label for="express-7">
-          <strong>Ch. 7 : Uploads & Fichiers (3h)</strong><br>
-          Gérer l'upload d'images avec Multer. Servir des fichiers statiques. <br>
-          <em>🎯 Objectif : Gérer les médias côté serveur.</em>
+          <strong>Chapitre 7 : Uploads & Sécurité</strong>
+          <p>Gérer les fichiers avec Multer et sécuriser l'API.</p>
+          <span class="badge">Objectif : Gérer les médias et bloquer les attaques</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Ouvrir le cours complet
+          </summary>
+          <div class="lesson-content">
+            <h4>1. Upload avec Multer</h4>
+            <pre><code>const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+app.post('/api/upload', upload.single('image'), (req, res) =&gt; {
+  res.json({ file: req.file });
+});</code></pre>
+
+            <h4>2. Sécurité avec Helmet & CORS</h4>
+            <p>Helmet sécurise vos headers HTTP. CORS permet à votre frontend React (sur un autre port) de communiquer avec Express.</p>
+            <pre><code>const helmet = require('helmet');
+const cors = require('cors');
+
+app.use(helmet());
+app.use(cors());</code></pre>
+          </div>
+        </details>
       </div>
     </div>
 
-    <!-- CHAPITRE 8 -->
+    <!-- CHAPITRE 8 : PROJET FINAL -->
     <div class="check-item">
       <input type="checkbox" id="express-8" onchange="toggleCheck('express-8')">
       <div class="check-content">
         <label for="express-8">
-          <strong>Ch. 8 : PROJET FINAL EXPRESS (3h)</strong><br>
-          Créer une API REST complète pour un Blog. Inclure JWT, CRUD complet, et validation. <br>
-          <em>🎯 Objectif : Prouver que tu sais construire un backend sécurisé.</em>
+          <strong>Chapitre 8 : Projet Final Express</strong>
+          <p>Création d'une API REST complète pour un Blog.</p>
+          <span class="badge">Objectif : Prouver vos compétences backend</span>
         </label>
+        <details class="lesson">
+          <summary>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Voir les spécifications du projet
+          </summary>
+          <div class="lesson-content">
+            <h4>Le projet : API de Blog</h4>
+            <p>Vous allez construire le backend complet d'un site de blog.</p>
+            
+            <h4>Fonctionnalités :</h4>
+            <ul>
+              <li><strong>Utilisateurs :</strong> Inscription (hash mot de passe), Login (retourne un JWT).</li>
+              <li><strong>Articles :</strong> CRUD complet (Créer, Lire, Modifier, Supprimer).</li>
+              <li><strong>Sécurité :</strong> Seuls les utilisateurs connectés peuvent créer/modifier leurs propres articles.</li>
+              <li><strong>Base de données :</strong> MongoDB pour stocker les utilisateurs et les articles.</li>
+              <li><strong>Validation :</strong> Vérifier que le titre de l'article fait au moins 5 caractères.</li>
+            </ul>
+
+            <div class="senior-advice">
+              <strong>Méthodologie</strong>
+              <p>Testez votre API avec Postman ou Insomnia au fur et à mesure. Ne codez pas toutes les routes d'un coup. Faites l'authentification d'abord, testez-la, puis passez aux articles.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
   </div>
 
-  <div style="text-align:center; margin-top: 40px;">
+  <div style="text-align:center; margin-top: 64px;">
     <a href="index.html" class="btn">Retour au Parcours</a>
   </div>
 
 </div>
 
-<footer>Cours Express 24h — <span id="year"></span></footer>
+<footer>Académie Dev &mdash; <span id="year"></span></footer>
 <script src="script.js"></script>
 </body>
-                          </html>
+</html>
